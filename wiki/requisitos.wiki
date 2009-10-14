@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#Requisitos funcionais e não-funcionais
 
 
 Requisitos Funcionais
@@ -10,3 +10,4 @@ Requisitos Funcionais
  * Trocar Obra;
  * Publicar Obra;
 
+  ** Cada um adiciona a medida que for apurando os requisitos **
