@@ -1,4 +1,4 @@
-#summary SRS - Software Requirement Specification Document.
+#summary SRS - Software Requirements Specification Document.
 
 = Documento de Requisitos de Software =
 
@@ -6,17 +6,30 @@
 
 === 1.1. Propósito do Documento de Requisitos ===
 
- * Delinear o propósito do documento de requisitos
- * Especificar o público-alvo do documento de requisitos
+ * Delinear o propósito do documento de requisitos;
+ * Especificar o público-alvo do documento de requisitos.
 
 === 1.2. Escopo do Produto ===
 
- * Identificar o produto de software a ser desenvolvido pelo nome
- * Explicar o que o software fará e, se necessário, o que não fará
- * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas
+ * Identificar o produto de software a ser desenvolvido pelo nome;
+ * Explicar o que o software fará e, se necessário, o que não fará;
+ * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas;
+ * Ser consistente com outros documentos similares ou de mais alto nível (por exemplo, especificação de requisitos de sistema), caso existam.
 
 === 1.3. Definições, Acrônimos e Abreviações ===
+
+ * Fornecer as definições de todos os termos, acrônimos e abreviações requeridas para interpretar o documento de requisitos. 
+
+_(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
+
 === 1.4. Referências ===
+
+ * Fornecer uma lista completa de todos os outros documentos referenciados pelo SRS;
+ * Identificar cada documento pelo seu título, número de relatório (quando aplicável), data e organização que o publicou;
+ * Especificar as fontes de onde as referências podem ser obtidas.
+
+_(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
+
 === 1.5. Visão Geral ===
 
 == 2. Descrição Geral ==
