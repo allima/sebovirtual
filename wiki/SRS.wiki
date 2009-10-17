@@ -1,12 +1,14 @@
 #summary SRS - Software Requirements Specification Document.
 
-|| *Data* || *Versão* || *Descrição* ||  *Último RF* || *Último RNF* || *Autor* ||
+|| *Data* || *Versão* || *Descrição das alterações realizadas* ||  *Último RF* || *Último RNF* || *Autor* ||
 ||        ||          ||             ||              ||              ||         ||
 ||        ||          ||             ||              ||              ||         ||
 
-= Documento de Requisitos de Software =
+= Documento de Requisitos de Software (DRS)=
 
 == 1. Introducão ==
+
+A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções:
 
 === 1.1. Propósito do Documento de Requisitos ===
 
@@ -26,7 +28,7 @@
 
 || *Termo* || *Descrição*               ||
 || RF      || Requisitos Funcionais     ||
-|| RNF     || Requisitos não-funcionais || 
+|| RNF     || Requisitos Não-Funcionais || 
 
 _(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
 
@@ -45,7 +47,11 @@ _(Esta informação pode ser fornecida por referência a um apêndice ou a outro
 
 == 2. Descrição Geral ==
 
+Esta seção deve descrever os fatores gerais que afetam o produto e seus requisitos. Esta seção não descreve os requisitos específicos. Ao invés disso, fornece um contexto para esses requisitos que serão definidos com detalhes na seção 3 do DRS, e facilita sua compreensão. 
+
 === 2.1. Perspectiva do Produto ===
+
+
 === 2.2. Funções do Produto ===
 === 2.3. Características do Produto ===
 === 2.4. Restrições Gerais ===
