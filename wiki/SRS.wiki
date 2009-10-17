@@ -1,5 +1,9 @@
 #summary SRS - Software Requirements Specification Document.
 
+|| *Data* || *Versão* || *Descrição* ||  *Último RF* || *Último RNF* || *Autor* ||
+||        ||          ||             ||              ||              ||         ||
+||        ||          ||             ||              ||              ||         ||
+
 = Documento de Requisitos de Software =
 
 == 1. Introducão ==
@@ -20,6 +24,10 @@
 
  * Fornecer as definições de todos os termos, acrônimos e abreviações requeridas para interpretar o documento de requisitos. 
 
+|| *Termo* || *Descrição*               ||
+|| RF      || Requisitos Funcionais     ||
+|| RNF     || Requisitos não-funcionais || 
+
 _(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
 
 === 1.4. Referências ===
@@ -31,6 +39,9 @@ _(Esta informação pode ser fornecida por referência a um apêndice ou a outro
 _(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
 
 === 1.5. Visão Geral ===
+
+ * Descrever o conteúdo do documento SRS;
+ * Explicar a organização do documento SRS;
 
 == 2. Descrição Geral ==
 
