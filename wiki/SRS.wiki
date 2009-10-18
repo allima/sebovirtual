@@ -1,9 +1,8 @@
 #summary SRS - Software Requirements Specification Document.
 #labels Phase-Requirements,Featured
 
-|| *Data* || *Versão* || *Descrição das alterações realizadas* ||  *Último RF* || *Último RNF* || *Autor* ||
-||        ||          ||             ||              ||              ||         ||
-||        ||          ||             ||              ||              ||         ||
+|| *Data*     || *Versão*   || *Descrição ||  *Último RF* || *Último RNF*  || *Autor*  ||
+|| XX/XX/XXXX || 1.0 - D01  || XXXXXXXXXXXXXXXXXXXXXXXXXX || RF01 || RNF01 || XXXXXXXX ||
 
 
 = Documento de Requisitos de Software (DRS)=
@@ -60,12 +59,19 @@ Um diagrama de blocos mostrando os componentes principais do sistema maior, inte
 Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
 
 2.1.1. Interfaces de sistemas
+
 2.1.2. Interfaces de usuário
+
 2.1.3. Interfaces de hardware
+
 2.1.4. Interfaces de software
+
 2.1.5. Interfaces de comunicação
+
 2.1.6. Restrições de memória
+
 2.1.7. Operações
+
 2.1.8. Adaptações ao local de instalação
 
 === 2.2. Funções do Produto ===
@@ -79,16 +85,27 @@ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuár
 === 2.4. Restrições Gerais ===
 
 Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:
-2.4.1. Regulamentos
-2.4.2. Limitações de hardware
-2.4.3. Interfaces com outras aplicações
-2.4.4. Operações em paralelo
-2.4.5. Funções de auditoria
-2.4.6. Funções de controle
-2.4.7. Exigêncis de alto nível de linguagem
-2.4.8. Requisitos de confiabilidade
-2.4.9. Criticidade da aplicação
+
+2.4.1.  Regulamentos
+
+2.4.2.  Limitações de hardware
+
+2.4.3.  Interfaces com outras aplicações
+
+2.4.4.  Operações em paralelo
+
+2.4.5.  Funções de auditoria
+
+2.4.6.  Funções de controle
+
+2.4.7.  Exigêncis de alto nível de linguagem
+
+2.4.8.  Requisitos de confiabilidade
+
+2.4.9.  Criticidade da aplicação
+
 2.4.10. Considerações de segurança
+
 
 === 2.5. Suposições e Dependências ===
 
