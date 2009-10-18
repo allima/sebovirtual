@@ -77,8 +77,28 @@ h) Adaptações ao local de instalação
 
 
 === 2.2. Funções do Produto ===
-=== 2.3. Características do Produto ===
+
+Esta sub-seção do DRS fornece um resumo das funções principais que o software realizará. 
+
+=== 2.3. Características de usuários ===
+
+Esta sub-seção do DRS deve descreve aquelas características gerais dos usuários-alvo do produto incluindo nível educacional, experiência e proficiência técnica. 
+
 === 2.4. Restrições Gerais ===
+
+Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto inclui:
+ # Regulamentos
+ # Limitações de hardware
+ # Interfaces com outras aplicações
+ # Operações em paralelo
+ # Funções de auditoria
+ # Funções de controle
+ # Exigêncis de alto nível de linguagem
+ # Protocolos de signal handshake
+ # Requisitos de confiabilidade
+ # Criticidade da aplicação
+ # Considerações de segurança
+
 === 2.5. Suposições e Dependências ===
 
 == 3. Requisitos Específicos ==
