@@ -1,9 +1,12 @@
 #summary SRS - Software Requirements Specification Document.
-#labels Phase-Requirements,Featured
+#labels Featured,Phase-Requirements
 
-|| *Data*     || *Versão*   || *Descrição ||  *Último RF* || *Último RNF*  || *Autor*  ||
-|| XX/XX/XXXX || 1.0 - D01  || XXXXXXXXXXXXXXXXXXXXXXXXXX || RF01 || RNF01 || XXXXXXXX ||
+==Histórico de Alterações==
 
+|| *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
+|| XX/XX/XXXX || 1.0 - D01  || XXXXXXXXXXXXXXXXXXXXXXXXXXX || RF01 || RNF01 || XXXXXXXX ||
+
+----
 
 = Documento de Requisitos de Software (DRS)=
 
@@ -58,20 +61,13 @@ Um diagrama de blocos mostrando os componentes principais do sistema maior, inte
 
 Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
 
-2.1.1. Interfaces de sistemas
-
-2.1.2. Interfaces de usuário
-
-2.1.3. Interfaces de hardware
-
-2.1.4. Interfaces de software
-
-2.1.5. Interfaces de comunicação
-
-2.1.6. Restrições de memória
-
-2.1.7. Operações
-
+2.1.1. Interfaces de sistemas <br>
+2.1.2. Interfaces de usuário <br>
+2.1.3. Interfaces de hardware <br>
+2.1.4. Interfaces de software <br>
+2.1.5. Interfaces de comunicação <br>
+2.1.6. Restrições de memória <br>
+2.1.7. Operações <br>
 2.1.8. Adaptações ao local de instalação
 
 === 2.2. Funções do Produto ===
@@ -86,26 +82,16 @@ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuár
 
 Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:
 
-2.4.1.  Regulamentos
-
-2.4.2.  Limitações de hardware
-
-2.4.3.  Interfaces com outras aplicações
-
-2.4.4.  Operações em paralelo
-
-2.4.5.  Funções de auditoria
-
-2.4.6.  Funções de controle
-
-2.4.7.  Exigêncis de alto nível de linguagem
-
-2.4.8.  Requisitos de confiabilidade
-
-2.4.9.  Criticidade da aplicação
-
+2.4.1.  Regulamentos <br>
+2.4.2.  Limitações de hardware <br>
+2.4.3.  Interfaces com outras aplicações <br>
+2.4.4.  Operações em paralelo <br>
+2.4.5.  Funções de auditoria <br>
+2.4.6.  Funções de controle <br>
+2.4.7.  Exigêncis de alto nível de linguagem <br>
+2.4.8.  Requisitos de confiabilidade <br>
+2.4.9.  Criticidade da aplicação <br>
 2.4.10. Considerações de segurança
-
 
 === 2.5. Suposições e Dependências ===
 
@@ -117,14 +103,50 @@ Esta sub-seção do DRS deve identificar requisitos que podem ser adiados para v
 
 == 3. Requisitos Específicos ==
 
+Esta seção do DRS deve conter todos os requisitos de software em um nível de detalhamento suficiente para habilitar que desenvolvedores projetem o sistema para satisfazer aqueles requisitos, e os testadores testem o sistema. Nesta seção, cada requisito descrita deve ser percebida pelos usuários, operadores ou sistemas externos. Esses requisitos devem incluir no mínimo uma descrição de cada entrada e saída do sistema, e todas funções realizadas pelo sistema. Os seguintes princípios aplicam-se:
+
+ * Requisitos específicos devem ser descritos em conformidade com todas as características de uma boa descrição de requisitos
+ * Requisitos específicos devem referenciar documentos anteriores que estejam relacionados
+ * Todos os requisitos devem ser identificados univocamente
+ * Deve ser dada cuidadosa atenção à organização dos requisitos de forma a melhorar a legibilidade
 
 === 3.1. Requisitos de interfaces externas ===
+
+Esta sub-seção deve ser uma descrição detalhada de todas as entradas e saídas do sistema de software. Deve complementar as descrições de interface da seção 2 e não deve repetir informações dela. Deve incluir conteúdo e formato como a seguir:
+ # Nome do item
+ # Descrição do propósito
+ # Fonte de entrada e destinação de saída
+ # Intervalo válido, precisão e/ou tolerância
+ # Unidades de medida
+ # Tempo
+ # Relacionamento entre entradas/saídas
+ # Formato/organização de telas
+ # Formato/organização de janelas
+ # Formato de dados
+ # Formato de comando
+ # Mensagens finais
+
+
 ==== 3.1.1. Interfaces com o usuário ====
 ==== 3.1.2. Interfaces de hardware ====
 ==== 3.1.3. Interfaces de software ====
 ==== 3.1.4. Interfaces de comunicação ====
 
 === 3.2. Requisitos Funcionais ===
+
+Os requisitos funcionais define as ações fundamentais que devem ter lugar no software ao aceitar e processar as entradas e ao processar e gerar as saídas. Estes são geralmente listados usando frases na forma "O sistema deve.." e incluem:
+
+- Validações da entrada <br>
+- Sequências exatas de operação <br>
+- Reações a situações anormais, incluindo: <br>
+ a) Fluxo alternativo <br>
+ b) Funcionalidades de comunicação <br>
+ c) Tratamento e recuperação de erros <br>
+- Efeitos dos parâmetros <br>
+- Relação de entradas com saídas, incluindo: <br>
+ a) Sequências de entrada/saída <br>
+ b) Fórmulas de conversão da entrada para a saída
+
 ==== 3.2.1. Caso de Uso 1 ====
 
 
