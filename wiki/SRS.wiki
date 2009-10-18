@@ -6,7 +6,7 @@
 
 = Documento de Requisitos de Software (DRS)=
 
-== 1. Introducão ==
+== 1. Introdução ==
 
 A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções:
 
@@ -51,6 +51,20 @@ Esta seção deve descrever os fatores gerais que afetam o produto e seus requis
 
 === 2.1. Perspectiva do Produto ===
 
+Esta sub-seção deve colocar o produto dentro da perspectiva de outros produtos relacionados. Se o produto é independente e totalmente auto-contido, deve ser informado aqui. Se o DRS define um produto que compõe um sistema maior, como frequente ocorre, então esta sub-seção deve relacionar os requisitos do sistema maior com as funcionalidades do software e deverá identificar as interfaces entre o sistema e o software.
+
+Um diagrama de blocos mostrando os componentes principais do sistema maior, interligações e interfaces externas poderá ser útil.
+
+Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
+
+a) Interfaces de sistemas
+b) Interfaces de usuário
+c) Interfaces de hardware
+d) Interfaces de software
+e) Interfaces de comunicação
+f) Memória
+g) Operações
+h) Adaptações ao local de instalação
 
 === 2.2. Funções do Produto ===
 === 2.3. Características do Produto ===
