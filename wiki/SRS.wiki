@@ -1,4 +1,5 @@
 #summary SRS - Software Requirements Specification Document.
+#labels Phase-Requirements,Featured
 
 || *Data* || *Versão* || *Descrição das alterações realizadas* ||  *Último RF* || *Último RNF* || *Autor* ||
 ||        ||          ||             ||              ||              ||         ||
@@ -59,13 +60,21 @@ Um diagrama de blocos mostrando os componentes principais do sistema maior, inte
 Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
 
 a) Interfaces de sistemas
+
 b) Interfaces de usuário
+
 c) Interfaces de hardware
+
 d) Interfaces de software
+
 e) Interfaces de comunicação
+
 f) Memória
+
 g) Operações
+
 h) Adaptações ao local de instalação
+
 
 === 2.2. Funções do Produto ===
 === 2.3. Características do Produto ===
