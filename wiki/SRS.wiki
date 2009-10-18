@@ -94,12 +94,17 @@ Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos it
  # Funções de auditoria
  # Funções de controle
  # Exigêncis de alto nível de linguagem
- # Protocolos de signal handshake
  # Requisitos de confiabilidade
  # Criticidade da aplicação
  # Considerações de segurança
 
 === 2.5. Suposições e Dependências ===
+
+Esta sub-seção do DRS deve listar cada um dos fatores que afetam os requisitos descritos no documento. Esses fatores não são restrições de projeto mas são fatores que ao mudarem afetarão os requisitos presentes no documento.
+
+=== 2.6. Divisão de requisitos ===
+
+Esta sub-seção do DRS deve identificar requisitos que podem ser adiados para versões futuras do sistema.
 
 == 3. Requisitos Específicos ==
 
