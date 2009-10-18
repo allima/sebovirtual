@@ -47,7 +47,7 @@ _(Esta informação pode ser fornecida por referência a um apêndice ou a outro
 === 1.5. Visão Geral ===
 
  * Descrever o conteúdo do documento SRS;
- * Explicar a organização do documento SRS;
+ * Explicar a organização do documento SRS.
 
 == 2. Descrição Geral ==
 
@@ -61,14 +61,14 @@ Um diagrama de blocos mostrando os componentes principais do sistema maior, inte
 
 Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
 
-2.1.1. Interfaces de sistemas <br>
-2.1.2. Interfaces com o usuário <br>
-2.1.3. Interfaces de hardware <br>
-2.1.4. Interfaces de software <br>
-2.1.5. Interfaces de comunicação <br>
-2.1.6. Restrições de memória <br>
-2.1.7. Operações <br>
-2.1.8. Adaptações ao local de instalação
+==== 2.1.1. Interfaces de sistemas ====
+==== 2.1.2. Interfaces com o usuário ====
+==== 2.1.3. Interfaces de hardware ====
+==== 2.1.4. Interfaces de software ====
+==== 2.1.5. Interfaces de comunicação ====
+==== 2.1.6. Restrições de memória ====
+==== 2.1.7. Operações ====
+==== 2.1.8. Adaptações ao local de instalação ====
 
 === 2.2. Funções do Produto ===
 
@@ -82,16 +82,16 @@ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuár
 
 Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:
 
-2.4.1.  Regulamentos <br>
-2.4.2.  Limitações de hardware <br>
-2.4.3.  Interfaces com outras aplicações <br>
-2.4.4.  Operações em paralelo <br>
-2.4.5.  Funções de auditoria <br>
-2.4.6.  Funções de controle <br>
-2.4.7.  Exigêncis de alto nível de linguagem <br>
-2.4.8.  Requisitos de confiabilidade <br>
-2.4.9.  Criticidade da aplicação <br>
-2.4.10. Considerações de segurança
+==== 2.4.1.  Regulamentos ====
+==== 2.4.2.  Limitações de hardware ==== 
+==== 2.4.3.  Interfaces com outras aplicações ====
+==== 2.4.4.  Operações em paralelo ====
+==== 2.4.5.  Funções de auditoria ====
+==== 2.4.6.  Funções de controle ====
+==== 2.4.7.  Exigências de alto nível de linguagem ====
+==== 2.4.8.  Requisitos de confiabilidade ====
+==== 2.4.9.  Criticidade da aplicação ====
+==== 2.4.10. Considerações de segurança ====
 
 === 2.5. Suposições e Dependências ===
 
@@ -139,13 +139,13 @@ Os requisitos funcionais define as ações fundamentais que devem ter lugar no s
 - Validações da entrada <br>
 - Sequências exatas de operação <br>
 - Reações a situações anormais, incluindo: 
- a) Fluxo alternativo <br>
- b) Funcionalidades de comunicação <br>
- c) Tratamento e recuperação de erros <br>
+ # Fluxo alternativo
+ # Funcionalidades de comunicação 
+ # Tratamento e recuperação de erros
 - Efeitos dos parâmetros <br>
 - Relação de entradas com saídas, incluindo:
- a) Sequências de entrada/saída <br>
- b) Fórmulas de conversão da entrada para a saída
+ # Sequências de entrada/saída 
+ # Fórmulas de conversão da entrada para a saída
 
 Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub-processos.
 
@@ -158,21 +158,21 @@ Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub
 Esta sub-seção deve especificar os requisitos estáticos e dinâmicos quantificáveis impostos ao software ou nas interações com usuários como um todo. 
 
 Os requisitos estáticos quantificáveis podem incluir:
- a) O número de terminais suportados
- b) O número de usuários simultaneos suportados
- c) Quantidade e tipo de informação a ser controlada
+ # O número de terminais suportados
+ # O número de usuários simultaneos suportados
+ # Quantidade e tipo de informação a ser controlada
 
 Os requisitos dinâmicos quantificáveis podem incluir, o número de transações e tarefas e quantidade de dados a ser processados num determinado periodo de tempo, em condições de carga normal e carga máxima.
 
 === 3.4. Requisitos lógicos de base de dados ===
 
 Esta sub-seção deve especificar requisitos lógicos de qualquer informações a ser colocada em uma base de dados. Isto pode incluir o seguinte:
- a) Tipos de informações usadas por várias funções
- b) Frequência de uso
- c) Capacidade de acesso 
- d) Entidades de dados e seus relacionamentos
- e) Restrições de integridade
- f) Requisitos de armazenamento de dados
+ # Tipos de informações usadas por várias funções
+ # Frequência de uso
+ # Capacidade de acesso 
+ # Entidades de dados e seus relacionamentos
+ # Restrições de integridade
+ # Requisitos de armazenamento de dados
 
 == 3.5. Restrições de Projeto ==
 
