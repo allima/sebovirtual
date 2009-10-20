@@ -149,11 +149,13 @@ Os requisitos funcionais define as ações fundamentais que devem ter lugar no s
 
 Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub-processos.
 
-==== 3.2.1. [RF001] Solicitar cadastro no sistema ====
+==== 3.2.1. Controle de Acesso ====
+
+*[RF001] Solicitar cadastro no sistema*
 
 O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como nome, email, senha da conta de usuário, informações de endereço residencial e telefone para contato.
 
-Prioridade: (x) Essencial   ( ) Importante      ( ) Desejável
+Prioridade: (X) Essencial   ( ) Importante      ( ) Desejável
 
 ==== 3.2.2. Funcionalidade 2 ====
 ==== 3.2.n. Funcionalidade n ====
