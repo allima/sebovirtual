@@ -152,6 +152,8 @@ Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub
 
 ==== 3.2.1. Controle de Acesso ====
 
+Esta seção agrupa os requisitos funcionais associados ao controle de acesso dos usuários.
+
 *RF001 Solicitar cadastro no sistema*
 
 O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como nome, email, senha da conta de usuário, informações de endereço residencial e telefone para contato.
@@ -188,9 +190,39 @@ O sistema permitirá a alteração da senha do usuário, mediante informação d
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
-==== 3.2.2. Painel de Administração ====
+==== 3.2.2. Manutenção de Perfil de usuário ====
 
-*RF007 Cadastrar novidades*
+Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com os genêros recentemente consultados. 
+
+*RF007 Criar Perfil de usuário*
+
+O sistema criará um perfil de usuário quando o cadastro estiver concluído com sucesso. Contudo, este perfil ainda não possui as informações necessárias para o mecanismo de recomendação.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RF008 Atualizar Perfil de usuário*
+
+O sistema atualizará o perfil do usuário de forma constante, baseado nas informações extraídas de características de navegação do usuário, ou seja, estantes de livros visitados, livros consultados, comentários realizados.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RF009 Calcular índice de atividade do usuário*
+
+O sistema calculará o índice de atividade do usuário, baseado na frequência de acessos, no número de livros disponibilizados em estante virtual, número de interações com outros usuários, nos acessos aos comentários/avaliações (criando ou comentando), 
+número de compras, vendas ou trocas efetuadas.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
+==== 3.2.3. Painel de Administração ====
+
+*RF
+
+*RF009 Cadastrar administrador*
+
+
+
+
+*RF010 Cadastrar novidades*
 
 O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas a estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
 
