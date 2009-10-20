@@ -4,7 +4,7 @@
 ==Histórico de Alterações==
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
-|| 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF006 || RNF000 || Alexandre Maia ||
+|| 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF007 || RNF000 || Alexandre Maia ||
 
 
 ----
@@ -188,7 +188,14 @@ O sistema permitirá a alteração da senha do usuário, mediante informação d
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
-==== 3.2.2. Funcionalidade 2 ====
+==== 3.2.2. Painel de Administração ====
+
+*RF007 Cadastrar novidades*
+
+O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas a estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
 ==== 3.2.n. Funcionalidade n ====
 
 === 3.3 Requisitos de Performance ===
