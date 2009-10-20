@@ -4,7 +4,7 @@
 ==Histórico de Alterações==
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
-|| 19/10/2009 || 1.0 - D01  || Especificação de requisitos  || RF003 ||   || Alexandre Maia ||
+|| 19/10/2009 || 1.0 - D01  || Especificação de requisitos  || RF004 ||   || Alexandre Maia ||
 
 
 ----
@@ -165,7 +165,14 @@ O sistema deverá enviar uma mensagem de e-mail do usuário, informando que o ca
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF003 Acessar o sistema
+
 Para acessar o sistema, deve-se informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RF004 Lembrar senha do usuário
+
+Caso o usuário esquecer da senha de usuário, ele poderá solicitar o envio de uma nova senha para o e-mail apenas informado o endereço eletrônico que foi cadastrado. Esta nova senha deverá ser gerada automaticamente pelo sistema.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
