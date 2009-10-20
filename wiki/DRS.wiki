@@ -4,7 +4,7 @@
 ==Histórico de Alterações==
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
-|| 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF007 || RNF000 || Alexandre Maia ||
+|| 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF015 || RNF001 || Alexandre Maia ||
 
 
 ----
@@ -246,7 +246,7 @@ O sistema permitirá que o usuário administrador remova o de acesso de um usuá
 
 Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
 
-*RF014 Cadastrar novidades*
+*RF015 Cadastrar novidades*
 
 O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao sítio estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
 
