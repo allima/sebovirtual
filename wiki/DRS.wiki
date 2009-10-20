@@ -4,7 +4,9 @@
 ==Histórico de Alterações==
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
-|| 19/10/2009 || 1.0 - D01  || Requisito cadastro de sistema  || RF01 ||   || Alexandre Maia ||
+|| 19/10/2009 || 1.0 - D01  || Requisito cadastro de sistema  || RF001 ||   || Alexandre Maia ||
+|| 19/10/2009 || 1.0 - D01  || Requisito notificação de cadastramento || RF002 || || Alexandre Maia ||
+
 
 ----
 
@@ -156,6 +158,14 @@ Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub
 O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como nome, email, senha da conta de usuário, informações de endereço residencial e telefone para contato.
 
 Prioridade: (X) Essencial   ( ) Importante      ( ) Desejável
+
+*[RF002] Notificar cadastramento do usuário*
+
+O sistema deverá enviar uma mensagem de e-mail do usuário, informando que o cadastro dos seus dados foi realizado com sucesso. Além disso, o e-mail deve apresentar um link para ativação do seu cadastro. Quando o usuário acessar o link de ativação, ele finaliza o processo de cadastramento e tem permissão de entrar no sistema.
+
+
+Prioridade: (X) Essencial   ( ) Importante      ( ) Desejável
+
 
 ==== 3.2.2. Funcionalidade 2 ====
 ==== 3.2.n. Funcionalidade n ====
