@@ -168,7 +168,7 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF003 Acessar o sistema*
 
-Para acessar o sistema, deve-se informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema.
+Para acessar o sistema, deve-se informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o usuário estará com status "ativo".
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
@@ -190,23 +190,30 @@ O sistema permitirá a alteração da senha do usuário, mediante informação d
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
+*RF007 Encerrar sistema*
+
+Quando o usuário desejar sair do sistema, seu status passará a ser "inativo".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+
 ==== 3.2.2. Manutenção de Perfil de usuário ====
 
 Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com os genêros recentemente consultados. 
 
-*RF007 Criar Perfil de usuário*
+*RF008 Criar Perfil de usuário*
 
 O sistema criará um perfil de usuário quando o cadastro estiver concluído com sucesso. Contudo, este perfil ainda não possui as informações necessárias para o mecanismo de recomendação.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
-*RF008 Atualizar Perfil de usuário*
+*RF009 Atualizar Perfil de usuário*
 
 O sistema atualizará o perfil do usuário de forma constante, baseado nas informações extraídas de características de navegação do usuário, ou seja, estantes de livros visitados, livros consultados, comentários realizados.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
-*RF009 Calcular índice de atividade do usuário*
+*RF010 Calcular índice de atividade do usuário*
 
 O sistema calculará o índice de atividade do usuário, baseado na frequência de acessos, no número de livros disponibilizados em estante virtual, número de interações com outros usuários, nos acessos aos comentários/avaliações (criando ou comentando), 
 número de compras, vendas ou trocas efetuadas.
@@ -215,18 +222,36 @@ Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
 ==== 3.2.3. Painel de Administração ====
 
-*RF
+*RF011 Configurar sistema* 
 
-*RF009 Cadastrar administrador*
+O usuário administrador deverá configurar alguns itens de interface do sistema, ou seja, relacionado a exibição de informações na página principal.
 
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
+*RF012 Cadastrar administrador*
 
+O usuário administrador poderá realizar cadastramento de usuário com mesmo perfil. Para isso, deverá informar as seguintes informações: nome, e-mail, telefone, login. Ao finalizar o cadastro, um e-mail, contendo uma senha temporária gerada aleatoriamente pelo sistema será enviada ao usuário cadastrado.
 
-*RF010 Cadastrar novidades*
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
-O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas a estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+*RF013 Alterar dados de administrador*
+
+O sistema permitirá a alteração dos dados cadastrados para administrador como, por exemplo, nome, e-mail, telefone para contato. Para que o sistema confirme essa alteração, será solicitado que o solicitante da alteração informe sua senha.
+
+Prioridade: (X) Essencial          ( ) Importante        ( )Desejável
+
+*RF014 Remover acesso do usuário*
+
+O sistema permitirá que o usuário administrador remova o de acesso de um usuário ao sistema. Com isto, o usuário perderá a permissão de efetuar acesso ao sistema.
+
+Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
+
+*RF014 Cadastrar novidades*
+
+O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao sítio estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
 
 Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
 
 ==== 3.2.n. Funcionalidade n ====
 
@@ -240,6 +265,17 @@ Os requisitos estáticos quantificáveis podem incluir:
  # Quantidade e tipo de informação a ser controlada
 
 Os requisitos dinâmicos quantificáveis podem incluir, o número de transações e tarefas e quantidade de dados a ser processados num determinado periodo de tempo, em condições de carga normal e carga máxima.
+
+==== 3.3.1. Requisitos de Produto ====
+
+==== 3.3.2. Requisitos de Processo ====
+
+*RNF001 Sistema Open-Source*
+
+O sistema deverá ser open-source (código aberto) e seu código fonte deverá ser disponibilizado no GoogleCode.com para que qualquer individuo possa visualizá-lo, e qualquer membro do projeto possa editá-lo, contribuindo para a melhoria do produto e artefatos.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+ 
 
 === 3.4. Requisitos lógicos de base de dados ===
 
