@@ -22,7 +22,7 @@ Este Documento de Requisitos de Software apresenta a especificação do Sistema 
 === 1.1. Propósito do Documento de Requisitos ===
 
 O propósito deste documento de requisitos é apresentar os requisitos funcionais do software, estabelecer os requisitos não-funcionais, apresentar o escopo do produto e estabelecer o que será e não será abordado nesta etapa do desenvolvimento.
-
+Este documento servirá de base para o desenvolvimento do software SeboVirtual durante todo o seu ciclo de vida. A partir dele a equipe de Design irá desenvolver outros artefatos como código-fonte, base de dados, diagramas, etc. Servirá também como base para especificação de casos de teste do software em desenvolvimento, além de ser uma forma de demonstrar as funcionalidades do software aos usuários e clientes.
 
 
 // * Delinear o propósito do documento de requisitos;
