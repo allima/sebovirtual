@@ -17,7 +17,7 @@
 Este Documento de Requisitos de Software apresenta a especificação do Sistema SeboVirtual. Sua elaboração tem o objetivo de organizar o processo de requisitos em conformidade com a IEEE Std 830-1998 e agrupar os requisitos por funcionalidade tornando o documento mais intelegível para os stakeholders.
 
 
-// A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções: //
+\\ A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções:\\
 
 === 1.1. Propósito do Documento de Requisitos ===
 
@@ -25,15 +25,21 @@ O propósito deste documento de requisitos é apresentar os requisitos funcionai
 Este documento servirá de base para o desenvolvimento do software SeboVirtual durante todo o seu ciclo de vida. A partir dele a equipe de Design irá desenvolver outros artefatos como código-fonte, base de dados, diagramas, etc. Servirá também como base para especificação de casos de teste do software em desenvolvimento, além de ser uma forma de demonstrar as funcionalidades do software aos usuários e clientes.
 
 
-// * Delinear o propósito do documento de requisitos;
- * Especificar o público-alvo do documento de requisitos. //
+\\ * Delinear o propósito do documento de requisitos;
+ * Especificar o público-alvo do documento de requisitos. \\
 
 === 1.2. Escopo do Produto ===
 
+O produto desenvolvido a partir deste documento de requisitos será o software SeboVirtual. Ele será composto de um intarface web a partir da qual usuários cadastrados e autenticados poderão ofertar livros para troca e venda. Os livros ofertados poderão ser comentados por outros usuários e adquiridos e/ou trocados.
+O desenvolvimento desse software possibilitará maior intercâmbio de informações e conhecimentos a partir da troca de livros, antes esquecidos nas estantes. Também poderá servir como composição da fonte de renda dos usuários vendedores a partir de aplicação de margem de lucro sobre as vendas de livros procurados.
+
+
+\\
  * Identificar o produto de software a ser desenvolvido pelo nome;
  * Explicar o que o software fará e, se necessário, o que não fará;
  * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas;
  * Ser consistente com outros documentos similares ou de mais alto nível (por exemplo, especificação de requisitos de sistema), caso existam.
+\\
 
 === 1.3. Definições, Acrônimos e Abreviações ===
 
