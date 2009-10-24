@@ -5,7 +5,7 @@
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
 || 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF015 || RNF001 || Alexandre Maia ||
-|| 24/10/2009 ||    || Introdução ||  ||  || Sandro Colli ||
+|| 24/10/2009 ||      || Introdução ||    ||    || Sandro Colli ||
 
 
 ----
@@ -43,65 +43,21 @@ O desenvolvimento desse software possibilitará maior intercâmbio de informaç�
 
 === 1.3. Definições, Acrônimos e Abreviações ===
 
- * Fornecer as definições de todos os termos, acrônimos e abreviações requeridas para interpretar o documento de requisitos. 
+Esta seção fornece as definições de todos os termos, acrônimos e abreviações requeridas para interpretar este documento de requisitos. 
 
 || *Termo* || *Descrição*               ||
 || RF      || Requisitos Funcionais     ||
 || RNF     || Requisitos Não-Funcionais || 
 
 
-
-
-
-_(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
-
-=== 1.4. Referências ===
-
- * Fornecer uma lista completa de todos os outros documentos referenciados pelo SRS;
- * Identificar cada documento pelo seu título, número de relatório (quando aplicável), data e organização que o publicou;
- * Especificar as fontes de onde as referências podem ser obtidas.
-
-_(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
-
-=== 1.5. Visão Geral ===
-
- * Descrever o conteúdo do documento SRS;
- * Explicar a organização do documento SRS.
-
 == 2. Descrição Geral ==
 
-Esta seção deve descrever os fatores gerais que afetam o produto e seus requisitos. Esta seção não descreve os requisitos específicos. Ao invés disso, fornece um contexto para esses requisitos que serão definidos com detalhes na seção 3 do DRS, e facilita sua compreensão. 
+=== 2.1. Funções do Produto ===
 
-=== 2.1. Perspectiva do Produto ===
-
-Esta sub-seção deve colocar o produto dentro da perspectiva de outros produtos relacionados. Se o produto é independente e totalmente auto-contido, deve ser informado aqui. Se o DRS define um produto que compõe um sistema maior, como frequente ocorre, então esta sub-seção deve relacionar os requisitos do sistema maior com as funcionalidades do software e deverá identificar as interfaces entre o sistema e o software.
-
-Um diagrama de blocos mostrando os componentes principais do sistema maior, interligações e interfaces externas poderá ser útil.
-
-Esta sub-seção deve também descrever como o software opera dentro de várias restrições. Por exemplo, essas restrições podem incluir:
-
-==== 2.1.1. Interfaces de sistemas ====
-==== 2.1.2. Interfaces com o usuário ====
-==== 2.1.3. Interfaces de hardware ====
-==== 2.1.4. Interfaces de software ====
-==== 2.1.5. Interfaces de comunicação ====
-==== 2.1.6. Restrições de memória ====
-==== 2.1.7. Operações ====
-==== 2.1.8. Adaptações ao local de instalação ====
-
-=== 2.2. Funções do Produto ===
-
-O usuário poderá cadastrar seus livros para efetuar a venda ou troca através do serviço. 
-O usuário poderá avaliar o conteúdo dos livros que outros usuários registram no sistema. 
-O usuário poderá indicar a amigos os livros constantes do sistema. 
-Os usuários cadastrados poderão ser leitores que simplesmente realizarão comentários sobre os livros, vendedores que disponibilizarão livros para venda ou troca, compradores/negociadores que efetuarão compras ou trocas de livros. 
-Os usuários compradores poderão ser leitores ou vendedores. 
-Os usuários negociadores deverão ser vendedores. 
-Os usuários leitores não possuirão estante de livros. 
-Os usuários vendedores possuirão estante de livros. 
+Todos os usuários cadastrados poderão efetuar vendas, trocas, compras e comentar outras obras.
 A compra se dará quando o usuário se interessar por um livro que esteja na estante de um usuário vendedor e efetuar o pagamento. 
-A troca se dará quando um usuário negociador se interessar por um livro que esteja na estante de um outro usuário negociador, informar a intenção de troca, disponibilizar as opções para troca e o outro usuário confirmar aceitação da proposta de negociação. 
-Os vendedores/negociadores serão avaliados após a finalização da venda/troca do produto. 
+A troca se dará quando um usuário se interessar por um livro que esteja na estante de um outro usuário, informar a intenção de troca, disponibilizar as opções para troca e o outro usuário confirmar aceitação da proposta de negociação. 
+Após toda negociação os usuários serão avaliarão e serão avaliados. 
 Os livros poderão ser consultados através de uma busca por autor, título, editora, ano. 
 A consulta a um livro indicará aqueles usuários vendedores que o tem disponível na estante de livros e apresentará os comentários realizados por usuários sobre o conteúdo. 
 A estante de um usuário vendedor (livros disponíveis para venda e/ou troca) ficam abertas para serem consultadas por outros usuários. 
@@ -109,7 +65,7 @@ Os usuários podem ser procurados por nome, cidade, estado.
 Os usuários vendedores são classificados em ordem de número de vendas e avaliações positivas. 
 
 
-=== 2.3. Características de usuários ===
+=== 2.2. Características de usuários ===
 
 São usuários potenciais para este software todas aquelas pessoas que possuem livros, que tem interesse de adquirir livros, que pretendem trocar seus livros com outras pessoas ou simplesmente possuem interesse por livros e gostem de comentar as obras.
 Os usuários são, na maioria, pessoas de nível educacional médio a elevado, com experiência mediana no uso de recursos técnológicos e com boa proficiência técnica.
@@ -117,7 +73,7 @@ Os usuários são, na maioria, pessoas de nível educacional médio a elevado, c
 
 ~~ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuários-alvo do produto incluindo nível educacional, experiência e proficiência técnica. ~~
 
-=== 2.4. Restrições Gerais ===
+=== 2.3. Restrições Gerais ===
 
 O software deverá apresentar um ambiente seguro para transações de pagamento dos livros adquiridos. O acesso às transações de compra, venda e troca de livros deverá ser liberada apenas para os usuários cadastrados e autenticados no sistema.
 
@@ -134,63 +90,13 @@ O software deverá apresentar um ambiente seguro para transações de pagamento 
 ==== ~~2.4.9.  Criticidade da aplicação~~ ====
 ==== ~~2.4.10. Considerações de segurança~~ ====
 
-=== 2.5. Suposições e Dependências ===
+== 3. Requisitos ==
 
-Esta sub-seção do DRS deve listar cada um dos fatores que afetam os requisitos descritos no documento. Esses fatores não são restrições de projeto mas são fatores que ao mudarem afetarão os requisitos presentes no documento.
+=== 3.1. Requisitos Funcionais ===
 
-=== 2.6. Divisão de requisitos ===
+Os requisitos funcionais definem as ações fundamentais que devem ter lugar no software ao aceitar e processar as entradas e ao processar e gerar as saídas.
 
-Esta sub-seção do DRS deve identificar requisitos que podem ser adiados para versões futuras do sistema.
-
-== 3. Requisitos Específicos ==
-
-Esta seção do DRS deve conter todos os requisitos de software em um nível de detalhamento suficiente para habilitar que desenvolvedores projetem o sistema para satisfazer aqueles requisitos, e os testadores testem o sistema. Nesta seção, cada requisito descrita deve ser percebida pelos usuários, operadores ou sistemas externos. Esses requisitos devem incluir no mínimo uma descrição de cada entrada e saída do sistema, e todas funções realizadas pelo sistema. Os seguintes princípios aplicam-se:
-
- * Requisitos específicos devem ser descritos em conformidade com todas as características de uma boa descrição de requisitos
- * Requisitos específicos devem referenciar documentos anteriores que estejam relacionados
- * Todos os requisitos devem ser identificados univocamente
- * Deve ser dada cuidadosa atenção à organização dos requisitos de forma a melhorar a legibilidade
-
-=== 3.1. Requisitos de interfaces externas ===
-
-Esta sub-seção deve ser uma descrição detalhada de todas as entradas e saídas do sistema de software. Deve complementar as descrições de interface da seção 2 e não deve repetir informações dela. Deve incluir conteúdo e formato como a seguir:
- # Nome do item
- # Descrição do propósito
- # Fonte de entrada e destinação de saída
- # Intervalo válido, precisão e/ou tolerância
- # Unidades de medida
- # Tempo
- # Relacionamento entre entradas/saídas
- # Formato/organização de telas
- # Formato/organização de janelas
- # Formato de dados
- # Formato de comando
- # Mensagens finais
-
-
-==== 3.1.1. Interfaces com o usuário ====
-==== 3.1.2. Interfaces de hardware ====
-==== 3.1.3. Interfaces de software ====
-==== 3.1.4. Interfaces de comunicação ====
-
-=== 3.2. Requisitos Funcionais ===
-
-Os requisitos funcionais define as ações fundamentais que devem ter lugar no software ao aceitar e processar as entradas e ao processar e gerar as saídas. Estes são geralmente listados usando frases na forma "O sistema deve.." e incluem:
-
-- Validações da entrada <br>
-- Sequências exatas de operação <br>
-- Reações a situações anormais, incluindo: 
- # Fluxo alternativo
- # Funcionalidades de comunicação 
- # Tratamento e recuperação de erros
-- Efeitos dos parâmetros <br>
-- Relação de entradas com saídas, incluindo:
- # Sequências de entrada/saída 
- # Fórmulas de conversão da entrada para a saída
-
-Pode ser apropriado particionar os requisitos funcionais em sub-funções ou sub-processos.
-
-==== 3.2.1. Controle de Acesso ====
+==== 3.1.1. Controle de Acesso ====
 
 Esta seção agrupa os requisitos funcionais associados ao controle de acesso dos usuários.
 
@@ -237,7 +143,7 @@ Quando o usuário desejar sair do sistema, seu status passará a ser "inativo".
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 
-==== 3.2.2. Manutenção de Perfil de usuário ====
+==== 3.1.2. Manutenção de Perfil de usuário ====
 
 Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com os genêros recentemente consultados. 
 
@@ -260,7 +166,7 @@ número de compras, vendas ou trocas efetuadas.
 
 Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
-==== 3.2.3. Painel de Administração ====
+==== 3.1.3. Painel de Administração ====
 
 *RF011 Configurar sistema* 
 
@@ -293,22 +199,11 @@ O sistema permitirá o cadastramento de novidades, ou seja, divulgação de not�
 Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
 
-==== 3.2.n. Funcionalidade n ====
+==== 3.1.n. Funcionalidade n ====
 
-=== 3.3 Requisitos de Performance ===
 
-Esta sub-seção deve especificar os requisitos estáticos e dinâmicos quantificáveis impostos ao software ou nas interações com usuários como um todo. 
+=== 3.2 Requisitos Não-Funcionais ===
 
-Os requisitos estáticos quantificáveis podem incluir:
- # O número de terminais suportados
- # O número de usuários simultaneos suportados
- # Quantidade e tipo de informação a ser controlada
-
-Os requisitos dinâmicos quantificáveis podem incluir, o número de transações e tarefas e quantidade de dados a ser processados num determinado periodo de tempo, em condições de carga normal e carga máxima.
-
-==== 3.3.1. Requisitos de Produto ====
-
-==== 3.3.2. Requisitos de Processo ====
 
 *RNF001 Sistema Open-Source*
 
@@ -317,25 +212,8 @@ O sistema deverá ser open-source (código aberto) e seu código fonte deverá s
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
  
 
-=== 3.4. Requisitos lógicos de base de dados ===
 
-Esta sub-seção deve especificar requisitos lógicos de qualquer informações a ser colocada em uma base de dados. Isto pode incluir o seguinte:
- # Tipos de informações usadas por várias funções
- # Frequência de uso
- # Capacidade de acesso 
- # Entidades de dados e seus relacionamentos
- # Restrições de integridade
- # Requisitos de armazenamento de dados
 
-== 3.5. Restrições de Projeto ==
-
-Esta sub-seção deve especificar restrições de projeto impostos por outros padrões, limitações de hardware, entre outros.
-
-== 3.6. Atributos de sistema de software ==
-
-Existem um número de atributos de software que podem servir como requisitos. É importante que os atributos requeridos sejam especificados de modo que seu cumprimento possa ser verificado. Por exemplo: Confiabilidade, Disponibilidade, Segurança, Manutenibilidade, Portabilidade, etc.
-
-== 3.7. Outros requisitos ==
 
 == Apêndices ==
 == Índice ==
