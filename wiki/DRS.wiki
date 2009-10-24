@@ -14,6 +14,9 @@
 
 == 1. Introdução ==
 
+Este Documento de Requisitos de Software apresenta a especificação do Sistema SeboVirtual. Sua elaboração tem o objetivo de organizar o processo de requisitos em conformidade com a IEEE Std 830-1998 e agrupar os requisitos por funcionalidade tornando o documento mais intelegível para os stakeholders.
+
+
 A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções:
 
 === 1.1. Propósito do Documento de Requisitos ===
