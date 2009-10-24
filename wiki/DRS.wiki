@@ -25,8 +25,8 @@ O propósito deste documento de requisitos é apresentar os requisitos funcionai
 Este documento servirá de base para o desenvolvimento do software SeboVirtual durante todo o seu ciclo de vida. A partir dele a equipe de Design irá desenvolver outros artefatos como código-fonte, base de dados, diagramas, etc. Servirá também como base para especificação de casos de teste do software em desenvolvimento, além de ser uma forma de demonstrar as funcionalidades do software aos usuários e clientes.
 
 
-~~ * Delinear o propósito do documento de requisitos;~~
-~~ * Especificar o público-alvo do documento de requisitos. ~~
+~~ * Delinear o propósito do documento de requisitos~~;
+~~ * Especificar o público-alvo do documento de requisitos~~.
 
 === 1.2. Escopo do Produto ===
 
@@ -34,11 +34,12 @@ O produto desenvolvido a partir deste documento de requisitos será o software S
 O desenvolvimento desse software possibilitará maior intercâmbio de informações e conhecimentos a partir da troca de livros, antes esquecidos nas estantes. Também poderá servir como composição da fonte de renda dos usuários vendedores a partir de aplicação de margem de lucro sobre as vendas de livros procurados.
 
 
-~~
-~~ * Identificar o produto de software a ser desenvolvido pelo nome;~~
-~~ * Explicar o que o software fará e, se necessário, o que não fará;~~
-~~ * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas;~~
-~~ * Ser consistente com outros documentos similares ou de mais alto nível (por exemplo, especificação de requisitos de sistema), caso existam.~~
+~~ * Identificar o produto de software a ser desenvolvido pelo nome~~;
+~~ * Explicar o que o software fará e, se necessário, o que não fará~~;
+~~ * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas~~;
+~~ * Ser consistente com outros documentos similares ou de mais alto nível (por exemplo, especificação de requisitos de sistema), caso existam~~.
+
+
 
 === 1.3. Definições, Acrônimos e Abreviações ===
 
@@ -47,6 +48,10 @@ O desenvolvimento desse software possibilitará maior intercâmbio de informaç�
 || *Termo* || *Descrição*               ||
 || RF      || Requisitos Funcionais     ||
 || RNF     || Requisitos Não-Funcionais || 
+
+
+
+
 
 _(Esta informação pode ser fornecida por referência a um apêndice ou a outro documento.)_
 
@@ -86,26 +91,48 @@ Esta sub-seção deve também descrever como o software opera dentro de várias 
 
 === 2.2. Funções do Produto ===
 
-Esta sub-seção do DRS fornece um resumo das funções principais que o software realizará. 
+O usuário poderá cadastrar seus livros para efetuar a venda ou troca através do serviço. 
+O usuário poderá avaliar o conteúdo dos livros que outros usuários registram no sistema. 
+O usuário poderá indicar a amigos os livros constantes do sistema. 
+Os usuários cadastrados poderão ser leitores que simplesmente realizarão comentários sobre os livros, vendedores que disponibilizarão livros para venda ou troca, compradores/negociadores que efetuarão compras ou trocas de livros. 
+Os usuários compradores poderão ser leitores ou vendedores. 
+Os usuários negociadores deverão ser vendedores. 
+Os usuários leitores não possuirão estante de livros. 
+Os usuários vendedores possuirão estante de livros. 
+A compra se dará quando o usuário se interessar por um livro que esteja na estante de um usuário vendedor e efetuar o pagamento. 
+A troca se dará quando um usuário negociador se interessar por um livro que esteja na estante de um outro usuário negociador, informar a intenção de troca, disponibilizar as opções para troca e o outro usuário confirmar aceitação da proposta de negociação. 
+Os vendedores/negociadores serão avaliados após a finalização da venda/troca do produto. 
+Os livros poderão ser consultados através de uma busca por autor, título, editora, ano. 
+A consulta a um livro indicará aqueles usuários vendedores que o tem disponível na estante de livros e apresentará os comentários realizados por usuários sobre o conteúdo. 
+A estante de um usuário vendedor (livros disponíveis para venda e/ou troca) ficam abertas para serem consultadas por outros usuários. 
+Os usuários podem ser procurados por nome, cidade, estado. 
+Os usuários vendedores são classificados em ordem de número de vendas e avaliações positivas. 
+
 
 === 2.3. Características de usuários ===
 
-Esta sub-seção do DRS deve descreve aquelas características gerais dos usuários-alvo do produto incluindo nível educacional, experiência e proficiência técnica. 
+São usuários potenciais para este software todas aquelas pessoas que possuem livros, que tem interesse de adquirir livros, que pretendem trocar seus livros com outras pessoas ou simplesmente possuem interesse por livros e gostem de comentar as obras.
+Os usuários são, na maioria, pessoas de nível educacional médio a elevado, com experiência mediana no uso de recursos técnológicos e com boa proficiência técnica.
+
+
+~~ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuários-alvo do produto incluindo nível educacional, experiência e proficiência técnica. ~~
 
 === 2.4. Restrições Gerais ===
 
-Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:
+O software deverá apresentar um ambiente seguro para transações de pagamento dos livros adquiridos. O acesso às transações de compra, venda e troca de livros deverá ser liberada apenas para os usuários cadastrados e autenticados no sistema.
 
-==== 2.4.1.  Regulamentos ====
-==== 2.4.2.  Limitações de hardware ==== 
-==== 2.4.3.  Interfaces com outras aplicações ====
-==== 2.4.4.  Operações em paralelo ====
-==== 2.4.5.  Funções de auditoria ====
-==== 2.4.6.  Funções de controle ====
-==== 2.4.7.  Exigências de alto nível de linguagem ====
-==== 2.4.8.  Requisitos de confiabilidade ====
-==== 2.4.9.  Criticidade da aplicação ====
-==== 2.4.10. Considerações de segurança ====
+~~Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:~~
+
+==== ~~2.4.1.  Regulamentos~~ ====
+==== ~~2.4.2.  Limitações de hardware~~ ==== 
+==== ~~2.4.3.  Interfaces com outras aplicações~~ ====
+==== ~~2.4.4.  Operações em paralelo~~ ====
+==== ~~2.4.5.  Funções de auditoria~~ ====
+==== ~~2.4.6.  Funções de controle~~ ====
+==== ~~2.4.7.  Exigências de alto nível de linguagem~~ ====
+==== ~~2.4.8.  Requisitos de confiabilidade~~ ====
+==== ~~2.4.9.  Criticidade da aplicação~~ ====
+==== ~~2.4.10. Considerações de segurança~~ ====
 
 === 2.5. Suposições e Dependências ===
 
