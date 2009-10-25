@@ -255,7 +255,7 @@ O sistema deverá permitir que o usuário devidamente cadastrado e com o status 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
-*RF025 Excluir livros a Cesta de Compras*
+*RF025 Excluir Livros a Cesta de Compras*
 
 O sistema deverá permitir que o usuário devidamente cadastrado e com o status de "ativo" possa selecionar uma obra que esteja em sua Cesta de compras e removê-la de sua Cesta de Compras.
 
@@ -285,19 +285,31 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF022 Cadastrar Livro para Venda/Troca*
 
-O sistema deverá permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo, Categorias, Preço (R$) e Quantidade Disponível.
+O sistema deverá permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo (Descrição), Categorias, Preço (R$).
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
+*RF022 Receber Notificação de Compra*
+
+O sistema enviará por e-mail uma notificação de compra para o comprador, informando os dados do pedido e as instruções de pagamento conforme a forma de pagamento selecionada.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+ 
 *RF022 Receber Notificação de Venda*
 
-O sistema emitirá um e-mail confirmando o pagamento por uma Obra de sua estante virtual e solicitará que o livro seja enviado ao usuário comprador.    
+O sistema enviará por e-mail uma notificação de venda para o vendedor, informando os dados do pedido.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+*RF022 Registrar confirmação de pagamento*
+
+O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis, após a conclusão do recebimento de acordo com a forma disponibilizada.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF023 Cadastrar Registro de Envio*
 
-O vendedor deverá cadastrar o número do registro de envio até 3 (três) dias úteis após o recebimento do e-mail de notificação de venda. Após esse prazo, o sistema cancelará a compra, devolverá o valor referente ao item para o comprador, anotará uma avaliação negativa para o vendedor. 
+O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Após esse prazo, o sistema cancelará o pedido. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
@@ -306,12 +318,6 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 O sistema verificará a entrega do produto ao comprador através do rastreamento de registro. O pagamento será liberado para o vendedor quando confirmado a entrega.  
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
-
-*RF024 Creditar Pagamentos e Comissões*
-
-Uma vez confirmado o recebimento do valor da ordem de venda, após a emissão do pedido pelo livreiro, o sistema deverá preparar e emitir arquivo sequencial para o departamento de contabilidade informando os valores referentes aos créditos aos clientes-vendedores como também os valores referentes a receita com comissões pela intermediação de venda.
-
-Prioridade: ( ) Essencial (X) Importante ( ) Desejável 
 
 ==== 3.1.6 Efetuando Trocas ==== 
 
