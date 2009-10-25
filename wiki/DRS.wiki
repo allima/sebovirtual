@@ -265,42 +265,39 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 O sistema deverá realizar 
 
-==== 3.1.6 Vendendo Livros ==== 
+==== 3.1.6 Vendendo/Trocando Livros ==== 
 
-Estes requisitos funcionais são referentes ao cadastramento e a venda de livros por parte dos livreiros ou clientes cadastrados. 
-
-
-O sistema deverá fornecer mecanismos de controle para o gerenciamento das vendas das obras.
+Estes requisitos funcionais são referentes ao Cadastramento e a Venda/Troca de livros por parte dos livreiros ou clientes cadastrados. O sistema deverá fornecer mecanismos de controle para o Gerenciamento das Vendas/Trocas das Obras.
 
 *RF022 Cadastrar Dados para Recebimento*
 
-O usuário cadastrado deverá informar seu Banco, Agência e C/c para recebimento dos valores de possíveis vendas realizadas. O usuário poderá informar um valor mínimo de venda para conceder frete grátis ao comprador. 
+O usuário cadastrado deverá informar seu Banco, Agência e C/c para recebimento dos valores de possíveis vendas realizadas. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável  
 
+*RF022 Cadastrar Livro para Venda/Troca*
 
-
-
-
-
-
-
-
-
-
-*RF022 Cadastrar Obra para Venda*
-
-a) título da obra; b) autor da obra; c) ISBN da obra; d) editora; e) ano de publicação; f) número da edição; g) palavra-chave.
-
-O sistema deve permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, incluindo preço em Reais, quantidade disponível e estado de conservação.
+O sistema deverá permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo, Categorias, Preço (R$) e Quantidade Disponível.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
-*RF023 Emitir ordem de venda*
+*RF022 Receber Notificação de Venda*
 
-O sistema deverá emitir ordem de venda para o cliente-vendedor contendo todos os produtos da cesta de compras do cliente-comprador.
+O sistema emitirá um e-mail confirmando o pagamento por uma Obra de sua estante virtual e solicitará que o livro seja enviado ao usuário comprador.    
 
-Prioridade: (x) Essencial ( ) Importante ( ) Desejável
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+*RF023 Cadastrar Registro de Envio*
+
+O vendedor deverá cadastrar o número do registro de envio até 3 (três) dias úteis após o recebimento do e-mail de notificação de venda. Após esse prazo, o sistema cancelará a compra, devolverá o valor referente ao item para o comprador, anotará uma avaliação negativa para o vendedor. 
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+*RF024 Verificar confirmação de entrega*
+
+O sistema verificará a entrega do produto ao comprador através do rastreamento de registro. O pagamento será liberado para o vendedor quando confirmado a entrega.  
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF024 Creditar Pagamentos e Comissões*
 
@@ -332,4 +329,4 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 
 == Apêndices ==
-== Índice ==
+== Índice ==`
