@@ -229,29 +229,29 @@ Esta seção diz respeito ao processo de pesquisa e exibição das obras contida
 
 *RF021 Pesquisar Obra*
 
-O sistema permitirá que o usuário efetue consultas aos acervos cadastrados no site. A pesquisa poderá ser realizada através do título da obra, autor da obra, ISBN da obra, editora, ano de publicação, número da edição, categoria, faixa de preço.
+O sistema permitirá que o usuário efetue consultas aos acervos cadastrados no site. A pesquisa poderá ser realizada através do ISBN da obra, título da obra, autor da obra, editora, categoria, faixa de preço.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
 *RF022 Exibir Resultado da Pesquisa*
 
-O sistema deverá exibir o resultado da pesquisa dos livros disponíveis com as seguintes informações: ISBN; Título da Obra; Autor(a); Ano de publicação; Categoria; Nome, cidade e estado do livreiro que está vendendo/trocando a obra, preço em reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente. 
+O sistema deverá exibir o resultado da pesquisa dos livros disponíveis com as seguintes informações: ISBN; Título da Obra; Autor(a); Ano de publicação; Categoria; Nome, estado do livreiro que está vendendo/trocando a obra, preço em reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
-*RF023 Exibir Detalhamento da Obra Escolhida*
+*RF023 Detalhar Obra Selecionada*
 
-O sistema deverá permitir que o usuário possa ver o detalhamento das informações da obra que escolher acessar. O detalhamento deverá conter todas as informações referentes a obra selecionada pelo usuário, os comentários já realizados, informações sobre a qualificação do vendedor.
+O sistema deverá permitir que o usuário consiga detalhar as informações da obra que selecionar acessar. O detalhamento deverá conter todas as informações referentes a obra selecionada pelo usuário, os comentários já realizados, informações sobre a qualificação do vendedor.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
-==== 3.1.5 Efetuando Compras ==== 
+==== 3.1.5 Gerenciando Cesta de Compras ==== 
 
 Esta seção agrupa os requisitos funcionais relacionados a escolha, seleção e compra de livros no site SeboVirtual.
 
 *RF024 Adicionar Livros a Cesta de Compras*
 
-O sistema deverá permitir que o usuário devidamente cadastrado e com o status de "ativo" possa selecionar a obra que tiver interesse e armazená-la em sua Cesta de Compras. O usuário somente poderá selecionar uma obra que estiver disponível.
+O sistema deverá permitir que o usuário devidamente cadastrado e com o status de "ativo" possa selecionar a obra que tiver interesse e armazená-la em sua Cesta de Compras. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
@@ -263,13 +263,13 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF026 Visualizar Cesta de Compras*
 
-O sistema deverá permitir que o usuário acesse e gerencie sua Cesta de Compras. Uma vez dentro da área de controle da Cesta de Compras, o usuário poderá visualizar todas as obras escolhidas para compra, excluir qualquer obra selecionada (RF020), continuar comprando no site (RF024) e finalizar a sua compra.
+O sistema deverá permitir que o usuário visualize sua cesta de compras. Uma vez dentro da área de controle da Cesta de Compras, o usuário poderá visualizar todas as obras escolhidas para compra, excluir livros da cesta de compras (RF025), ter opção de continuar comprando no site e finalizar a sua compra.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
 *RF027 Finalizar Compra*
 
-O sistema deverá permitir que o usuário forneça o endereço para entrega dos itens escolhidos, seja o seu endereço residencial ou qualquer outro que deseje cadastrar. Uma vez informado o endereço de entrega, o usuário deverá escolher uma das formas de pagamento disponíveis e informar os dados pertinentes a forma escolhida.
+O usuário deverá finalizar a compra, decidindo pela forma de envio e pagamento para cada fornecedor do livro. O usuário deverá confirmar os dados digitados para concluir pedido.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
