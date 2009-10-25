@@ -6,7 +6,7 @@
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
 || 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF015 || RNF001 || Alexandre Maia ||
 || 24/10/2009 || 1.1        || Alteração da estrutura do Documento, Elaboração da Introdução, Propósito, Escopo, Definições Gerais, Características do Usuário, Restrições Gerais.  ||  -  ||  -  || Sandro Colli ||
-
+|| 25/10/2009 || 1.2        || Revisão/Especificação de requisitos || RF025 || RNF001 || Alexandre Lucena ||
 
 ----
 
@@ -102,25 +102,25 @@ Esta seção agrupa os requisitos funcionais associados ao controle de acesso do
 
 *RF001 Solicitar cadastro no sistema*
 
-O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como nome, email, senha da conta de usuário, informações de endereço residencial e telefone para contato.
+O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como nome, email, senha da conta de usuário, informações de endereço residencial e telefone para contato, informações sobre hobbies e áreas de interesse (categorias dos livros). O usuário deverá cadastrar uma “dica de senha” (RF004). 
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF002 - Notificar cadastramento do usuário*
 
-O sistema deverá enviar uma mensagem de e-mail do usuário, informando que o cadastro dos seus dados foi realizado com sucesso. Além disso, o e-mail deve apresentar um link para ativação do seu cadastro. Quando o usuário acessar o link de ativação, ele finaliza o processo de cadastramento e tem permissão de entrar no sistema.
+O sistema deverá enviar uma mensagem de e-mail ao usuário, informando que o cadastro dos seus dados foi realizado com sucesso. Além disso, o e-mail deve apresentar um link para ativação do seu cadastro. Quando o usuário acessar o link de ativação, ele finaliza o processo de cadastramento e tem permissão de entrar no sistema.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF003 Acessar o sistema*
 
-Para acessar o sistema, deve-se informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o usuário estará com status "ativo".
+Para acessar o sistema, o usuário deverá informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o usuário estará com status "ativo".
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF004 Lembrar senha do usuário*
 
-Caso o usuário esquecer da senha de usuário, ele poderá solicitar o envio de uma nova senha para o e-mail apenas informado o endereço eletrônico que foi cadastrado. Esta nova senha deverá ser gerada automaticamente pelo sistema.
+Caso o usuário esqueça sua senha de acesso, ele poderá solicitar o envio da mesma para o seu e-mail de cadastro . Para isso, o usuário deverá responder a pergunda por ele cadastrada em sua “dica de senha” e o endereço eletrônico que foi cadastrado (RF001). 
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
@@ -138,33 +138,33 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF007 Encerrar sistema*
 
-Quando o usuário desejar sair do sistema, seu status passará a ser "inativo".
+O sistema deve permitir que o usuário encerre sua sessão atual (logoff). Dessa forma o usuário não poderá comprar, vender, trocar livros ou registrar comentários até que o mesmo efetue novo login (Acessar o Sistema – RF003). Quando o usuário desejar sair do sistema, seu status passará a ser "inativo".
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 
 ==== 3.1.2. Manutenção de Perfil de usuário ====
 
-Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com os genêros recentemente consultados. 
+Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com os gêneros recentemente consultados. 
 
 *RF008 Criar Perfil de usuário*
 
 O sistema criará um perfil de usuário quando o cadastro estiver concluído com sucesso. Contudo, este perfil ainda não possui as informações necessárias para o mecanismo de recomendação.
 
-Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
 *RF009 Atualizar Perfil de usuário*
 
 O sistema atualizará o perfil do usuário de forma constante, baseado nas informações extraídas de características de navegação do usuário, ou seja, estantes de livros visitados, livros consultados, comentários realizados.
 
-Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
 *RF010 Calcular índice de atividade do usuário*
 
 O sistema calculará o índice de atividade do usuário, baseado na frequência de acessos, no número de livros disponibilizados em estante virtual, número de interações com outros usuários, nos acessos aos comentários/avaliações (criando ou comentando), 
 número de compras, vendas ou trocas efetuadas.
 
-Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
 
 ==== 3.1.3. Painel de Administração ====
 
@@ -194,10 +194,86 @@ Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
 
 *RF015 Cadastrar novidades*
 
-O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao sítio estante virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao sítio Sebo Virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
 
 Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
+
+==== 3.1.5 Consultas aos Acervos ====
+
+Esta seção diz respeito ao processo de pesquisa e exibição das obras contidas na base de dados do site.
+
+*RF016 Pesquisar Obra*
+
+O sistema permitirá que o usuário efetue consultas aos acervos cadastrados no site. A pesquisa poderá ser realizada através do fornecimento de alguns ou todos os dados seguintes: a) título da obra; b) autor da obra; c) ISBN da obra; d) editora; e) ano de publicação; f) número da edição; g) palavra-chave.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+*RF017 Exibir Resultado da Pesquisa*
+
+O sistema deverá exibir o resultado da pesquisa de forma tabular contendo colunas com as seguintes informações: ISBN, Título da Obra, Autor(a), Editora, Nome do Livreiro que está vendendo/trocando a obra e preço em Reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente. 
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+*RF018 Exibir Detalhamento da Obra Escolhida*
+
+O sistema deve permitir que o usuário possa ver o detalhamento das informações da obra que escolher acessar. O detalhamento deverá conter todas as informações referentes a obra selecionada pelo usuário, inclusive a disponibilidade da mesma nos estoques dos livreiros cadastrados.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+==== 3.1.5 Efetuando Compras ==== 
+
+Esta seção agrupa os requisitos funcionais relacionados a escolha, seleção e compra de livros no site Sebo Virtual.
+
+*RF019 Selecionar Obra*
+
+O sistema deve permitir que o usuário devidamente cadastrado e com o status de “ativo” possa selecionar a obra por ele escolhida e armazená-la em sua “cesta de compras”. O usuário somente poderá selecionar uma obra que estiver disponível no estoque.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+*RF020 Gerenciar Cesta de Compras*
+
+O sistema deve permitir que o usuário acesse e gerencie sua Cesta de Compras. Uma vez dentro da área de controle da Cesta de Compras, o usuário poderá visualizar todas as obras escolhidas para compra, informar as respectivas quantidades desejadas, excluir qualquer obra selecionada, continuar comprando no site e finalizar a sua compra.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+*RF021 Finalizar Compra*
+
+O sistema deverá permitir que o usuário forneça o endereço para entrega dos itens escolhidos, seja o seu endereço residencial ou qualquer outro que deseje cadastrar. Uma vez informado o endereço de entrega, o usuário deverá escolher uma das formas de pagamento disponíveis e informar os dados pertinentes a forma escolhida.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
+
+==== 3.1.6 Vendendo ==== 
+
+Estes requisitos funcionais são referentes ao cadastramento e a venda de livros por parte dos lireiros ou clientes cadastrados. O sistema deverá fornecer mecanismos de controle para o gerenciamento das vendas das obras.
+
+*RF022 Cadastrar Obra para Venda*
+
+O sistema deve permitir o cadastramento de obras por parte dos livreiros/sebos e usuários cadastrados e ativos. O sistema deverá receber todos os dados referentes a obra, incluindo preço em Reais, quantidade disponível e estado de conservação.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+*RF023 Emitir ordem de venda*
+
+O sistema deverá emitir ordem de venda para o cliente-vendedor contendo todos os produtos da cesta de compras do cliente-comprador.
+
+Prioridade: (x) Essencial ( ) Importante ( ) Desejável
+
+*RF024 Creditar Pagamentos e Comissões*
+
+Uma vez confirmado o recebimento do valor da ordem de venda, após a emissão do pedido pelo livreiro, o sistema deverá preparar e emitir arquivo sequencial para o departamento de contabilidade informando os valores referentes aos créditos aos clientes-vendedores como também os valores referentes a receita com comissões pela intermediação de venda.
+
+Prioridade: ( ) Essencial (X) Importante ( ) Desejável 
+
+==== 3.1.6 Efetuando Trocas ==== 
+
+Os clientes do Sebo Virtual poderão efetuar trocas de obras entre si. Para esse fim não será cobrada comissão de intermediação.
+
+*RF025 Efetuar Trocas*
+
+O sistema deve permitir que um livreiro selecione e marque as obras de outro livreiro como de seu interesse em efetuar uma troca. O sistema enviará via email uma notificação para o cliente detentor da obra objeto de interesse de outro cliente, informando que aquele deseja efetuar uma troca da(s) referida(s) obras por outra(s) de seu acervo.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
 ==== 3.1.n. Funcionalidade n ====
 
