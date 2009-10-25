@@ -246,7 +246,7 @@ O sistema deverá permitir que o usuário consiga detalhar as informações da o
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
-==== 3.1.5 Gerenciando Cesta de Compras ==== 
+==== 3.1.5 Gerenciar Cesta de Compras ==== 
 
 Esta seção agrupa os requisitos funcionais relacionados a escolha, seleção e compra de livros no site SeboVirtual.
 
@@ -274,55 +274,54 @@ O usuário deverá finalizar a compra, decidindo pela forma de envio e pagamento
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
-==== 3.1.6 Vendendo/Trocando Livros ==== 
+==== 3.1.6 Gerenciar Vendas/Trocas de Livros ==== 
 
-Estes requisitos funcionais são referentes ao Cadastramento e a Venda/Troca de livros por parte dos livreiros ou clientes cadastrados. O sistema deverá fornecer mecanismos de controle para o Gerenciamento das Vendas/Trocas das Obras.
+Estes requisitos funcionais são referentes ao Cadastramento e a Venda/Troca de livros por parte dos usuários cadastrados. O sistema deverá fornecer mecanismos de controle para o Gerenciamento das Vendas/Trocas das Obras.
 
-*RF022 Cadastrar Dados para Recebimento*
+*RF028 Cadastrar Dados para Recebimento*
 
-O usuário cadastrado deverá informar seu Banco, Agência e C/c para recebimento dos valores de possíveis vendas realizadas. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
+O usuário cadastrado deverá informar dados da conta - Banco, Agência e C/c - para recebimento dos valores de possíveis vendas realizadas, pode ser cadastrado mais de uma conta. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável  
 
-*RF022 Cadastrar Livro para Venda/Troca*
+*RF029 Cadastrar Livro para Venda/Troca*
 
 O sistema deverá permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo (Descrição), Categorias, Preço (R$).
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
-*RF022 Receber Notificação de Compra*
+*RF030 Receber Notificação de Compra*
 
-O sistema enviará por e-mail uma notificação de compra para o comprador, informando os dados do pedido e as instruções de pagamento conforme a forma de pagamento selecionada.
+O sistema enviará por e-mail uma notificação de compra para o comprador, informando os dados do pedido e as instruções de pagamento conforme a forma de pagamento selecionada. O status da compra deve ser "aguardando pagamento".
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
  
-*RF022 Receber Notificação de Venda*
+*RF031 Receber Notificação de Venda*
 
 O sistema enviará por e-mail uma notificação de venda para o vendedor, informando os dados do pedido.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
-*RF022 Registrar confirmação de pagamento*
+*RF032 Registrar confirmação de pagamento*
 
-O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis. Após esse prazo, o sistema cancelará o pedido. 
-
-Prioridade: (X) Essencial ( ) Importante ( ) Desejável
-
-*RF023 Cadastrar Registro de Envio*
-
-O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Após esse prazo, o sistema anotará uma avaliação negativa para o vendedor. 
+O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis. Após esse prazo, o sistema cancelará o pedido. Após confirmação, o status da compra deve ser "aguardando envio".
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
-*RF024 Verificar confirmação de entrega*
+*RF033 Cadastrar Registro de Envio*
 
-O sistema verificará a entrega do produto ao comprador através do rastreamento de registro. O pagamento será liberado para o vendedor quando confirmado a entrega.  
+O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Após o registro, o status da compra deve ser "envio realizado"
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+*RF034 Verificar confirmação de entrega*
+
+O sistema verificará a entrega do produto ao comprador através do rastreamento de registro. Após a entrega, o status da compra deve ser "compra finalizada".  
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 ==== 3.1.6 Efetuando Trocas ==== 
 
-Os clientes do Sebo Virtual poderão efetuar trocas de obras entre si. Para esse fim não será cobrada comissão de intermediação.
 
 *RF025 Efetuar Trocas*
 
