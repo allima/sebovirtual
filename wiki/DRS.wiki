@@ -316,16 +316,13 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF034 Verificar confirmação de entrega*
 
-O sistema verificará a entrega do produto ao comprador através do rastreamento de registro. Após a entrega, o status da compra deve ser "compra finalizada".  
+O sistema verificará a entrega do produto ao comprador através do rastreamento de registro de envio. Após a entrega, o status da compra deve ser "compra finalizada".  
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
-==== 3.1.6 Efetuando Trocas ==== 
+*RF035 Realizar troca*
 
-
-*RF025 Efetuar Trocas*
-
-O sistema deve permitir que um livreiro selecione e marque as obras de outro livreiro como de seu interesse em efetuar uma troca. O sistema enviará via email uma notificação para o cliente detentor da obra objeto de interesse de outro cliente, informando que aquele deseja efetuar uma troca da(s) referida(s) obras por outra(s) de seu acervo.
+O sistema deve permitir que um selecione e marque as obras de outro livreiro como de seu interesse em efetuar uma troca. O sistema enviará via email uma notificação para o cliente detentor da obra objeto de interesse de outro cliente, informando que aquele deseja efetuar uma troca da(s) referida(s) obras por outra(s) de seu acervo.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
