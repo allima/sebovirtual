@@ -5,8 +5,9 @@
 
 || *Data*     || *Versão*   || *Descrição* ||  *Último RF* || *Último RNF*  || *Autor*  ||
 || 19/10/2009 || 1.0 - D01  || Definição de requisitos || RF015 || RNF001 || Alexandre Maia ||
-|| 24/10/2009 || 1.1        || Alteração da estrutura do Documento, Elaboração da Introdução, Propósito, Escopo, Definições Gerais, Características do Usuário, Restrições Gerais.  ||  -  ||  -  || Sandro Colli ||
-|| 25/10/2009 || 1.2        || Revisão/Especificação de requisitos || RF025 || RNF001 || Alexandre Lucena ||
+|| 24/10/2009 || 1.0 - D02  || Alteração da estrutura do Documento, Elaboração da Introdução, Propósito, Escopo, Definições Gerais, Características do Usuário, Restrições Gerais.  ||  -  ||  -  || Sandro Colli ||
+|| 25/10/2009 || 1.0 - D03  || Revisão/Especificação de requisitos || RF025 || RNF001 || Alexandre Lucena ||
+|| 25/10/2009 ||  1.0 - D04 || Revisão/Especificação de requisitos || RF000 || RNF000 || Alexandre Maia ||
 
 ----
 
