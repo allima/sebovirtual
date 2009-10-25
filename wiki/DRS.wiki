@@ -96,7 +96,7 @@ Esta seção agrupa os requisitos funcionais associados ao controle de acesso do
 
 *RF001 Solicitar cadastro no sistema*
 
-O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como Nome completo, CPF, email, senha da conta de usuário, informações de endereço residencial e telefone para contato, informações sobre hobbies e áreas de interesse (categorias dos livros). O usuário deverá cadastrar uma "dica de senha" (RF004). 
+O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra, troca ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como Nome completo, CPF, email, senha da conta de usuário, informações de endereço residencial e telefone para contato, informações sobre áreas de interesse (categorias dos livros). O usuário deverá cadastrar uma "dica de senha" (RF004). 
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
@@ -120,7 +120,7 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF005 Alterar dados cadastrais do usuário*
 
-O sistema permitirá a alteração dos dados cadastrais do usuário como, por exemplo, Nome, E-mail, informações de endereço residencial, telefone para contato, informações sobre hobbies e áreas de interesse (categorias dos livros). Para que o sistema confirme essa alteração, será solicitado que o usuário informe a senha cadastrada.
+O sistema permitirá a alteração dos dados cadastrais do usuário como, por exemplo, Nome, E-mail, informações de endereço residencial, telefone para contato, informações áreas de interesse (categorias dos livros). Para que o sistema confirme essa alteração, será solicitado que o usuário informe a senha cadastrada.
 
 Prioridade: (X) Essencial          ( ) Importante        ( )Desejável
 
@@ -165,13 +165,13 @@ Nesta sub-seção são agrupados os requisitos funcionais relacionados às ativi
 
 *RF011 Cadastrar administrador*
 
-O usuário administrador poderá realizar cadastramento de usuário com mesmo perfil. Para isso, deverá informar as seguintes informações: nome, e-mail, telefone, login. Ao finalizar o cadastro, um e-mail contendo uma senha temporária gerada aleatoriamente pelo sistema será enviado ao usuário cadastrado.
+O usuário administrador poderá realizar cadastramento de usuário com mesmo perfil. Para isso, deverá informar as seguintes informações: Nome, E-mail, Endereço, Telefone, Login. Ao finalizar o cadastro, um e-mail contendo uma senha temporária gerada aleatoriamente pelo sistema será enviado ao usuário cadastrado.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF012 Acessar página de administração*
 
-Para acessar o sistema, o administrador deverá informar o login e a senha utilizado no cadastramento e a senha corretos. O login e a senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o administrador estará com status "ativo".
+Para acessar o sistema, o administrador deverá informar o login e a senha utilizado no cadastramento e a senha corretos. O Login e a Senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o administrador estará com status "ativo".
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
@@ -179,11 +179,11 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 O usuário administrador deverá configurar alguns itens de interface do sistema, ou seja, relacionado a exibição de informações na página principal.
 
-Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
 *RF014 Alterar dados de administrador*
 
-O sistema permitirá a alteração dos dados cadastrados para administrador como, por exemplo, nome, e-mail, telefone para contato. Para que o sistema confirme essa alteração, será solicitado que o solicitante da alteração informe sua senha.
+O sistema permitirá a alteração dos dados cadastrados para administrador como, por exemplo, Nome, E-mail, Endereço, Telefone para contato. Para que o sistema confirme essa alteração, será requerido que o solicitante da alteração informe sua senha.
 
 Prioridade: (X) Essencial          ( ) Importante        ( )Desejável
 
@@ -195,7 +195,19 @@ Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
 
 *RF016 Cadastrar novidades*
 
-O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao sítio Sebo Virtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao software SeboVirtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
+*RF017 Cadastrar anúuncios*
+
+O sistema permitirá o cadastramento de anúncios, ou seja, publicidade vinculada ao software SeboVirtual. O cadastramento de anúncios será permitido apenas para administradores do sistema, será registrado o nome do importante, data de início de exibição, quantidade de exibição, data de fim de exibição. 
+
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
+
+*RF018 Visualizar Log de Acesso*
+
+O sistema permitirá a visualização do Log de acessos por usuários e por administradores, data e horário de início de sessão e data e horário de fim de sessão. 
 
 Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
 
@@ -253,10 +265,29 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 O sistema deverá realizar 
 
-==== 3.1.6 Vendendo ==== 
+==== 3.1.6 Vendendo Livros ==== 
 
-Estes requisitos funcionais são referentes ao cadastramento e a venda de livros por parte dos livreiros ou clientes cadastrados. O sistema deverá fornecer mecanismos de controle para o gerenciamento das vendas das obras.
-...........
+Estes requisitos funcionais são referentes ao cadastramento e a venda de livros por parte dos livreiros ou clientes cadastrados. 
+
+
+O sistema deverá fornecer mecanismos de controle para o gerenciamento das vendas das obras.
+
+*RF022 Cadastrar Dados para Recebimento*
+
+O usuário cadastrado deverá informar seu Banco, Agência e C/c para recebimento dos valores de possíveis vendas realizadas. O usuário poderá informar um valor mínimo de venda para conceder frete grátis ao comprador. 
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável  
+
+
+
+
+
+
+
+
+
+
+
 *RF022 Cadastrar Obra para Venda*
 
 a) título da obra; b) autor da obra; c) ISBN da obra; d) editora; e) ano de publicação; f) número da edição; g) palavra-chave.
@@ -286,9 +317,6 @@ Os clientes do Sebo Virtual poderão efetuar trocas de obras entre si. Para esse
 O sistema deve permitir que um livreiro selecione e marque as obras de outro livreiro como de seu interesse em efetuar uma troca. O sistema enviará via email uma notificação para o cliente detentor da obra objeto de interesse de outro cliente, informando que aquele deseja efetuar uma troca da(s) referida(s) obras por outra(s) de seu acervo.
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
-
-==== 3.1.n. Funcionalidade n ====
-
 
 === 3.2 Requisitos Não-Funcionais ===
 
