@@ -303,13 +303,13 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF022 Registrar confirmação de pagamento*
 
-O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis, após a conclusão do recebimento de acordo com a forma disponibilizada.
+O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis. Após esse prazo, o sistema cancelará o pedido. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF023 Cadastrar Registro de Envio*
 
-O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Após esse prazo, o sistema cancelará o pedido. 
+O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Após esse prazo, o sistema anotará uma avaliação negativa para o vendedor. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
