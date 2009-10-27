@@ -133,6 +133,12 @@ O sistema deve permitir que o usuário encerre sua sessão atual (Logoff). Dessa
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
+*RF028 Cadastrar Dados para Recebimento*
+
+O usuário cadastrado deverá informar dados da conta - Banco, Agência e C/c - para recebimento dos valores de possíveis vendas realizadas, pode ser cadastrado mais de uma conta. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável  
+
 ==== 3.1.2. Manutenção de Perfil de usuário ====
 
 Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com as categorias recentemente consultados. 
@@ -273,12 +279,6 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 ==== 3.1.6 Gerenciar Compras/Vendas de Livros ==== 
 
 Estes requisitos funcionais são referentes ao Cadastramento e a Compra/Venda de livros por parte dos usuários cadastrados. O sistema deverá fornecer mecanismos de controle para o Gerenciamento das Compras/Vendas das Obras.
-
-*RF028 Cadastrar Dados para Recebimento*
-
-O usuário cadastrado deverá informar dados da conta - Banco, Agência e C/c - para recebimento dos valores de possíveis vendas realizadas, pode ser cadastrado mais de uma conta. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
-
-Prioridade: (X) Essencial ( ) Importante ( ) Desejável  
 
 *RF029 Cadastrar Livro para Venda*
 
