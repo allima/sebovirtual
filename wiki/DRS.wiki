@@ -68,7 +68,7 @@ Esta seção agrupa os requisitos funcionais associados ao controle de acesso do
 
 *RF001 Solicitar cadastro no sistema*
 
-O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra ou venda de livros através do sistema. O usuário deve aceitar o termo de uso e privacidade informando seus dados tais como Nome completo, CPF, E-mail, Senha da conta de usuário, Endereço residencial e Telefone para contato, informações sobre áreas de interesse (categorias dos livros). O usuário deverá cadastrar uma "dica de senha" (RF004). 
+O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra ou venda de livros através do sistema. O usuário deverá aceitar o termo de uso e privacidade e informar seus dados tais como Nome completo, CPF, E-mail, Senha da conta de usuário, Endereço residencial e Telefone para contato, informações sobre áreas de interesse (categorias dos livros) e uma "dica de senha". 
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
@@ -86,7 +86,7 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RF004 Lembrar senha do usuário*
 
-Caso o usuário esqueça sua senha de acesso, ele poderá solicitar o envio da mesma para o seu e-mail de cadastro. Para isso, o usuário deverá responder a pergunda por ele cadastrada em sua "dica de senha" e o endereço eletrônico que foi cadastrado (RF001). 
+Caso o usuário esqueça sua senha de acesso, ele poderá solicitar o envio da mesma para o seu e-mail de cadastro. Para isso, o usuário deverá responder a pergunda por ele cadastrada em sua "dica de senha" e o endereço eletrônico que foi cadastrado. 
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
