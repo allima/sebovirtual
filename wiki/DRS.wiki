@@ -284,7 +284,7 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 O sistema enviará por e-mail uma notificação de compra para o comprador, informando os dados do pedido e as instruções de pagamento conforme a forma de pagamento selecionada. O status da compra deve ser "aguardando pagamento".
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável
- 
+
 *RF034 Receber Notificação de Venda*
 
 O sistema enviará por e-mail uma notificação de venda para o vendedor, informando os dados do pedido.
