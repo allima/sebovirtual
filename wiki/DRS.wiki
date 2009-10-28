@@ -8,6 +8,7 @@
 || 24/10/2009 || 1.0 - D02  || Alteração da estrutura do Documento, Elaboração da Introdução, Propósito, Escopo, Definições Gerais, Características do Usuário, Restrições Gerais.  ||  -  ||  -  || Sandro Colli ||
 || 25/10/2009 || 1.0 - D03  || Revisão/Especificação de requisitos || RF025 || RNF001 || Alexandre Lucena ||
 || 25/10/2009 ||  1.0 - D04 || Revisão/Especificação de requisitos || RF000 || RNF000 || Alexandre Maia ||
+|| 27/10/2009 || 1.0 - D05 || Definição dos Requisitos Não-Funcionais || - || RFN010 || Sandro Colli ||
 
 ----
 
@@ -398,20 +399,14 @@ Será adotada a metodologia XP(eXtreme Programming) para o desenvolvimento do so
 
 Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
 
-
-
-
-
-
 *RNF001 Sistema Open-Source*
 
 O sistema deverá ser open-source (código aberto) e seu código fonte deverá ser disponibilizado no GoogleCode.com para que qualquer individuo possa visualizá-lo, e qualquer membro do projeto possa editá-lo, contribuindo para a melhoria do produto e artefatos.
 
 Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
- 
 
+*RNF010 Plataforma de Desenvolvimento*
 
+Será adotada a platadorma JAVA da Sun Microsistem para desenvolvimento deste sistema com Servidor Web Apache Tomcat e Banco de Dados MySQL.
 
-
-== Apêndices ==
-== Índice ==`
+Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
