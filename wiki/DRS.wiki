@@ -17,25 +17,14 @@
 
 Este Documento de Requisitos de Software apresenta a especificação do Sistema SeboVirtual. Sua elaboração tem o objetivo de organizar o processo de requisitos em conformidade com a IEEE Std 830-1998 e agrupar os requisitos por funcionalidade tornando o documento mais objetivo e consistente para os interessados.
 
-
-~~ A Introdução deve fornece uma visão geral do Documento de Requisitos de Software. Deve conter as seguintes sub-seções:~~
-
 === 1.1. Propósito do Documento de Requisitos ===
 
 O propósito deste documento de requisitos é apresentar os requisitos funcionais do software, estabelecer os requisitos não-funcionais, apresentar o escopo do produto e estabelecer o que será e não será abordado nesta etapa do desenvolvimento.
 Este documento servirá de base para o desenvolvimento do sistema SeboVirtual durante todo o seu ciclo de vida. A partir dele a equipe de Design irá desenvolver outros artefatos como código-fonte, base de dados, diagramas, etc. Servirá também como base para especificação de casos de teste do software em desenvolvimento, além de ser uma forma de demonstrar as funcionalidades do software aos usuários e clientes.
 
-~~ * Delinear o propósito do documento de requisitos~~;
-~~ * Especificar o público-alvo do documento de requisitos~~.
-
 === 1.2. Escopo do Produto ===
 
 O produto desenvolvido a partir deste documento de requisitos será o software SeboVirtual. Ele será composto de um interface Web a partir da qual usuários cadastrados e autenticados poderão comprar ou ofertar livros para venda. Os livros cadastrados poderão ser comentados por outros usuários. O desenvolvimento desse software possibilitará maior intercâmbio de informações e conhecimentos a partir da venda de livros, antes esquecidos nas estantes. Também poderá servir como composição da fonte de renda dos usuários vendedores a partir de aplicação de margem de lucro sobre as vendas de livros procurados.
-
-~~ * Identificar o produto de software a ser desenvolvido pelo nome~~;
-~~ * Explicar o que o software fará e, se necessário, o que não fará~~;
-~~ * Descrever a aplicação do software, incluindo benefícios relevantes, objetivos e metas~~;
-~~ * Ser consistente com outros documentos similares ou de mais alto nível (por exemplo, especificação de requisitos de sistema), caso existam~~.
 
 === 1.3. Definições, Acrônimos e Abreviações ===
 
@@ -62,24 +51,9 @@ Os usuários vendedores são classificados em ordem de número de vendas e avali
 São usuários potenciais para este software todas aquelas pessoas que possuem livros, que tem interesse de adquirir livros ou simplesmente possuem interesse por livros e gostem de comentar as obras.
 Os usuários são, na maioria, pessoas de nível educacional médio a elevado, com experiência mediana no uso de recursos técnológicos e com boa proficiência técnica.
 
-~~ Esta sub-seção do DRS deve descreve aquelas características gerais dos usuários-alvo do produto incluindo nível educacional, experiência e proficiência técnica. ~~
-
 === 2.3. Restrições Gerais ===
 
 O software deverá apresentar um ambiente seguro para transações de pagamento dos livros adquiridos. O acesso às transações de compra e venda de livros deverá ser liberada apenas para os usuários cadastrados e autenticados no sistema.
-
-~~Esta sub-seção do DRS deve fornece uma descrição geral de qualquer um dos itens que limitarão o desenvolvimento. Isto pode incluir:~~
-
-==== ~~2.4.1.  Regulamentos~~ ====
-==== ~~2.4.2.  Limitações de hardware~~ ==== 
-==== ~~2.4.3.  Interfaces com outras aplicações~~ ====
-==== ~~2.4.4.  Operações em paralelo~~ ====
-==== ~~2.4.5.  Funções de auditoria~~ ====
-==== ~~2.4.6.  Funções de controle~~ ====
-==== ~~2.4.7.  Exigências de alto nível de linguagem~~ ====
-==== ~~2.4.8.  Requisitos de confiabilidade~~ ====
-==== ~~2.4.9.  Criticidade da aplicação~~ ====
-==== ~~2.4.10. Considerações de segurança~~ ====
 
 == 3. Requisitos ==
 
@@ -365,6 +339,68 @@ O sistema permitirá o cálculo do frete de acordo com cidade, estado, CEP, peso
 Prioridade: ( ) Essencial ( ) Importante (X) Desejável
 
 === 3.2 Requisitos Não-Funcionais ===
+
+Os requisitos não-funcionais ou qualidades do sistema, representam as propriedades exigidas do sistema, tais como desempenho, segurança, manutenção, etc, em outras palavras, como alguns aspectos comportamentais ou estruturais do sistema deve ser realizado.
+
+==== 3.2.1 Requisitos do Produto ====
+
+Os requisitos aqui especificados referem-se às caracteristicas internas do produto a ser desenvolvido.
+
+*RNF002 Disponibilidade*
+
+O sistema será disponibilizado durante as 24 horas do dia em todos os dias da semana.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RNF003 Usabilidade*
+
+A interface com o usuário deverá ser autoexplicativa, simples e de fácil operação.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RNF004 Confiabilidade*
+
+As informações apresentadas e armazenadas deverão ser consistentes.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RNF005 Segurança*
+
+O Sistema deverá utilizar protocolo seguro para as transações, com validação das informações e criptografia dos dados do usuário.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RNF006 Portabilidade*
+
+O Sistema deverá se independente de plataforma.
+
+Prioridade: ( ) Essencial          (x) Importante        ( ) Desejável
+
+*RNF007 Tempo de Resposta*
+
+O tempo necessário para a montagem do HTML da página contados a partir da recepção da solicitação pelo sistema não deverá ultrapassar 5 segundos. Para efeito dessa contagem são desconsiderados o tempo de tráfego pela rede e a renderização da página pelo browser que dependem de outros fatores que estão fora do escopo deste software.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+*RNF008 Escalabilidade*
+
+O sistema deverá ser escalável.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+==== 3.2.2 Requisitos do Processo ====
+
+Aqui são representados os requisitos do processo de desenvolvimento, incluindo os padrões, a modelagem e a linguagem de programação.
+
+*RNF009 Processo de Desenvolvimento de Software*
+
+Será adotada a metodologia XP(eXtreme Programming) para o desenvolvimento do software.
+
+Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
+
+
+
+
 
 
 *RNF001 Sistema Open-Source*
