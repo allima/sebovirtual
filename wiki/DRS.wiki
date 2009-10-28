@@ -213,7 +213,7 @@ Prioridade: (X) Essencial ( ) Importante ( ) Desejável
 
 *RF022 Exibir Resultado da Pesquisa*
 
-O sistema deverá exibir o resultado da pesquisa dos livros disponíveis com as seguintes informações: ISBN; Título da Obra; Autor(a); Ano de publicação; Categoria; Nome, estado do livreiro que está vendendo/trocando a obra, preço em reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente. 
+O sistema deverá exibir o resultado da pesquisa dos livros disponíveis com as seguintes informações: ISBN; Título da Obra; Autor(a); Ano de publicação; Categoria; Nome, estado do livreiro que está vendendo a obra, preço em reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente. 
 
 Prioridade: (X) Essencial ( ) Importante ( ) Desejável 
 
