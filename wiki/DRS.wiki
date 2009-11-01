@@ -157,7 +157,7 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 O usuário administrador deverá configurar alguns itens de interface do sistema, ou seja, relacionado a exibição de informações na página principal.
 
-Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
 
 *RF014 Alterar dados de administrador*
 
@@ -181,7 +181,7 @@ Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
 
 O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao software SeboVirtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
 
-Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
 
 *RF018 Cadastrar anúncios*
 
