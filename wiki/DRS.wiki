@@ -395,7 +395,7 @@ Aqui são representados os requisitos do processo de desenvolvimento, incluindo 
 
 *RNF009 Processo de Desenvolvimento de Software*
 
-Será adotada a metodologia XP(eXtreme Programming) para o desenvolvimento do software.
+Será adotada a metodologia OPENUP para o desenvolvimento do software.
 
 Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
 
@@ -407,6 +407,6 @@ Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
 
 *RNF010 Plataforma de Desenvolvimento*
 
-Será adotada a platadorma JAVA da Sun Microsistem para desenvolvimento deste sistema com Servidor Web Apache Tomcat e Banco de Dados MySQL.
+Será adotada a platadorma JAVA da Sun Microsistem para desenvolvimento deste sistema com Servidor de Aplicação JBOSS AS e Banco de Dados MySQL.
 
 Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
