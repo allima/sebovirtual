@@ -1,0 +1,291 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="vende" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{vendeHome.managed ? 'Edit' : 'Add'} Vende</f:facet>
+
+
+            <s:decorate id="obraIsbnDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">obraIsbn</ui:define>
+                <h:inputText id="obraIsbn"
+                       required="true"
+                       disabled="#{vendeHome.managed}"
+                          value="#{vendeHome.instance.id.obraIsbn}">
+                    <a:support event="onblur" reRender="obraIsbnDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+            <s:decorate id="pessoaCpfDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">pessoaCpf</ui:define>
+                <h:inputText id="pessoaCpf"
+                       required="true"
+                       disabled="#{vendeHome.managed}"
+                          value="#{vendeHome.instance.id.pessoaCpf}">
+                    <a:support event="onblur" reRender="pessoaCpfDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+            <s:decorate id="dtFinalDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">dtFinal</ui:define>
+				<rich:calendar id="dtFinal" 
+                       required="true"
+                          value="#{vendeHome.instance.dtFinal}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+            <s:decorate id="dtInicialDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">dtInicial</ui:define>
+				<rich:calendar id="dtInicial" 
+                       required="true"
+                          value="#{vendeHome.instance.dtInicial}" datePattern="MM/dd/yyyy" />
+            </s:decorate>
+
+
+
+
+            <s:decorate id="precoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">preco</ui:define>
+                <h:inputText id="preco"
+                       required="true"
+                          value="#{vendeHome.instance.preco}">
+                    <a:support event="onblur" reRender="precoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{vendeHome.persist}"
+                       disabled="#{!vendeHome.wired}"
+                       rendered="#{!vendeHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{vendeHome.update}"
+                       rendered="#{vendeHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{vendeHome.remove}"
+                      immediate="true"
+                       rendered="#{vendeHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/Vende.xhtml"
+                rendered="#{vendeHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty vendeFrom ? 'VendeList' : vendeFrom}.xhtml"
+                rendered="#{!vendeHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="cestas">
+        <div class="association" id="cestasChildren">
+        
+            <h:outputText value="There are no cestas associated with this vende." 
+                       rendered="#{empty vendeHome.cestas}"/>
+        
+            <rich:dataTable value="#{vendeHome.cestas}" 
+                           var="cesta" 
+                      rendered="#{not empty vendeHome.cestas}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="cestasTable">
+                <h:column>
+                    <f:facet name="header">compraIdCompra</f:facet>
+                    #{cesta.id.compraIdCompra}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">vendeObraIsbn</f:facet>
+                    #{cesta.id.vendeObraIsbn}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">vendePessoaCpf</f:facet>
+                    #{cesta.id.vendePessoaCpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/Cesta.xhtml" 
+                              id="selectcesta" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="cestaCompraIdCompra" 
+                                value="#{cesta.id.compraIdCompra}"/>
+                        <f:param name="cestaVendeObraIsbn" 
+                                value="#{cesta.id.vendeObraIsbn}"/>
+                        <f:param name="cestaVendePessoaCpf" 
+                                value="#{cesta.id.vendePessoaCpf}"/>
+                        <f:param name="cestaFrom" value="Vende"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{vendeHome.managed}" id="cestas">
+        <div class="actionButtons">
+            <s:button id="addcesta" 
+                   value="Add cesta"
+                    view="/CestaEdit.xhtml"
+             propagation="none">
+                 <f:param name="vendeId" 
+                         value="#{vendeHome.instance.id}"/>
+                 <f:param name="cestaFrom" value="Vende"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+    
+    <rich:tab label="obra *" labelClass="required">
+    <div class="association" id="obraParent">
+    
+        <h:outputText value="There is no obra associated with this vende." 
+                   rendered="#{vendeHome.instance.obra == null}"/>
+        
+        <rich:dataTable var="obra" 
+                   value="#{vendeHome.instance.obra}" 
+                rendered="#{vendeHome.instance.obra != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="obraTable">
+            <h:column>
+                <f:facet name="header">isbn</f:facet>
+                #{obra.isbn}
+            </h:column>
+            <h:column>
+                <f:facet name="header">anoPublicacao</f:facet>
+                #{obra.anoPublicacao}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">autor idAutor</f:facet>
+		    	#{obra.autor.idAutor}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">categoria idCategoria</f:facet>
+		    	#{obra.categoria.idCategoria}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">editora idEditora</f:facet>
+		    	#{obra.editora.idEditora}
+            </h:column>
+            <h:column>
+                <f:facet name="header">titulo</f:facet>
+                #{obra.titulo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link view="/Obra.xhtml" 
+                         id="viewobra" 
+                      value="View" 
+                propagation="none">
+                    <f:param name="obraIsbn" 
+                           value="#{obra.isbn}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button value="Select obra"
+                       view="/ObraList.xhtml">
+                <f:param name="from" value="VendeEdit"/>
+            </s:button>
+        </div>
+        
+    </div>
+    </rich:tab>
+    
+    <rich:tab label="pessoa *" labelClass="required">
+    <div class="association" id="pessoaParent">
+    
+        <h:outputText value="There is no pessoa associated with this vende." 
+                   rendered="#{vendeHome.instance.pessoa == null}"/>
+        
+        <rich:dataTable var="pessoa" 
+                   value="#{vendeHome.instance.pessoa}" 
+                rendered="#{vendeHome.instance.pessoa != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="pessoaTable">
+            <h:column>
+                <f:facet name="header">cpf</f:facet>
+                #{pessoa.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dicaSenha</f:facet>
+                #{pessoa.dicaSenha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">email</f:facet>
+                #{pessoa.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nome</f:facet>
+                #{pessoa.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">senha</f:facet>
+                #{pessoa.senha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">status2</f:facet>
+                #{pessoa.status2}
+            </h:column>
+            <h:column>
+                <f:facet name="header">tipo</f:facet>
+                #{pessoa.tipo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link view="/Pessoa.xhtml" 
+                         id="viewpessoa" 
+                      value="View" 
+                propagation="none">
+                    <f:param name="pessoaCpf" 
+                           value="#{pessoa.cpf}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button value="Select pessoa"
+                       view="/PessoaList.xhtml">
+                <f:param name="from" value="VendeEdit"/>
+            </s:button>
+        </div>
+        
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

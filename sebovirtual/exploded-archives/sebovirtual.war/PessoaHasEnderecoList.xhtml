@@ -1,0 +1,130 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="pessoaHasEnderecoSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="PessoaHasEndereco search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/PessoaHasEnderecoList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">PessoaHasEndereco search results</f:facet>
+    <div class="results" id="pessoaHasEnderecoList">
+
+    <h:outputText value="The pessoaHasEndereco search returned no results." 
+               rendered="#{empty pessoaHasEnderecoList.resultList}"/>
+               
+    <rich:dataTable id="pessoaHasEnderecoList" 
+                var="pessoaHasEndereco"
+              value="#{pessoaHasEnderecoList.resultList}" 
+           rendered="#{not empty pessoaHasEnderecoList.resultList}">
+        <h:column>
+            <f:facet name="header">enderecoIdEndereco</f:facet>
+            #{pessoaHasEndereco.id.enderecoIdEndereco}
+        </h:column>
+        <h:column>
+            <f:facet name="header">pessoaCpf</f:facet>
+            #{pessoaHasEndereco.id.pessoaCpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="endereco idEndereco #{pessoaHasEnderecoList.order=='endereco.idEndereco asc' ? messages.down : ( pessoaHasEnderecoList.order=='endereco.idEndereco desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{pessoaHasEnderecoList.order=='endereco.idEndereco asc' ? 'endereco.idEndereco desc' : 'endereco.idEndereco asc'}"/>
+                </s:link>
+            </f:facet>
+            #{pessoaHasEndereco.endereco.idEndereco}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="pessoa cpf #{pessoaHasEnderecoList.order=='pessoa.cpf asc' ? messages.down : ( pessoaHasEnderecoList.order=='pessoa.cpf desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{pessoaHasEnderecoList.order=='pessoa.cpf asc' ? 'pessoa.cpf desc' : 'pessoa.cpf asc'}"/>
+                </s:link>
+            </f:facet>
+            #{pessoaHasEndereco.pessoa.cpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'PessoaHasEndereco' : from}.xhtml" 
+                   value="Select" 
+                      id="pessoaHasEndereco">
+                <f:param name="pessoaHasEnderecoEnderecoIdEndereco" 
+                        value="#{pessoaHasEndereco.id.enderecoIdEndereco}"/>
+                <f:param name="pessoaHasEnderecoPessoaCpf" 
+                        value="#{pessoaHasEndereco.id.pessoaCpf}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/PessoaHasEnderecoList.xhtml" 
+            rendered="#{pessoaHasEnderecoList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasEnderecoList.xhtml" 
+            rendered="#{pessoaHasEnderecoList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasEnderecoList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasEnderecoList.xhtml" 
+            rendered="#{pessoaHasEnderecoList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasEnderecoList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasEnderecoList.xhtml" 
+            rendered="#{pessoaHasEnderecoList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasEnderecoList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/PessoaHasEnderecoEdit.xhtml"
+                    id="create" 
+                 value="Create pessoaHasEndereco">
+            <f:param name="pessoaHasEnderecoEnderecoIdEndereco"/>
+            <f:param name="pessoaHasEnderecoPessoaCpf"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

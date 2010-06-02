@@ -1,0 +1,147 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">Cesta</f:facet>
+
+
+        <s:decorate id="compraIdCompra" template="layout/display.xhtml">
+            <ui:define name="label">compraIdCompra</ui:define>
+            #{cestaHome.instance.id.compraIdCompra}
+        </s:decorate>
+
+        <s:decorate id="vendeObraIsbn" template="layout/display.xhtml">
+            <ui:define name="label">vendeObraIsbn</ui:define>
+            #{cestaHome.instance.id.vendeObraIsbn}
+        </s:decorate>
+
+        <s:decorate id="vendePessoaCpf" template="layout/display.xhtml">
+            <ui:define name="label">vendePessoaCpf</ui:define>
+            #{cestaHome.instance.id.vendePessoaCpf}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/CestaEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty cestaFrom ? 'CestaList' : cestaFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="compra">
+    <div class="association" id="compraParent">
+        
+        <h:outputText value="There is no compra associated with this cesta." 
+                   rendered="#{cestaHome.instance.compra == null}"/>
+        
+        <rich:dataTable var="compra" 
+                   value="#{cestaHome.instance.compra}" 
+                rendered="#{cestaHome.instance.compra != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="compraTable">
+            <h:column>
+                <f:facet name="header">idCompra</f:facet>
+                #{compra.idCompra}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dataCompra</f:facet>
+                #{compra.dataCompra}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">pessoa cpf</f:facet>
+		    	#{compra.pessoa.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewcompra" 
+                     value="View" 
+                      view="/Compra.xhtml">
+                    <f:param name="compraIdCompra" 
+                           value="#{compra.idCompra}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+
+    <rich:tab label="vende">
+    <div class="association" id="vendeParent">
+        
+        <h:outputText value="There is no vende associated with this cesta." 
+                   rendered="#{cestaHome.instance.vende == null}"/>
+        
+        <rich:dataTable var="vende" 
+                   value="#{cestaHome.instance.vende}" 
+                rendered="#{cestaHome.instance.vende != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="vendeTable">
+            <h:column>
+                <f:facet name="header">obraIsbn</f:facet>
+                #{vende.id.obraIsbn}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{vende.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dtFinal</f:facet>
+                #{vende.dtFinal}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dtInicial</f:facet>
+                #{vende.dtInicial}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">obra isbn</f:facet>
+		    	#{vende.obra.isbn}
+            </h:column>
+            <h:column>
+	    	    <f:facet name="header">pessoa cpf</f:facet>
+		    	#{vende.pessoa.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">preco</f:facet>
+                #{vende.preco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewvende" 
+                     value="View" 
+                      view="/Vende.xhtml">
+                    <f:param name="vendeObraIsbn" 
+                            value="#{vende.id.obraIsbn}"/>
+                    <f:param name="vendePessoaCpf" 
+                            value="#{vende.id.pessoaCpf}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

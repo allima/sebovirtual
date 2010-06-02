@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/PessoaHasTelefoneList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{pessoaHasTelefoneHome.wire}"/>
+   
+   <param name="pessoaHasTelefoneFrom"/>
+   <param name="pessoaHasTelefonePessoaCpf" value="#{pessoaHasTelefoneHome.pessoaHasTelefoneId.pessoaCpf}"/>
+   <param name="pessoaHasTelefoneTelefoneIdTelefone" value="#{pessoaHasTelefoneHome.pessoaHasTelefoneId.telefoneIdTelefone}"/>
+   <param name="pessoaFrom"/>
+   <param name="pessoaCpf" value="#{pessoaHome.pessoaCpf}"/>
+
+   <param name="telefoneFrom"/>
+   <param name="telefoneIdTelefone" value="#{telefoneHome.telefoneIdTelefone}"/>
+
+
+
+   <navigation from-action="#{pessoaHasTelefoneHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasTelefone.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasTelefoneHome.update}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasTelefone.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasTelefoneHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasTelefoneList.xhtml"/>
+   </navigation>
+   
+</page>

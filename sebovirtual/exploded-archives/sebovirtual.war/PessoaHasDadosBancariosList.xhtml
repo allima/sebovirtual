@@ -1,0 +1,130 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="pessoaHasDadosBancariosSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="PessoaHasDadosBancarios search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/PessoaHasDadosBancariosList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">PessoaHasDadosBancarios search results</f:facet>
+    <div class="results" id="pessoaHasDadosBancariosList">
+
+    <h:outputText value="The pessoaHasDadosBancarios search returned no results." 
+               rendered="#{empty pessoaHasDadosBancariosList.resultList}"/>
+               
+    <rich:dataTable id="pessoaHasDadosBancariosList" 
+                var="pessoaHasDadosBancarios"
+              value="#{pessoaHasDadosBancariosList.resultList}" 
+           rendered="#{not empty pessoaHasDadosBancariosList.resultList}">
+        <h:column>
+            <f:facet name="header">dadosBancariosIdDadosBancarios</f:facet>
+            #{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}
+        </h:column>
+        <h:column>
+            <f:facet name="header">pessoaCpf</f:facet>
+            #{pessoaHasDadosBancarios.id.pessoaCpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="dadosBancarios idDadosBancarios #{pessoaHasDadosBancariosList.order=='dadosBancarios.idDadosBancarios asc' ? messages.down : ( pessoaHasDadosBancariosList.order=='dadosBancarios.idDadosBancarios desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{pessoaHasDadosBancariosList.order=='dadosBancarios.idDadosBancarios asc' ? 'dadosBancarios.idDadosBancarios desc' : 'dadosBancarios.idDadosBancarios asc'}"/>
+                </s:link>
+            </f:facet>
+            #{pessoaHasDadosBancarios.dadosBancarios.idDadosBancarios}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="pessoa cpf #{pessoaHasDadosBancariosList.order=='pessoa.cpf asc' ? messages.down : ( pessoaHasDadosBancariosList.order=='pessoa.cpf desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{pessoaHasDadosBancariosList.order=='pessoa.cpf asc' ? 'pessoa.cpf desc' : 'pessoa.cpf asc'}"/>
+                </s:link>
+            </f:facet>
+            #{pessoaHasDadosBancarios.pessoa.cpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'PessoaHasDadosBancarios' : from}.xhtml" 
+                   value="Select" 
+                      id="pessoaHasDadosBancarios">
+                <f:param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios" 
+                        value="#{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}"/>
+                <f:param name="pessoaHasDadosBancariosPessoaCpf" 
+                        value="#{pessoaHasDadosBancarios.id.pessoaCpf}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/PessoaHasDadosBancariosList.xhtml" 
+            rendered="#{pessoaHasDadosBancariosList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasDadosBancariosList.xhtml" 
+            rendered="#{pessoaHasDadosBancariosList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasDadosBancariosList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasDadosBancariosList.xhtml" 
+            rendered="#{pessoaHasDadosBancariosList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasDadosBancariosList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/PessoaHasDadosBancariosList.xhtml" 
+            rendered="#{pessoaHasDadosBancariosList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{pessoaHasDadosBancariosList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/PessoaHasDadosBancariosEdit.xhtml"
+                    id="create" 
+                 value="Create pessoaHasDadosBancarios">
+            <f:param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios"/>
+            <f:param name="pessoaHasDadosBancariosPessoaCpf"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

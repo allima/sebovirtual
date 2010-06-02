@@ -1,0 +1,160 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">PessoaHasEndereco</f:facet>
+
+
+        <s:decorate id="enderecoIdEndereco" template="layout/display.xhtml">
+            <ui:define name="label">enderecoIdEndereco</ui:define>
+            #{pessoaHasEnderecoHome.instance.id.enderecoIdEndereco}
+        </s:decorate>
+
+        <s:decorate id="pessoaCpf" template="layout/display.xhtml">
+            <ui:define name="label">pessoaCpf</ui:define>
+            #{pessoaHasEnderecoHome.instance.id.pessoaCpf}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/PessoaHasEnderecoEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty pessoaHasEnderecoFrom ? 'PessoaHasEnderecoList' : pessoaHasEnderecoFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="endereco">
+    <div class="association" id="enderecoParent">
+        
+        <h:outputText value="There is no endereco associated with this pessoaHasEndereco." 
+                   rendered="#{pessoaHasEnderecoHome.instance.endereco == null}"/>
+        
+        <rich:dataTable var="endereco" 
+                   value="#{pessoaHasEnderecoHome.instance.endereco}" 
+                rendered="#{pessoaHasEnderecoHome.instance.endereco != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="enderecoTable">
+            <h:column>
+                <f:facet name="header">idEndereco</f:facet>
+                #{endereco.idEndereco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">bairro</f:facet>
+                #{endereco.bairro}
+            </h:column>
+            <h:column>
+                <f:facet name="header">cidade</f:facet>
+                #{endereco.cidade}
+            </h:column>
+            <h:column>
+                <f:facet name="header">complemento</f:facet>
+                #{endereco.complemento}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estado</f:facet>
+                #{endereco.estado}
+            </h:column>
+            <h:column>
+                <f:facet name="header">logradouro</f:facet>
+                #{endereco.logradouro}
+            </h:column>
+            <h:column>
+                <f:facet name="header">numero</f:facet>
+                #{endereco.numero}
+            </h:column>
+            <h:column>
+                <f:facet name="header">tipo</f:facet>
+                #{endereco.tipo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewendereco" 
+                     value="View" 
+                      view="/Endereco.xhtml">
+                    <f:param name="enderecoIdEndereco" 
+                           value="#{endereco.idEndereco}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+
+    <rich:tab label="pessoa">
+    <div class="association" id="pessoaParent">
+        
+        <h:outputText value="There is no pessoa associated with this pessoaHasEndereco." 
+                   rendered="#{pessoaHasEnderecoHome.instance.pessoa == null}"/>
+        
+        <rich:dataTable var="pessoa" 
+                   value="#{pessoaHasEnderecoHome.instance.pessoa}" 
+                rendered="#{pessoaHasEnderecoHome.instance.pessoa != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="pessoaTable">
+            <h:column>
+                <f:facet name="header">cpf</f:facet>
+                #{pessoa.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dicaSenha</f:facet>
+                #{pessoa.dicaSenha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">email</f:facet>
+                #{pessoa.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nome</f:facet>
+                #{pessoa.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">senha</f:facet>
+                #{pessoa.senha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">status2</f:facet>
+                #{pessoa.status2}
+            </h:column>
+            <h:column>
+                <f:facet name="header">tipo</f:facet>
+                #{pessoa.tipo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewpessoa" 
+                     value="View" 
+                      view="/Pessoa.xhtml">
+                    <f:param name="pessoaCpf" 
+                           value="#{pessoa.cpf}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

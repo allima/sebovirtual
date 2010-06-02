@@ -1,0 +1,128 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="compraSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="Compra search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/CompraList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">Compra search results</f:facet>
+    <div class="results" id="compraList">
+
+    <h:outputText value="The compra search returned no results." 
+               rendered="#{empty compraList.resultList}"/>
+               
+    <rich:dataTable id="compraList" 
+                var="compra"
+              value="#{compraList.resultList}" 
+           rendered="#{not empty compraList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="idCompra #{compraList.order=='idCompra asc' ? messages.down : ( compraList.order=='idCompra desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{compraList.order=='idCompra asc' ? 'idCompra desc' : 'idCompra asc'}"/>
+                </s:link>
+            </f:facet>
+            #{compra.idCompra}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="dataCompra #{compraList.order=='dataCompra asc' ? messages.down : ( compraList.order=='dataCompra desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{compraList.order=='dataCompra asc' ? 'dataCompra desc' : 'dataCompra asc'}"/>
+                </s:link>
+            </f:facet>
+            #{compra.dataCompra}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="pessoa cpf #{compraList.order=='pessoa.cpf asc' ? messages.down : ( compraList.order=='pessoa.cpf desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{compraList.order=='pessoa.cpf asc' ? 'pessoa.cpf desc' : 'pessoa.cpf asc'}"/>
+                </s:link>
+            </f:facet>
+            #{compra.pessoa.cpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'Compra' : from}.xhtml" 
+                   value="Select" 
+                      id="compra">
+                <f:param name="compraIdCompra" 
+                        value="#{compra.idCompra}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/CompraList.xhtml" 
+            rendered="#{compraList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/CompraList.xhtml" 
+            rendered="#{compraList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{compraList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/CompraList.xhtml" 
+            rendered="#{compraList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{compraList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/CompraList.xhtml" 
+            rendered="#{compraList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{compraList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/CompraEdit.xhtml"
+                    id="create" 
+                 value="Create compra">
+            <f:param name="compraIdCompra"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

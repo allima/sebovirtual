@@ -1,0 +1,140 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">Categoria</f:facet>
+
+
+
+        <s:decorate id="descricao" template="layout/display.xhtml">
+            <ui:define name="label">descricao</ui:define>
+            #{categoriaHome.instance.descricao}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/CategoriaEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty categoriaFrom ? 'CategoriaList' : categoriaFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="obras">
+    <div class="association" id="obrasChildren">
+        
+        <h:outputText value="There are no obras associated with this categoria."
+                   rendered="#{empty categoriaHome.obras}"/>
+        
+        <rich:dataTable value="#{categoriaHome.obras}" 
+                       var="obra" 
+                  rendered="#{not empty categoriaHome.obras}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="obrasTable">
+            <h:column>
+                <f:facet name="header">isbn</f:facet>
+                <h:outputText value="#{obra.isbn}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">anoPublicacao</f:facet>
+                <h:outputText value="#{obra.anoPublicacao}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">titulo</f:facet>
+                <h:outputText value="#{obra.titulo}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectobra" 
+                     value="Select" 
+                      view="/Obra.xhtml">
+                    <f:param name="obraIsbn" 
+                            value="#{obra.isbn}"/>
+                    <f:param name="obraFrom" value="Categoria"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add obra"
+                view="/ObraEdit.xhtml">
+            <f:param name="categoriaIdCategoria" 
+                    value="#{categoriaHome.instance.idCategoria}"/>
+            <f:param name="obraFrom" value="Categoria"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="pessoaHasCategorias">
+    <div class="association" id="pessoaHasCategoriasChildren">
+        
+        <h:outputText value="There are no pessoaHasCategorias associated with this categoria."
+                   rendered="#{empty categoriaHome.pessoaHasCategorias}"/>
+        
+        <rich:dataTable value="#{categoriaHome.pessoaHasCategorias}" 
+                       var="pessoaHasCategoria" 
+                  rendered="#{not empty categoriaHome.pessoaHasCategorias}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasCategoriasTable">
+            <h:column>
+                <f:facet name="header">categoriaIdCategoria</f:facet>
+                #{pessoaHasCategoria.id.categoriaIdCategoria}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasCategoria.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasCategoria" 
+                     value="Select" 
+                      view="/PessoaHasCategoria.xhtml">
+                    <f:param name="pessoaHasCategoriaCategoriaIdCategoria" 
+                            value="#{pessoaHasCategoria.id.categoriaIdCategoria}"/>
+                    <f:param name="pessoaHasCategoriaPessoaCpf" 
+                            value="#{pessoaHasCategoria.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasCategoriaFrom" value="Categoria"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasCategoria"
+                view="/PessoaHasCategoriaEdit.xhtml">
+            <f:param name="categoriaIdCategoria" 
+                    value="#{categoriaHome.instance.idCategoria}"/>
+            <f:param name="pessoaHasCategoriaFrom" value="Categoria"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/PessoaHasCategoriaList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{pessoaHasCategoriaHome.wire}"/>
+   
+   <param name="pessoaHasCategoriaFrom"/>
+   <param name="pessoaHasCategoriaCategoriaIdCategoria" value="#{pessoaHasCategoriaHome.pessoaHasCategoriaId.categoriaIdCategoria}"/>
+   <param name="pessoaHasCategoriaPessoaCpf" value="#{pessoaHasCategoriaHome.pessoaHasCategoriaId.pessoaCpf}"/>
+   <param name="categoriaFrom"/>
+   <param name="categoriaIdCategoria" value="#{categoriaHome.categoriaIdCategoria}"/>
+
+   <param name="pessoaFrom"/>
+   <param name="pessoaCpf" value="#{pessoaHome.pessoaCpf}"/>
+
+
+
+   <navigation from-action="#{pessoaHasCategoriaHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasCategoria.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasCategoriaHome.update}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasCategoria.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasCategoriaHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasCategoriaList.xhtml"/>
+   </navigation>
+   
+</page>

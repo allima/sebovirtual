@@ -1,0 +1,133 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="autor" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{autorHome.managed ? 'Edit' : 'Add'} Autor</f:facet>
+
+
+
+            <s:decorate id="nomeDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">nome</ui:define>
+                <h:inputText id="nome" 
+                       required="true"
+                           size="50"
+                      maxlength="50"
+                          value="#{autorHome.instance.nome}">
+                    <a:support event="onblur" reRender="nomeDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{autorHome.persist}"
+                       disabled="#{!autorHome.wired}"
+                       rendered="#{!autorHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{autorHome.update}"
+                       rendered="#{autorHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{autorHome.remove}"
+                      immediate="true"
+                       rendered="#{autorHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/Autor.xhtml"
+                rendered="#{autorHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty autorFrom ? 'AutorList' : autorFrom}.xhtml"
+                rendered="#{!autorHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="obras">
+        <div class="association" id="obrasChildren">
+        
+            <h:outputText value="There are no obras associated with this autor." 
+                       rendered="#{empty autorHome.obras}"/>
+        
+            <rich:dataTable value="#{autorHome.obras}" 
+                           var="obra" 
+                      rendered="#{not empty autorHome.obras}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="obrasTable">
+                <h:column>
+                    <f:facet name="header">isbn</f:facet>
+                    <h:outputText value="#{obra.isbn}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">anoPublicacao</f:facet>
+                    <h:outputText value="#{obra.anoPublicacao}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">titulo</f:facet>
+                    <h:outputText value="#{obra.titulo}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/Obra.xhtml" 
+                              id="selectobra" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="obraIsbn" 
+                                value="#{obra.isbn}"/>
+                        <f:param name="obraFrom" value="Autor"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{autorHome.managed}" id="obras">
+        <div class="actionButtons">
+            <s:button id="addobra" 
+                   value="Add obra"
+                    view="/ObraEdit.xhtml"
+             propagation="none">
+                 <f:param name="autorIdAutor" 
+                         value="#{autorHome.instance.idAutor}"/>
+                 <f:param name="obraFrom" value="Autor"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

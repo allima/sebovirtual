@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/ObraList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{obraHome.wire}"/>
+   
+   <param name="obraFrom"/>
+   <param name="obraIsbn" value="#{obraHome.obraIsbn}"/>
+   <param name="autorFrom"/>
+   <param name="autorIdAutor" value="#{autorHome.autorIdAutor}"/>
+
+   <param name="categoriaFrom"/>
+   <param name="categoriaIdCategoria" value="#{categoriaHome.categoriaIdCategoria}"/>
+
+   <param name="editoraFrom"/>
+   <param name="editoraIdEditora" value="#{editoraHome.editoraIdEditora}"/>
+
+
+
+   <navigation from-action="#{obraHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/Obra.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{obraHome.update}">
+       <end-conversation/>
+       <redirect view-id="/Obra.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{obraHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/ObraList.xhtml"/>
+   </navigation>
+   
+</page>

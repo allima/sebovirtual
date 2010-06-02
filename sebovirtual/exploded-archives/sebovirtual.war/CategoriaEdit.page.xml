@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/CategoriaList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{categoriaHome.wire}"/>
+   
+   <param name="categoriaFrom"/>
+   <param name="categoriaIdCategoria" value="#{categoriaHome.categoriaIdCategoria}"/>
+
+
+   <navigation from-action="#{categoriaHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/Categoria.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{categoriaHome.update}">
+       <end-conversation/>
+       <redirect view-id="/Categoria.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{categoriaHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/CategoriaList.xhtml"/>
+   </navigation>
+   
+</page>

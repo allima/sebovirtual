@@ -1,0 +1,149 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="telefone" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{telefoneHome.managed ? 'Edit' : 'Add'} Telefone</f:facet>
+
+
+
+            <s:decorate id="dddDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">ddd</ui:define>
+                <h:inputText id="ddd"
+                       required="true"
+                          value="#{telefoneHome.instance.ddd}">
+                    <a:support event="onblur" reRender="dddDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="numeroDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">numero</ui:define>
+                <h:inputText id="numero"
+                       required="true"
+                          value="#{telefoneHome.instance.numero}">
+                    <a:support event="onblur" reRender="numeroDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+            <s:decorate id="tipoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">tipo</ui:define>
+                <h:inputText id="tipo"
+                       required="true"
+                          value="#{telefoneHome.instance.tipo}">
+                    <a:support event="onblur" reRender="tipoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{telefoneHome.persist}"
+                       disabled="#{!telefoneHome.wired}"
+                       rendered="#{!telefoneHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{telefoneHome.update}"
+                       rendered="#{telefoneHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{telefoneHome.remove}"
+                      immediate="true"
+                       rendered="#{telefoneHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/Telefone.xhtml"
+                rendered="#{telefoneHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty telefoneFrom ? 'TelefoneList' : telefoneFrom}.xhtml"
+                rendered="#{!telefoneHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasTelefones">
+        <div class="association" id="pessoaHasTelefonesChildren">
+        
+            <h:outputText value="There are no pessoaHasTelefones associated with this telefone." 
+                       rendered="#{empty telefoneHome.pessoaHasTelefones}"/>
+        
+            <rich:dataTable value="#{telefoneHome.pessoaHasTelefones}" 
+                           var="pessoaHasTelefone" 
+                      rendered="#{not empty telefoneHome.pessoaHasTelefones}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="pessoaHasTelefonesTable">
+                <h:column>
+                    <f:facet name="header">pessoaCpf</f:facet>
+                    #{pessoaHasTelefone.id.pessoaCpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">telefoneIdTelefone</f:facet>
+                    #{pessoaHasTelefone.id.telefoneIdTelefone}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/PessoaHasTelefone.xhtml" 
+                              id="selectpessoaHasTelefone" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="pessoaHasTelefonePessoaCpf" 
+                                value="#{pessoaHasTelefone.id.pessoaCpf}"/>
+                        <f:param name="pessoaHasTelefoneTelefoneIdTelefone" 
+                                value="#{pessoaHasTelefone.id.telefoneIdTelefone}"/>
+                        <f:param name="pessoaHasTelefoneFrom" value="Telefone"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{telefoneHome.managed}" id="pessoaHasTelefones">
+        <div class="actionButtons">
+            <s:button id="addpessoaHasTelefone" 
+                   value="Add pessoaHasTelefone"
+                    view="/PessoaHasTelefoneEdit.xhtml"
+             propagation="none">
+                 <f:param name="telefoneIdTelefone" 
+                         value="#{telefoneHome.instance.idTelefone}"/>
+                 <f:param name="pessoaHasTelefoneFrom" value="Telefone"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

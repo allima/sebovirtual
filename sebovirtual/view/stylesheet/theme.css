@@ -1,0 +1,247 @@
+<!-- corpo das páginas-->
+body {
+   font-family: Arial,Helvetica,sans-serif;
+   font-size: 11px;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   text-align: center;
+   _text-align: center;
+}
+
+.fundolinha1{
+	background-color: white;
+}
+
+.fundolinha2{
+	background-color:  	 #FFFFF0;
+}
+
+.formatacaoTextoChamadoEdit{
+font-size: 12px;
+}
+
+.inpanelBody 
+{
+	height:250px;
+	overflow:auto;
+}
+
+#tudo {
+    width: 767px;
+    margin: 0 auto;			
+    padding: 5px;
+    text-align:left; /* "remédio" para o hack do IE */
+}
+
+#topo {
+   height:60px !important;
+   padding: 0px !important;
+   margin:0px !important;
+   background-color: transparent;
+}
+
+#menu {
+   width: 777px;
+   padding: 0px !important;
+   margin:0px !important;
+   background-color: transparent;
+}
+
+#conteudo {
+   margin:0px;
+   padding: 5px;
+   width: 767px;
+   _width: 767px;
+   background-color: #dfdede;   
+}
+
+#rodape {
+   clear: both;
+   height: 21px;
+   padding: 0px;
+   text-align: center;
+}
+
+#rodape p {
+   line-height: 28px;
+}
+
+
+.fundoBarra{
+background-color: #87A3CC ;
+background-image: none;
+color:white;
+font-size: 16px;
+text-align: center;
+}
+
+
+a:active, a:link, a:visited {
+	color: #0D5798;    
+}
+a:hover {
+	color: #8CAFCD;
+}
+
+input, textarea {
+	border: 1px solid #BBBBBB;
+	font-size: 11px;
+	background: #F0F8FF;
+	color: black;
+}
+
+
+input[type='submit'], input[type='button'] {
+	background: #4477AA;
+	color: white;
+	margin: 5px;
+	border-color: gray;
+}
+
+.tableControl, .actionButtons {
+	width: 100%;
+}
+
+.tableControl a {
+	padding-left: 10px;
+}
+
+.tableControl {
+	text-align: right;
+}
+
+.label{
+	font-size: 11px;
+	font-weight: bold;
+}
+
+.texto{
+	font-size: 12px;
+}
+
+.larguraColuna{
+	width: 33.3%;
+}
+
+.larguraColuna2{
+	width: 230px;
+}
+
+.espaco{
+ margin-left: 50px;	
+}
+
+.footer {
+	text-align: center;
+	font-size: 10px;
+}
+
+.rich-table {
+    width:100%;
+}
+
+h1 {
+	font-family: Arial,sans-serif;
+	color: #578BB8;
+	font-size: 1.6em;
+	margin-top: 0;
+}
+
+body {
+	margin: 0px;
+	font-family: Arial,sans-serif;
+	color: #616161;
+}
+
+.body {
+	padding: 30px;
+}
+
+.columnHeader:hover
+{
+    color: #FF6600;
+}
+
+.message2 {
+	border: none;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color:white;
+	font-weight: bolder;
+	background-color: #FF6347;
+	font-size: 12px;
+}
+
+.message {
+	border: none;
+	padding: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color:#00008B;
+	font-weight: bolder;
+	background-color: #FFE4B5;
+	font-size: 12px;
+}
+
+.name {
+	vertical-align: top;
+	font-weight: bold;
+	width: 130px;
+	float: left;
+	padding: 5px;
+	margin-top: 3px;
+	clear: left;
+}
+.value {
+	float: left;
+	padding: 5px;
+}
+
+.error {
+	float: left;
+	padding: 5px;
+}
+.errors {
+	color: red;
+	vertical-align: middle;
+}
+img.errors {
+	padding-right: 5px;
+}
+.errors input {
+	border: 1px solid red;
+}
+.errors textarea {
+	border: 1px solid red;
+}
+
+.required {
+	color: red;
+	padding-left: 2px;
+}
+
+.rich-stglpanel-body {
+   overflow: auto;
+}
+
+.selectOneMenu {
+	font-size: 10px;
+	margin-left:10px;
+}
+.outputText{
+	float: left;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 5px;
+	width: 115px;
+}
+.outputText2{
+	float: left;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 5px;
+	width: 70px;
+}
+
+<!-- fim corpo -->

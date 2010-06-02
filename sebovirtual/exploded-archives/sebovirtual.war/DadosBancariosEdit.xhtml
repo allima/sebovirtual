@@ -1,0 +1,149 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="dadosBancarios" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{dadosBancariosHome.managed ? 'Edit' : 'Add'} DadosBancarios</f:facet>
+
+
+
+            <s:decorate id="agenciaDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">agencia</ui:define>
+                <h:inputText id="agencia"
+                       required="true"
+                          value="#{dadosBancariosHome.instance.agencia}">
+                    <a:support event="onblur" reRender="agenciaDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="bancoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">banco</ui:define>
+                <h:inputText id="banco"
+                       required="true"
+                          value="#{dadosBancariosHome.instance.banco}">
+                    <a:support event="onblur" reRender="bancoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="contacorenteDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">contacorente</ui:define>
+                <h:inputText id="contacorente"
+                       required="true"
+                          value="#{dadosBancariosHome.instance.contacorente}">
+                    <a:support event="onblur" reRender="contacorenteDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{dadosBancariosHome.persist}"
+                       disabled="#{!dadosBancariosHome.wired}"
+                       rendered="#{!dadosBancariosHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{dadosBancariosHome.update}"
+                       rendered="#{dadosBancariosHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{dadosBancariosHome.remove}"
+                      immediate="true"
+                       rendered="#{dadosBancariosHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/DadosBancarios.xhtml"
+                rendered="#{dadosBancariosHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty dadosBancariosFrom ? 'DadosBancariosList' : dadosBancariosFrom}.xhtml"
+                rendered="#{!dadosBancariosHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasDadosBancarioses">
+        <div class="association" id="pessoaHasDadosBancariosesChildren">
+        
+            <h:outputText value="There are no pessoaHasDadosBancarioses associated with this dadosBancarios." 
+                       rendered="#{empty dadosBancariosHome.pessoaHasDadosBancarioses}"/>
+        
+            <rich:dataTable value="#{dadosBancariosHome.pessoaHasDadosBancarioses}" 
+                           var="pessoaHasDadosBancarios" 
+                      rendered="#{not empty dadosBancariosHome.pessoaHasDadosBancarioses}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="pessoaHasDadosBancariosesTable">
+                <h:column>
+                    <f:facet name="header">dadosBancariosIdDadosBancarios</f:facet>
+                    #{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">pessoaCpf</f:facet>
+                    #{pessoaHasDadosBancarios.id.pessoaCpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/PessoaHasDadosBancarios.xhtml" 
+                              id="selectpessoaHasDadosBancarios" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios" 
+                                value="#{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}"/>
+                        <f:param name="pessoaHasDadosBancariosPessoaCpf" 
+                                value="#{pessoaHasDadosBancarios.id.pessoaCpf}"/>
+                        <f:param name="pessoaHasDadosBancariosFrom" value="DadosBancarios"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{dadosBancariosHome.managed}" id="pessoaHasDadosBancarioses">
+        <div class="actionButtons">
+            <s:button id="addpessoaHasDadosBancarios" 
+                   value="Add pessoaHasDadosBancarios"
+                    view="/PessoaHasDadosBancariosEdit.xhtml"
+             propagation="none">
+                 <f:param name="dadosBancariosIdDadosBancarios" 
+                         value="#{dadosBancariosHome.instance.idDadosBancarios}"/>
+                 <f:param name="pessoaHasDadosBancariosFrom" value="DadosBancarios"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

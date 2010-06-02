@@ -1,0 +1,136 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">PessoaHasCategoria</f:facet>
+
+
+        <s:decorate id="categoriaIdCategoria" template="layout/display.xhtml">
+            <ui:define name="label">categoriaIdCategoria</ui:define>
+            #{pessoaHasCategoriaHome.instance.id.categoriaIdCategoria}
+        </s:decorate>
+
+        <s:decorate id="pessoaCpf" template="layout/display.xhtml">
+            <ui:define name="label">pessoaCpf</ui:define>
+            #{pessoaHasCategoriaHome.instance.id.pessoaCpf}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/PessoaHasCategoriaEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty pessoaHasCategoriaFrom ? 'PessoaHasCategoriaList' : pessoaHasCategoriaFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="categoria">
+    <div class="association" id="categoriaParent">
+        
+        <h:outputText value="There is no categoria associated with this pessoaHasCategoria." 
+                   rendered="#{pessoaHasCategoriaHome.instance.categoria == null}"/>
+        
+        <rich:dataTable var="categoria" 
+                   value="#{pessoaHasCategoriaHome.instance.categoria}" 
+                rendered="#{pessoaHasCategoriaHome.instance.categoria != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="categoriaTable">
+            <h:column>
+                <f:facet name="header">idCategoria</f:facet>
+                #{categoria.idCategoria}
+            </h:column>
+            <h:column>
+                <f:facet name="header">descricao</f:facet>
+                #{categoria.descricao}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewcategoria" 
+                     value="View" 
+                      view="/Categoria.xhtml">
+                    <f:param name="categoriaIdCategoria" 
+                           value="#{categoria.idCategoria}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+
+    <rich:tab label="pessoa">
+    <div class="association" id="pessoaParent">
+        
+        <h:outputText value="There is no pessoa associated with this pessoaHasCategoria." 
+                   rendered="#{pessoaHasCategoriaHome.instance.pessoa == null}"/>
+        
+        <rich:dataTable var="pessoa" 
+                   value="#{pessoaHasCategoriaHome.instance.pessoa}" 
+                rendered="#{pessoaHasCategoriaHome.instance.pessoa != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="pessoaTable">
+            <h:column>
+                <f:facet name="header">cpf</f:facet>
+                #{pessoa.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dicaSenha</f:facet>
+                #{pessoa.dicaSenha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">email</f:facet>
+                #{pessoa.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nome</f:facet>
+                #{pessoa.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">senha</f:facet>
+                #{pessoa.senha}
+            </h:column>
+            <h:column>
+                <f:facet name="header">status2</f:facet>
+                #{pessoa.status2}
+            </h:column>
+            <h:column>
+                <f:facet name="header">tipo</f:facet>
+                #{pessoa.tipo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="viewpessoa" 
+                     value="View" 
+                      view="/Pessoa.xhtml">
+                    <f:param name="pessoaCpf" 
+                           value="#{pessoa.cpf}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

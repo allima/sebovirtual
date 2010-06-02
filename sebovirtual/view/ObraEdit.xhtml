@@ -1,0 +1,289 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="obra" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{obraHome.managed ? 'Edit' : 'Add'} Obra</f:facet>
+
+
+            <s:decorate id="isbnDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">isbn</ui:define>
+                <h:inputText id="isbn"
+                       required="true"
+                       disabled="#{obraHome.managed}"
+                          value="#{obraHome.instance.isbn}">
+                    <a:support event="onblur" reRender="isbnDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="anoPublicacaoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">anoPublicacao</ui:define>
+                <h:inputText id="anoPublicacao"
+                       required="true"
+                          value="#{obraHome.instance.anoPublicacao}">
+                    <a:support event="onblur" reRender="anoPublicacaoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+
+
+            <s:decorate id="tituloDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">titulo</ui:define>
+                <h:inputText id="titulo" 
+                       required="true"
+                           size="30"
+                      maxlength="30"
+                          value="#{obraHome.instance.titulo}">
+                    <a:support event="onblur" reRender="tituloDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{obraHome.persist}"
+                       disabled="#{!obraHome.wired}"
+                       rendered="#{!obraHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{obraHome.update}"
+                       rendered="#{obraHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{obraHome.remove}"
+                      immediate="true"
+                       rendered="#{obraHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/Obra.xhtml"
+                rendered="#{obraHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty obraFrom ? 'ObraList' : obraFrom}.xhtml"
+                rendered="#{!obraHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+    
+    <rich:tab label="autor *" labelClass="required">
+    <div class="association" id="autorParent">
+    
+        <h:outputText value="There is no autor associated with this obra." 
+                   rendered="#{obraHome.instance.autor == null}"/>
+        
+        <rich:dataTable var="autor" 
+                   value="#{obraHome.instance.autor}" 
+                rendered="#{obraHome.instance.autor != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="autorTable">
+            <h:column>
+                <f:facet name="header">idAutor</f:facet>
+                #{autor.idAutor}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nome</f:facet>
+                #{autor.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link view="/Autor.xhtml" 
+                         id="viewautor" 
+                      value="View" 
+                propagation="none">
+                    <f:param name="autorIdAutor" 
+                           value="#{autor.idAutor}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button value="Select autor"
+                       view="/AutorList.xhtml">
+                <f:param name="from" value="ObraEdit"/>
+            </s:button>
+        </div>
+        
+    </div>
+    </rich:tab>
+    
+    <rich:tab label="categoria *" labelClass="required">
+    <div class="association" id="categoriaParent">
+    
+        <h:outputText value="There is no categoria associated with this obra." 
+                   rendered="#{obraHome.instance.categoria == null}"/>
+        
+        <rich:dataTable var="categoria" 
+                   value="#{obraHome.instance.categoria}" 
+                rendered="#{obraHome.instance.categoria != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="categoriaTable">
+            <h:column>
+                <f:facet name="header">idCategoria</f:facet>
+                #{categoria.idCategoria}
+            </h:column>
+            <h:column>
+                <f:facet name="header">descricao</f:facet>
+                #{categoria.descricao}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link view="/Categoria.xhtml" 
+                         id="viewcategoria" 
+                      value="View" 
+                propagation="none">
+                    <f:param name="categoriaIdCategoria" 
+                           value="#{categoria.idCategoria}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button value="Select categoria"
+                       view="/CategoriaList.xhtml">
+                <f:param name="from" value="ObraEdit"/>
+            </s:button>
+        </div>
+        
+    </div>
+    </rich:tab>
+    
+    <rich:tab label="editora *" labelClass="required">
+    <div class="association" id="editoraParent">
+    
+        <h:outputText value="There is no editora associated with this obra." 
+                   rendered="#{obraHome.instance.editora == null}"/>
+        
+        <rich:dataTable var="editora" 
+                   value="#{obraHome.instance.editora}" 
+                rendered="#{obraHome.instance.editora != null}"
+              rowClasses="rvgRowOne,rvgRowTwo"
+                      id="editoraTable">
+            <h:column>
+                <f:facet name="header">idEditora</f:facet>
+                #{editora.idEditora}
+            </h:column>
+            <h:column>
+                <f:facet name="header">nome</f:facet>
+                #{editora.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link view="/Editora.xhtml" 
+                         id="vieweditora" 
+                      value="View" 
+                propagation="none">
+                    <f:param name="editoraIdEditora" 
+                           value="#{editora.idEditora}"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+
+        <div class="actionButtons">
+            <s:button value="Select editora"
+                       view="/EditoraList.xhtml">
+                <f:param name="from" value="ObraEdit"/>
+            </s:button>
+        </div>
+        
+    </div>
+    </rich:tab>
+
+    <rich:tab label="vendes">
+        <div class="association" id="vendesChildren">
+        
+            <h:outputText value="There are no vendes associated with this obra." 
+                       rendered="#{empty obraHome.vendes}"/>
+        
+            <rich:dataTable value="#{obraHome.vendes}" 
+                           var="vende" 
+                      rendered="#{not empty obraHome.vendes}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="vendesTable">
+                <h:column>
+                    <f:facet name="header">obraIsbn</f:facet>
+                    #{vende.id.obraIsbn}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">pessoaCpf</f:facet>
+                    #{vende.id.pessoaCpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">dtFinal</f:facet>
+                    <h:outputText value="#{vende.dtFinal}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">dtInicial</f:facet>
+                    <h:outputText value="#{vende.dtInicial}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">preco</f:facet>
+                    <h:outputText value="#{vende.preco}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/Vende.xhtml" 
+                              id="selectvende" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="vendeObraIsbn" 
+                                value="#{vende.id.obraIsbn}"/>
+                        <f:param name="vendePessoaCpf" 
+                                value="#{vende.id.pessoaCpf}"/>
+                        <f:param name="vendeFrom" value="Obra"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{obraHome.managed}" id="vendes">
+        <div class="actionButtons">
+            <s:button id="addvende" 
+                   value="Add vende"
+                    view="/VendeEdit.xhtml"
+             propagation="none">
+                 <f:param name="obraIsbn" 
+                         value="#{obraHome.instance.isbn}"/>
+                 <f:param name="vendeFrom" value="Obra"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

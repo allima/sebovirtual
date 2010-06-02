@@ -1,0 +1,160 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="obraSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="Obra search parameters" switchType="ajax">
+        
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">titulo</ui:define>
+                <h:inputText id="titulo" value="#{obraList.obra.titulo}"/>
+            </s:decorate>
+
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/ObraList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">Obra search results</f:facet>
+    <div class="results" id="obraList">
+
+    <h:outputText value="The obra search returned no results." 
+               rendered="#{empty obraList.resultList}"/>
+               
+    <rich:dataTable id="obraList" 
+                var="obra"
+              value="#{obraList.resultList}" 
+           rendered="#{not empty obraList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="isbn #{obraList.order=='isbn asc' ? messages.down : ( obraList.order=='isbn desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='isbn asc' ? 'isbn desc' : 'isbn asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.isbn}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="anoPublicacao #{obraList.order=='anoPublicacao asc' ? messages.down : ( obraList.order=='anoPublicacao desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='anoPublicacao asc' ? 'anoPublicacao desc' : 'anoPublicacao asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.anoPublicacao}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="autor idAutor #{obraList.order=='autor.idAutor asc' ? messages.down : ( obraList.order=='autor.idAutor desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='autor.idAutor asc' ? 'autor.idAutor desc' : 'autor.idAutor asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.autor.idAutor}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="categoria idCategoria #{obraList.order=='categoria.idCategoria asc' ? messages.down : ( obraList.order=='categoria.idCategoria desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='categoria.idCategoria asc' ? 'categoria.idCategoria desc' : 'categoria.idCategoria asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.categoria.idCategoria}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="editora idEditora #{obraList.order=='editora.idEditora asc' ? messages.down : ( obraList.order=='editora.idEditora desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='editora.idEditora asc' ? 'editora.idEditora desc' : 'editora.idEditora asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.editora.idEditora}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="titulo #{obraList.order=='titulo asc' ? messages.down : ( obraList.order=='titulo desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{obraList.order=='titulo asc' ? 'titulo desc' : 'titulo asc'}"/>
+                </s:link>
+            </f:facet>
+            #{obra.titulo}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'Obra' : from}.xhtml" 
+                   value="Select" 
+                      id="obra">
+                <f:param name="obraIsbn" 
+                        value="#{obra.isbn}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/ObraList.xhtml" 
+            rendered="#{obraList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/ObraList.xhtml" 
+            rendered="#{obraList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{obraList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/ObraList.xhtml" 
+            rendered="#{obraList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{obraList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/ObraList.xhtml" 
+            rendered="#{obraList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{obraList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/ObraEdit.xhtml"
+                    id="create" 
+                 value="Create obra">
+            <f:param name="obraIsbn"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

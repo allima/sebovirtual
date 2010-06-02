@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/CompraList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{compraHome.wire}"/>
+   
+   <param name="compraFrom"/>
+   <param name="compraIdCompra" value="#{compraHome.compraIdCompra}"/>
+   <param name="pessoaFrom"/>
+   <param name="pessoaCpf" value="#{pessoaHome.pessoaCpf}"/>
+
+
+
+   <navigation from-action="#{compraHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/Compra.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{compraHome.update}">
+       <end-conversation/>
+       <redirect view-id="/Compra.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{compraHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/CompraList.xhtml"/>
+   </navigation>
+   
+</page>

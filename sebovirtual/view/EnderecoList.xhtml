@@ -1,0 +1,198 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="enderecoSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="Endereco search parameters" switchType="ajax">
+        
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">bairro</ui:define>
+                <h:inputText id="bairro" value="#{enderecoList.endereco.bairro}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">cidade</ui:define>
+                <h:inputText id="cidade" value="#{enderecoList.endereco.cidade}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">complemento</ui:define>
+                <h:inputText id="complemento" value="#{enderecoList.endereco.complemento}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">estado</ui:define>
+                <h:inputText id="estado" value="#{enderecoList.endereco.estado}"/>
+            </s:decorate>
+
+            <s:decorate template="layout/display.xhtml">
+                <ui:define name="label">logradouro</ui:define>
+                <h:inputText id="logradouro" value="#{enderecoList.endereco.logradouro}"/>
+            </s:decorate>
+
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/EnderecoList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">Endereco search results</f:facet>
+    <div class="results" id="enderecoList">
+
+    <h:outputText value="The endereco search returned no results." 
+               rendered="#{empty enderecoList.resultList}"/>
+               
+    <rich:dataTable id="enderecoList" 
+                var="endereco"
+              value="#{enderecoList.resultList}" 
+           rendered="#{not empty enderecoList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="idEndereco #{enderecoList.order=='idEndereco asc' ? messages.down : ( enderecoList.order=='idEndereco desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='idEndereco asc' ? 'idEndereco desc' : 'idEndereco asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.idEndereco}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="bairro #{enderecoList.order=='bairro asc' ? messages.down : ( enderecoList.order=='bairro desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='bairro asc' ? 'bairro desc' : 'bairro asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.bairro}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="cidade #{enderecoList.order=='cidade asc' ? messages.down : ( enderecoList.order=='cidade desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='cidade asc' ? 'cidade desc' : 'cidade asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.cidade}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="complemento #{enderecoList.order=='complemento asc' ? messages.down : ( enderecoList.order=='complemento desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='complemento asc' ? 'complemento desc' : 'complemento asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.complemento}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="estado #{enderecoList.order=='estado asc' ? messages.down : ( enderecoList.order=='estado desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='estado asc' ? 'estado desc' : 'estado asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.estado}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="logradouro #{enderecoList.order=='logradouro asc' ? messages.down : ( enderecoList.order=='logradouro desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='logradouro asc' ? 'logradouro desc' : 'logradouro asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.logradouro}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="numero #{enderecoList.order=='numero asc' ? messages.down : ( enderecoList.order=='numero desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='numero asc' ? 'numero desc' : 'numero asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.numero}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="tipo #{enderecoList.order=='tipo asc' ? messages.down : ( enderecoList.order=='tipo desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{enderecoList.order=='tipo asc' ? 'tipo desc' : 'tipo asc'}"/>
+                </s:link>
+            </f:facet>
+            #{endereco.tipo}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'Endereco' : from}.xhtml" 
+                   value="Select" 
+                      id="endereco">
+                <f:param name="enderecoIdEndereco" 
+                        value="#{endereco.idEndereco}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/EnderecoList.xhtml" 
+            rendered="#{enderecoList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/EnderecoList.xhtml" 
+            rendered="#{enderecoList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{enderecoList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/EnderecoList.xhtml" 
+            rendered="#{enderecoList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{enderecoList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/EnderecoList.xhtml" 
+            rendered="#{enderecoList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{enderecoList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/EnderecoEdit.xhtml"
+                    id="create" 
+                 value="Create endereco">
+            <f:param name="enderecoIdEndereco"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

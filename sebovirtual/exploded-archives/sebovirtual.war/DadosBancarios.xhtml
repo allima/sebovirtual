@@ -1,0 +1,104 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">DadosBancarios</f:facet>
+
+
+
+        <s:decorate id="agencia" template="layout/display.xhtml">
+            <ui:define name="label">agencia</ui:define>
+            #{dadosBancariosHome.instance.agencia}
+        </s:decorate>
+
+
+        <s:decorate id="banco" template="layout/display.xhtml">
+            <ui:define name="label">banco</ui:define>
+            #{dadosBancariosHome.instance.banco}
+        </s:decorate>
+
+
+        <s:decorate id="contacorente" template="layout/display.xhtml">
+            <ui:define name="label">contacorente</ui:define>
+            #{dadosBancariosHome.instance.contacorente}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/DadosBancariosEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty dadosBancariosFrom ? 'DadosBancariosList' : dadosBancariosFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasDadosBancarioses">
+    <div class="association" id="pessoaHasDadosBancariosesChildren">
+        
+        <h:outputText value="There are no pessoaHasDadosBancarioses associated with this dadosBancarios."
+                   rendered="#{empty dadosBancariosHome.pessoaHasDadosBancarioses}"/>
+        
+        <rich:dataTable value="#{dadosBancariosHome.pessoaHasDadosBancarioses}" 
+                       var="pessoaHasDadosBancarios" 
+                  rendered="#{not empty dadosBancariosHome.pessoaHasDadosBancarioses}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasDadosBancariosesTable">
+            <h:column>
+                <f:facet name="header">dadosBancariosIdDadosBancarios</f:facet>
+                #{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasDadosBancarios.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasDadosBancarios" 
+                     value="Select" 
+                      view="/PessoaHasDadosBancarios.xhtml">
+                    <f:param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios" 
+                            value="#{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}"/>
+                    <f:param name="pessoaHasDadosBancariosPessoaCpf" 
+                            value="#{pessoaHasDadosBancarios.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasDadosBancariosFrom" value="DadosBancarios"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasDadosBancarios"
+                view="/PessoaHasDadosBancariosEdit.xhtml">
+            <f:param name="dadosBancariosIdDadosBancarios" 
+                    value="#{dadosBancariosHome.instance.idDadosBancarios}"/>
+            <f:param name="pessoaHasDadosBancariosFrom" value="DadosBancarios"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,157 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="vendeSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="Vende search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/VendeList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">Vende search results</f:facet>
+    <div class="results" id="vendeList">
+
+    <h:outputText value="The vende search returned no results." 
+               rendered="#{empty vendeList.resultList}"/>
+               
+    <rich:dataTable id="vendeList" 
+                var="vende"
+              value="#{vendeList.resultList}" 
+           rendered="#{not empty vendeList.resultList}">
+        <h:column>
+            <f:facet name="header">obraIsbn</f:facet>
+            #{vende.id.obraIsbn}
+        </h:column>
+        <h:column>
+            <f:facet name="header">pessoaCpf</f:facet>
+            #{vende.id.pessoaCpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="dtFinal #{vendeList.order=='dtFinal asc' ? messages.down : ( vendeList.order=='dtFinal desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{vendeList.order=='dtFinal asc' ? 'dtFinal desc' : 'dtFinal asc'}"/>
+                </s:link>
+            </f:facet>
+            #{vende.dtFinal}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="dtInicial #{vendeList.order=='dtInicial asc' ? messages.down : ( vendeList.order=='dtInicial desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{vendeList.order=='dtInicial asc' ? 'dtInicial desc' : 'dtInicial asc'}"/>
+                </s:link>
+            </f:facet>
+            #{vende.dtInicial}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="obra isbn #{vendeList.order=='obra.isbn asc' ? messages.down : ( vendeList.order=='obra.isbn desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{vendeList.order=='obra.isbn asc' ? 'obra.isbn desc' : 'obra.isbn asc'}"/>
+                </s:link>
+            </f:facet>
+            #{vende.obra.isbn}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="pessoa cpf #{vendeList.order=='pessoa.cpf asc' ? messages.down : ( vendeList.order=='pessoa.cpf desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{vendeList.order=='pessoa.cpf asc' ? 'pessoa.cpf desc' : 'pessoa.cpf asc'}"/>
+                </s:link>
+            </f:facet>
+            #{vende.pessoa.cpf}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="preco #{vendeList.order=='preco asc' ? messages.down : ( vendeList.order=='preco desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{vendeList.order=='preco asc' ? 'preco desc' : 'preco asc'}"/>
+                </s:link>
+            </f:facet>
+            #{vende.preco}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'Vende' : from}.xhtml" 
+                   value="Select" 
+                      id="vende">
+                <f:param name="vendeObraIsbn" 
+                        value="#{vende.id.obraIsbn}"/>
+                <f:param name="vendePessoaCpf" 
+                        value="#{vende.id.pessoaCpf}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/VendeList.xhtml" 
+            rendered="#{vendeList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/VendeList.xhtml" 
+            rendered="#{vendeList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{vendeList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/VendeList.xhtml" 
+            rendered="#{vendeList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{vendeList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/VendeList.xhtml" 
+            rendered="#{vendeList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{vendeList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/VendeEdit.xhtml"
+                    id="create" 
+                 value="Create vende">
+            <f:param name="vendeObraIsbn"/>
+            <f:param name="vendePessoaCpf"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

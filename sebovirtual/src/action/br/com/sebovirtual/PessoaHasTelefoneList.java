@@ -1,0 +1,40 @@
+package br.com.sebovirtual;
+
+import br.com.sebovirtual.model.*;
+import org.jboss.seam.annotations.Name;
+import org.jboss.seam.framework.EntityQuery;
+import java.util.List;
+import java.util.Arrays;
+
+@Name("pessoaHasTelefoneList")
+public class PessoaHasTelefoneList extends EntityQuery {
+
+	private static final String[] RESTRICTIONS = {};
+
+	private PessoaHasTelefone pessoaHasTelefone;
+
+	public PessoaHasTelefoneList() {
+		pessoaHasTelefone = new PessoaHasTelefone();
+		pessoaHasTelefone.setId(new PessoaHasTelefoneId());
+	}
+
+	@Override
+	public String getEjbql() {
+		return "select pessoaHasTelefone from PessoaHasTelefone pessoaHasTelefone";
+	}
+
+	@Override
+	public Integer getMaxResults() {
+		return 25;
+	}
+
+	public PessoaHasTelefone getPessoaHasTelefone() {
+		return pessoaHasTelefone;
+	}
+
+	@Override
+	public List<String> getRestrictions() {
+		return Arrays.asList(RESTRICTIONS);
+	}
+
+}

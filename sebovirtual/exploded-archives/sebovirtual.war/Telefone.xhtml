@@ -1,0 +1,104 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">Telefone</f:facet>
+
+
+
+        <s:decorate id="ddd" template="layout/display.xhtml">
+            <ui:define name="label">ddd</ui:define>
+            #{telefoneHome.instance.ddd}
+        </s:decorate>
+
+
+        <s:decorate id="numero" template="layout/display.xhtml">
+            <ui:define name="label">numero</ui:define>
+            #{telefoneHome.instance.numero}
+        </s:decorate>
+
+
+        <s:decorate id="tipo" template="layout/display.xhtml">
+            <ui:define name="label">tipo</ui:define>
+            #{telefoneHome.instance.tipo}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/TelefoneEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty telefoneFrom ? 'TelefoneList' : telefoneFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasTelefones">
+    <div class="association" id="pessoaHasTelefonesChildren">
+        
+        <h:outputText value="There are no pessoaHasTelefones associated with this telefone."
+                   rendered="#{empty telefoneHome.pessoaHasTelefones}"/>
+        
+        <rich:dataTable value="#{telefoneHome.pessoaHasTelefones}" 
+                       var="pessoaHasTelefone" 
+                  rendered="#{not empty telefoneHome.pessoaHasTelefones}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasTelefonesTable">
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasTelefone.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">telefoneIdTelefone</f:facet>
+                #{pessoaHasTelefone.id.telefoneIdTelefone}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasTelefone" 
+                     value="Select" 
+                      view="/PessoaHasTelefone.xhtml">
+                    <f:param name="pessoaHasTelefonePessoaCpf" 
+                            value="#{pessoaHasTelefone.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasTelefoneTelefoneIdTelefone" 
+                            value="#{pessoaHasTelefone.id.telefoneIdTelefone}"/>
+                    <f:param name="pessoaHasTelefoneFrom" value="Telefone"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasTelefone"
+                view="/PessoaHasTelefoneEdit.xhtml">
+            <f:param name="telefoneIdTelefone" 
+                    value="#{telefoneHome.instance.idTelefone}"/>
+            <f:param name="pessoaHasTelefoneFrom" value="Telefone"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,128 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">Endereco</f:facet>
+
+
+
+        <s:decorate id="bairro" template="layout/display.xhtml">
+            <ui:define name="label">bairro</ui:define>
+            #{enderecoHome.instance.bairro}
+        </s:decorate>
+
+
+        <s:decorate id="cidade" template="layout/display.xhtml">
+            <ui:define name="label">cidade</ui:define>
+            #{enderecoHome.instance.cidade}
+        </s:decorate>
+
+
+        <s:decorate id="complemento" template="layout/display.xhtml">
+            <ui:define name="label">complemento</ui:define>
+            #{enderecoHome.instance.complemento}
+        </s:decorate>
+
+
+        <s:decorate id="estado" template="layout/display.xhtml">
+            <ui:define name="label">estado</ui:define>
+            #{enderecoHome.instance.estado}
+        </s:decorate>
+
+
+        <s:decorate id="logradouro" template="layout/display.xhtml">
+            <ui:define name="label">logradouro</ui:define>
+            #{enderecoHome.instance.logradouro}
+        </s:decorate>
+
+
+        <s:decorate id="numero" template="layout/display.xhtml">
+            <ui:define name="label">numero</ui:define>
+            #{enderecoHome.instance.numero}
+        </s:decorate>
+
+
+        <s:decorate id="tipo" template="layout/display.xhtml">
+            <ui:define name="label">tipo</ui:define>
+            #{enderecoHome.instance.tipo}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/EnderecoEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty enderecoFrom ? 'EnderecoList' : enderecoFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasEnderecos">
+    <div class="association" id="pessoaHasEnderecosChildren">
+        
+        <h:outputText value="There are no pessoaHasEnderecos associated with this endereco."
+                   rendered="#{empty enderecoHome.pessoaHasEnderecos}"/>
+        
+        <rich:dataTable value="#{enderecoHome.pessoaHasEnderecos}" 
+                       var="pessoaHasEndereco" 
+                  rendered="#{not empty enderecoHome.pessoaHasEnderecos}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasEnderecosTable">
+            <h:column>
+                <f:facet name="header">enderecoIdEndereco</f:facet>
+                #{pessoaHasEndereco.id.enderecoIdEndereco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasEndereco.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasEndereco" 
+                     value="Select" 
+                      view="/PessoaHasEndereco.xhtml">
+                    <f:param name="pessoaHasEnderecoEnderecoIdEndereco" 
+                            value="#{pessoaHasEndereco.id.enderecoIdEndereco}"/>
+                    <f:param name="pessoaHasEnderecoPessoaCpf" 
+                            value="#{pessoaHasEndereco.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasEnderecoFrom" value="Endereco"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasEndereco"
+                view="/PessoaHasEnderecoEdit.xhtml">
+            <f:param name="enderecoIdEndereco" 
+                    value="#{enderecoHome.instance.idEndereco}"/>
+            <f:param name="pessoaHasEnderecoFrom" value="Endereco"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

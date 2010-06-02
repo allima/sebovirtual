@@ -1,0 +1,367 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <rich:panel>
+        <f:facet name="header">Pessoa</f:facet>
+
+
+        <s:decorate id="cpf" template="layout/display.xhtml">
+            <ui:define name="label">cpf</ui:define>
+            #{pessoaHome.instance.cpf}
+        </s:decorate>
+
+
+        <s:decorate id="dicaSenha" template="layout/display.xhtml">
+            <ui:define name="label">dicaSenha</ui:define>
+            #{pessoaHome.instance.dicaSenha}
+        </s:decorate>
+
+
+        <s:decorate id="email" template="layout/display.xhtml">
+            <ui:define name="label">email</ui:define>
+            #{pessoaHome.instance.email}
+        </s:decorate>
+
+
+        <s:decorate id="nome" template="layout/display.xhtml">
+            <ui:define name="label">nome</ui:define>
+            #{pessoaHome.instance.nome}
+        </s:decorate>
+
+
+        <s:decorate id="senha" template="layout/display.xhtml">
+            <ui:define name="label">senha</ui:define>
+            #{pessoaHome.instance.senha}
+        </s:decorate>
+
+
+        <s:decorate id="status2" template="layout/display.xhtml">
+            <ui:define name="label">status2</ui:define>
+            #{pessoaHome.instance.status2}
+        </s:decorate>
+
+
+        <s:decorate id="tipo" template="layout/display.xhtml">
+            <ui:define name="label">tipo</ui:define>
+            #{pessoaHome.instance.tipo}
+        </s:decorate>
+
+        <div style="clear:both"/>
+        
+    </rich:panel>
+    
+    <div class="actionButtons">      
+
+        <s:button view="/PessoaEdit.xhtml" 
+                    id="edit" 
+                 value="Edit"/>
+
+        <s:button view="/#{empty pessoaFrom ? 'PessoaList' : pessoaFrom}.xhtml"
+                    id="done"
+                 value="Done"/>
+
+    </div>
+
+    <rich:tabPanel switchType="ajax">
+
+    <rich:tab label="compras">
+    <div class="association" id="comprasChildren">
+        
+        <h:outputText value="There are no compras associated with this pessoa."
+                   rendered="#{empty pessoaHome.compras}"/>
+        
+        <rich:dataTable value="#{pessoaHome.compras}" 
+                       var="compra" 
+                  rendered="#{not empty pessoaHome.compras}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="comprasTable">
+            <h:column>
+                <f:facet name="header">idCompra</f:facet>
+                <h:outputText value="#{compra.idCompra}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">dataCompra</f:facet>
+                <h:outputText value="#{compra.dataCompra}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectcompra" 
+                     value="Select" 
+                      view="/Compra.xhtml">
+                    <f:param name="compraIdCompra" 
+                            value="#{compra.idCompra}"/>
+                    <f:param name="compraFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add compra"
+                view="/CompraEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="compraFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="pessoaHasCategorias">
+    <div class="association" id="pessoaHasCategoriasChildren">
+        
+        <h:outputText value="There are no pessoaHasCategorias associated with this pessoa."
+                   rendered="#{empty pessoaHome.pessoaHasCategorias}"/>
+        
+        <rich:dataTable value="#{pessoaHome.pessoaHasCategorias}" 
+                       var="pessoaHasCategoria" 
+                  rendered="#{not empty pessoaHome.pessoaHasCategorias}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasCategoriasTable">
+            <h:column>
+                <f:facet name="header">categoriaIdCategoria</f:facet>
+                #{pessoaHasCategoria.id.categoriaIdCategoria}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasCategoria.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasCategoria" 
+                     value="Select" 
+                      view="/PessoaHasCategoria.xhtml">
+                    <f:param name="pessoaHasCategoriaCategoriaIdCategoria" 
+                            value="#{pessoaHasCategoria.id.categoriaIdCategoria}"/>
+                    <f:param name="pessoaHasCategoriaPessoaCpf" 
+                            value="#{pessoaHasCategoria.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasCategoriaFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasCategoria"
+                view="/PessoaHasCategoriaEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="pessoaHasCategoriaFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="pessoaHasDadosBancarioses">
+    <div class="association" id="pessoaHasDadosBancariosesChildren">
+        
+        <h:outputText value="There are no pessoaHasDadosBancarioses associated with this pessoa."
+                   rendered="#{empty pessoaHome.pessoaHasDadosBancarioses}"/>
+        
+        <rich:dataTable value="#{pessoaHome.pessoaHasDadosBancarioses}" 
+                       var="pessoaHasDadosBancarios" 
+                  rendered="#{not empty pessoaHome.pessoaHasDadosBancarioses}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasDadosBancariosesTable">
+            <h:column>
+                <f:facet name="header">dadosBancariosIdDadosBancarios</f:facet>
+                #{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasDadosBancarios.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasDadosBancarios" 
+                     value="Select" 
+                      view="/PessoaHasDadosBancarios.xhtml">
+                    <f:param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios" 
+                            value="#{pessoaHasDadosBancarios.id.dadosBancariosIdDadosBancarios}"/>
+                    <f:param name="pessoaHasDadosBancariosPessoaCpf" 
+                            value="#{pessoaHasDadosBancarios.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasDadosBancariosFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasDadosBancarios"
+                view="/PessoaHasDadosBancariosEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="pessoaHasDadosBancariosFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="pessoaHasEnderecos">
+    <div class="association" id="pessoaHasEnderecosChildren">
+        
+        <h:outputText value="There are no pessoaHasEnderecos associated with this pessoa."
+                   rendered="#{empty pessoaHome.pessoaHasEnderecos}"/>
+        
+        <rich:dataTable value="#{pessoaHome.pessoaHasEnderecos}" 
+                       var="pessoaHasEndereco" 
+                  rendered="#{not empty pessoaHome.pessoaHasEnderecos}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasEnderecosTable">
+            <h:column>
+                <f:facet name="header">enderecoIdEndereco</f:facet>
+                #{pessoaHasEndereco.id.enderecoIdEndereco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasEndereco.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasEndereco" 
+                     value="Select" 
+                      view="/PessoaHasEndereco.xhtml">
+                    <f:param name="pessoaHasEnderecoEnderecoIdEndereco" 
+                            value="#{pessoaHasEndereco.id.enderecoIdEndereco}"/>
+                    <f:param name="pessoaHasEnderecoPessoaCpf" 
+                            value="#{pessoaHasEndereco.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasEnderecoFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasEndereco"
+                view="/PessoaHasEnderecoEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="pessoaHasEnderecoFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="pessoaHasTelefones">
+    <div class="association" id="pessoaHasTelefonesChildren">
+        
+        <h:outputText value="There are no pessoaHasTelefones associated with this pessoa."
+                   rendered="#{empty pessoaHome.pessoaHasTelefones}"/>
+        
+        <rich:dataTable value="#{pessoaHome.pessoaHasTelefones}" 
+                       var="pessoaHasTelefone" 
+                  rendered="#{not empty pessoaHome.pessoaHasTelefones}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="pessoaHasTelefonesTable">
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{pessoaHasTelefone.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">telefoneIdTelefone</f:facet>
+                #{pessoaHasTelefone.id.telefoneIdTelefone}
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectpessoaHasTelefone" 
+                     value="Select" 
+                      view="/PessoaHasTelefone.xhtml">
+                    <f:param name="pessoaHasTelefonePessoaCpf" 
+                            value="#{pessoaHasTelefone.id.pessoaCpf}"/>
+                    <f:param name="pessoaHasTelefoneTelefoneIdTelefone" 
+                            value="#{pessoaHasTelefone.id.telefoneIdTelefone}"/>
+                    <f:param name="pessoaHasTelefoneFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add pessoaHasTelefone"
+                view="/PessoaHasTelefoneEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="pessoaHasTelefoneFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+
+    <rich:tab label="vendes">
+    <div class="association" id="vendesChildren">
+        
+        <h:outputText value="There are no vendes associated with this pessoa."
+                   rendered="#{empty pessoaHome.vendes}"/>
+        
+        <rich:dataTable value="#{pessoaHome.vendes}" 
+                       var="vende" 
+                  rendered="#{not empty pessoaHome.vendes}" 
+                rowClasses="rvgRowOne,rvgRowTwo"
+                        id="vendesTable">
+            <h:column>
+                <f:facet name="header">obraIsbn</f:facet>
+                #{vende.id.obraIsbn}
+            </h:column>
+            <h:column>
+                <f:facet name="header">pessoaCpf</f:facet>
+                #{vende.id.pessoaCpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">dtFinal</f:facet>
+                <h:outputText value="#{vende.dtFinal}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">dtInicial</f:facet>
+                <h:outputText value="#{vende.dtInicial}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">preco</f:facet>
+                <h:outputText value="#{vende.preco}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">action</f:facet>
+                <s:link id="selectvende" 
+                     value="Select" 
+                      view="/Vende.xhtml">
+                    <f:param name="vendeObraIsbn" 
+                            value="#{vende.id.obraIsbn}"/>
+                    <f:param name="vendePessoaCpf" 
+                            value="#{vende.id.pessoaCpf}"/>
+                    <f:param name="vendeFrom" value="Pessoa"/>
+                </s:link>
+            </h:column>
+        </rich:dataTable>
+        
+    </div>
+    
+    <div class="actionButtons">
+        <s:button 
+               value="Add vende"
+                view="/VendeEdit.xhtml">
+            <f:param name="pessoaCpf" 
+                    value="#{pessoaHome.instance.cpf}"/>
+            <f:param name="vendeFrom" value="Pessoa"/>
+        </s:button>
+    </div>        
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

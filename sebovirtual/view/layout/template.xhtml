@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:s="http://jboss.com/products/seam/taglib">
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Sebo Virtual - ESL UFLA</title>
+    <link href="stylesheet/theme.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body bgcolor="#4D6DA6" background="img/fundo.jpg" background-repeat="no-repeat">
+	<f:loadBundle basename="messages" var="msg"/>
+    <div id="tudo">
+             
+            <div id="topo">
+                <!--  img src="img/header.jpg" / -->
+            </div> 
+            
+            <div id="menu">
+                <ui:include src="menu.xhtml">
+                    <ui:param name="projectName" value="SeboVirtual"/>
+                </ui:include>
+            </div>
+          
+            <div id="conteudo">
+                <ui:insert name="body"/>
+            </div>
+                       
+            <div id="rodape">
+                <!-- img src="img/footer.jpg" / --> 
+            </div>
+            
+    </div>
+
+</body>
+</html>

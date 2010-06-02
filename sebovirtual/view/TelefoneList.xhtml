@@ -1,0 +1,137 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="telefoneSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="Telefone search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/TelefoneList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">Telefone search results</f:facet>
+    <div class="results" id="telefoneList">
+
+    <h:outputText value="The telefone search returned no results." 
+               rendered="#{empty telefoneList.resultList}"/>
+               
+    <rich:dataTable id="telefoneList" 
+                var="telefone"
+              value="#{telefoneList.resultList}" 
+           rendered="#{not empty telefoneList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="idTelefone #{telefoneList.order=='idTelefone asc' ? messages.down : ( telefoneList.order=='idTelefone desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{telefoneList.order=='idTelefone asc' ? 'idTelefone desc' : 'idTelefone asc'}"/>
+                </s:link>
+            </f:facet>
+            #{telefone.idTelefone}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="ddd #{telefoneList.order=='ddd asc' ? messages.down : ( telefoneList.order=='ddd desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{telefoneList.order=='ddd asc' ? 'ddd desc' : 'ddd asc'}"/>
+                </s:link>
+            </f:facet>
+            #{telefone.ddd}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="numero #{telefoneList.order=='numero asc' ? messages.down : ( telefoneList.order=='numero desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{telefoneList.order=='numero asc' ? 'numero desc' : 'numero asc'}"/>
+                </s:link>
+            </f:facet>
+            #{telefone.numero}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="tipo #{telefoneList.order=='tipo asc' ? messages.down : ( telefoneList.order=='tipo desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{telefoneList.order=='tipo asc' ? 'tipo desc' : 'tipo asc'}"/>
+                </s:link>
+            </f:facet>
+            #{telefone.tipo}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'Telefone' : from}.xhtml" 
+                   value="Select" 
+                      id="telefone">
+                <f:param name="telefoneIdTelefone" 
+                        value="#{telefone.idTelefone}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/TelefoneList.xhtml" 
+            rendered="#{telefoneList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/TelefoneList.xhtml" 
+            rendered="#{telefoneList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{telefoneList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/TelefoneList.xhtml" 
+            rendered="#{telefoneList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{telefoneList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/TelefoneList.xhtml" 
+            rendered="#{telefoneList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{telefoneList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/TelefoneEdit.xhtml"
+                    id="create" 
+                 value="Create telefone">
+            <f:param name="telefoneIdTelefone"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

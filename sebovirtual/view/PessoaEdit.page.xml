@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/PessoaList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{pessoaHome.wire}"/>
+   
+   <param name="pessoaFrom"/>
+   <param name="pessoaCpf" value="#{pessoaHome.pessoaCpf}"/>
+
+
+   <navigation from-action="#{pessoaHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/Pessoa.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHome.update}">
+       <end-conversation/>
+       <redirect view-id="/Pessoa.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/PessoaList.xhtml"/>
+   </navigation>
+   
+</page>

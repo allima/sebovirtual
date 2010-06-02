@@ -1,0 +1,137 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+    
+    <h:form id="dadosBancariosSearch" styleClass="edit">
+    
+        <rich:simpleTogglePanel label="DadosBancarios search parameters" switchType="ajax">
+        
+        
+        </rich:simpleTogglePanel>
+        
+        <div class="actionButtons">
+            <h:commandButton id="search" value="Search" action="/DadosBancariosList.xhtml"/>
+        </div>
+        
+    </h:form>
+    
+    <rich:panel>
+        <f:facet name="header">DadosBancarios search results</f:facet>
+    <div class="results" id="dadosBancariosList">
+
+    <h:outputText value="The dadosBancarios search returned no results." 
+               rendered="#{empty dadosBancariosList.resultList}"/>
+               
+    <rich:dataTable id="dadosBancariosList" 
+                var="dadosBancarios"
+              value="#{dadosBancariosList.resultList}" 
+           rendered="#{not empty dadosBancariosList.resultList}">
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="idDadosBancarios #{dadosBancariosList.order=='idDadosBancarios asc' ? messages.down : ( dadosBancariosList.order=='idDadosBancarios desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{dadosBancariosList.order=='idDadosBancarios asc' ? 'idDadosBancarios desc' : 'idDadosBancarios asc'}"/>
+                </s:link>
+            </f:facet>
+            #{dadosBancarios.idDadosBancarios}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="agencia #{dadosBancariosList.order=='agencia asc' ? messages.down : ( dadosBancariosList.order=='agencia desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{dadosBancariosList.order=='agencia asc' ? 'agencia desc' : 'agencia asc'}"/>
+                </s:link>
+            </f:facet>
+            #{dadosBancarios.agencia}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="banco #{dadosBancariosList.order=='banco asc' ? messages.down : ( dadosBancariosList.order=='banco desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{dadosBancariosList.order=='banco asc' ? 'banco desc' : 'banco asc'}"/>
+                </s:link>
+            </f:facet>
+            #{dadosBancarios.banco}
+        </h:column>
+        <h:column>
+            <f:facet name="header">
+                <s:link styleClass="columnHeader"
+                             value="contacorente #{dadosBancariosList.order=='contacorente asc' ? messages.down : ( dadosBancariosList.order=='contacorente desc' ? messages.up : '' )}">
+                    <f:param name="order" value="#{dadosBancariosList.order=='contacorente asc' ? 'contacorente desc' : 'contacorente asc'}"/>
+                </s:link>
+            </f:facet>
+            #{dadosBancarios.contacorente}
+        </h:column>
+        <h:column>
+            <f:facet name="header">action</f:facet>
+            <s:link view="/#{empty from ? 'DadosBancarios' : from}.xhtml" 
+                   value="Select" 
+                      id="dadosBancarios">
+                <f:param name="dadosBancariosIdDadosBancarios" 
+                        value="#{dadosBancarios.idDadosBancarios}"/>
+            </s:link>
+        </h:column>
+    </rich:dataTable>
+
+    </div>
+    </rich:panel>
+    
+    <div class="tableControl">
+      
+        <s:link view="/DadosBancariosList.xhtml" 
+            rendered="#{dadosBancariosList.previousExists}" 
+               value="#{messages.left}#{messages.left} First Page"
+                  id="firstPage">
+          <f:param name="firstResult" value="0"/>
+        </s:link>
+        
+        <s:link view="/DadosBancariosList.xhtml" 
+            rendered="#{dadosBancariosList.previousExists}" 
+               value="#{messages.left} Previous Page"
+                  id="previousPage">
+            <f:param name="firstResult" 
+                    value="#{dadosBancariosList.previousFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/DadosBancariosList.xhtml" 
+            rendered="#{dadosBancariosList.nextExists}" 
+               value="Next Page #{messages.right}"
+                  id="nextPage">
+            <f:param name="firstResult" 
+                    value="#{dadosBancariosList.nextFirstResult}"/>
+        </s:link>
+        
+        <s:link view="/DadosBancariosList.xhtml" 
+            rendered="#{dadosBancariosList.nextExists}" 
+               value="Last Page #{messages.right}#{messages.right}"
+                  id="lastPage">
+            <f:param name="firstResult" 
+                    value="#{dadosBancariosList.lastFirstResult}"/>
+        </s:link>
+        
+    </div>
+    
+    <s:div styleClass="actionButtons" rendered="#{empty from}">
+        <s:button view="/DadosBancariosEdit.xhtml"
+                    id="create" 
+                 value="Create dadosBancarios">
+            <f:param name="dadosBancariosIdDadosBancarios"/>
+        </s:button>
+    </s:div>
+    
+</ui:define>
+
+</ui:composition>
+

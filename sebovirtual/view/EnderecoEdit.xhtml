@@ -1,0 +1,198 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:s="http://jboss.com/products/seam/taglib"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:a="http://richfaces.org/a4j"
+                xmlns:rich="http://richfaces.org/rich"
+                template="layout/template.xhtml">
+                       
+<ui:define name="body">
+    
+    <h:messages globalOnly="true" styleClass="message" id="globalMessages"/>
+
+    <h:form id="endereco" styleClass="edit">
+    
+        <rich:panel>
+            <f:facet name="header">#{enderecoHome.managed ? 'Edit' : 'Add'} Endereco</f:facet>
+
+
+
+            <s:decorate id="bairroDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">bairro</ui:define>
+                <h:inputText id="bairro" 
+                       required="true"
+                           size="20"
+                      maxlength="20"
+                          value="#{enderecoHome.instance.bairro}">
+                    <a:support event="onblur" reRender="bairroDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="cidadeDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">cidade</ui:define>
+                <h:inputText id="cidade" 
+                       required="true"
+                           size="30"
+                      maxlength="30"
+                          value="#{enderecoHome.instance.cidade}">
+                    <a:support event="onblur" reRender="cidadeDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="complementoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">complemento</ui:define>
+                <h:inputText id="complemento" 
+                           size="15"
+                      maxlength="15"
+                          value="#{enderecoHome.instance.complemento}">
+                    <a:support event="onblur" reRender="complementoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="estadoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">estado</ui:define>
+                <h:inputText id="estado" 
+                       required="true"
+                           size="30"
+                      maxlength="30"
+                          value="#{enderecoHome.instance.estado}">
+                    <a:support event="onblur" reRender="estadoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="logradouroDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">logradouro</ui:define>
+                <h:inputText id="logradouro" 
+                       required="true"
+                           size="20"
+                      maxlength="20"
+                          value="#{enderecoHome.instance.logradouro}">
+                    <a:support event="onblur" reRender="logradouroDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+            <s:decorate id="numeroDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">numero</ui:define>
+                <h:inputText id="numero"
+                       required="true"
+                          value="#{enderecoHome.instance.numero}">
+                    <a:support event="onblur" reRender="numeroDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+
+
+
+            <s:decorate id="tipoDecoration" template="layout/edit.xhtml">
+                <ui:define name="label">tipo</ui:define>
+                <h:inputText id="tipo"
+                       required="true"
+                          value="#{enderecoHome.instance.tipo}">
+                    <a:support event="onblur" reRender="tipoDecoration" bypassUpdates="true" ajaxSingle="true"/>
+                </h:inputText>
+            </s:decorate>
+        
+            <div style="clear:both">
+                <span class="required">*</span> 
+                required fields
+            </div>
+            
+        </rich:panel>
+                
+        <div class="actionButtons">
+
+            <h:commandButton id="save" 
+                          value="Save" 
+                         action="#{enderecoHome.persist}"
+                       disabled="#{!enderecoHome.wired}"
+                       rendered="#{!enderecoHome.managed}"/>  
+                          			  
+            <h:commandButton id="update" 
+                          value="Save" 
+                         action="#{enderecoHome.update}"
+                       rendered="#{enderecoHome.managed}"/>
+                        			  
+            <h:commandButton id="delete" 
+                          value="Delete" 
+                         action="#{enderecoHome.remove}"
+                      immediate="true"
+                       rendered="#{enderecoHome.managed}"/>
+                    
+            <s:button id="done" 
+                   value="Done"
+             propagation="end"
+                    view="/Endereco.xhtml"
+                rendered="#{enderecoHome.managed}"/>
+                
+            <s:button id="cancel" 
+                   value="Cancel"
+             propagation="end"
+                    view="/#{empty enderecoFrom ? 'EnderecoList' : enderecoFrom}.xhtml"
+                rendered="#{!enderecoHome.managed}"/>
+
+        </div>
+    </h:form>
+
+<rich:tabPanel switchType="ajax">
+
+    <rich:tab label="pessoaHasEnderecos">
+        <div class="association" id="pessoaHasEnderecosChildren">
+        
+            <h:outputText value="There are no pessoaHasEnderecos associated with this endereco." 
+                       rendered="#{empty enderecoHome.pessoaHasEnderecos}"/>
+        
+            <rich:dataTable value="#{enderecoHome.pessoaHasEnderecos}" 
+                           var="pessoaHasEndereco" 
+                      rendered="#{not empty enderecoHome.pessoaHasEnderecos}" 
+                    rowClasses="rvgRowOne,rvgRowTwo"
+                            id="pessoaHasEnderecosTable">
+                <h:column>
+                    <f:facet name="header">enderecoIdEndereco</f:facet>
+                    #{pessoaHasEndereco.id.enderecoIdEndereco}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">pessoaCpf</f:facet>
+                    #{pessoaHasEndereco.id.pessoaCpf}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">action</f:facet>
+                    <s:link view="/PessoaHasEndereco.xhtml" 
+                              id="selectpessoaHasEndereco" 
+                           value="Select"
+                     propagation="none">
+                        <f:param name="pessoaHasEnderecoEnderecoIdEndereco" 
+                                value="#{pessoaHasEndereco.id.enderecoIdEndereco}"/>
+                        <f:param name="pessoaHasEnderecoPessoaCpf" 
+                                value="#{pessoaHasEndereco.id.pessoaCpf}"/>
+                        <f:param name="pessoaHasEnderecoFrom" value="Endereco"/>
+                    </s:link>
+                </h:column>
+            </rich:dataTable>
+        
+        </div>
+          
+        <f:subview rendered="#{enderecoHome.managed}" id="pessoaHasEnderecos">
+        <div class="actionButtons">
+            <s:button id="addpessoaHasEndereco" 
+                   value="Add pessoaHasEndereco"
+                    view="/PessoaHasEnderecoEdit.xhtml"
+             propagation="none">
+                 <f:param name="enderecoIdEndereco" 
+                         value="#{enderecoHome.instance.idEndereco}"/>
+                 <f:param name="pessoaHasEnderecoFrom" value="Endereco"/>
+            </s:button>
+        </div>
+        </f:subview>
+    </rich:tab>
+</rich:tabPanel>
+</ui:define>
+
+</ui:composition>

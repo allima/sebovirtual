@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/EditoraList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{editoraHome.wire}"/>
+   
+   <param name="editoraFrom"/>
+   <param name="editoraIdEditora" value="#{editoraHome.editoraIdEditora}"/>
+
+
+   <navigation from-action="#{editoraHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/Editora.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{editoraHome.update}">
+       <end-conversation/>
+       <redirect view-id="/Editora.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{editoraHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/EditoraList.xhtml"/>
+   </navigation>
+   
+</page>

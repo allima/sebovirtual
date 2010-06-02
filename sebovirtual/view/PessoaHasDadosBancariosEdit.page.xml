@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/PessoaHasDadosBancariosList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{pessoaHasDadosBancariosHome.wire}"/>
+   
+   <param name="pessoaHasDadosBancariosFrom"/>
+   <param name="pessoaHasDadosBancariosDadosBancariosIdDadosBancarios" value="#{pessoaHasDadosBancariosHome.pessoaHasDadosBancariosId.dadosBancariosIdDadosBancarios}"/>
+   <param name="pessoaHasDadosBancariosPessoaCpf" value="#{pessoaHasDadosBancariosHome.pessoaHasDadosBancariosId.pessoaCpf}"/>
+   <param name="dadosBancariosFrom"/>
+   <param name="dadosBancariosIdDadosBancarios" value="#{dadosBancariosHome.dadosBancariosIdDadosBancarios}"/>
+
+   <param name="pessoaFrom"/>
+   <param name="pessoaCpf" value="#{pessoaHome.pessoaCpf}"/>
+
+
+
+   <navigation from-action="#{pessoaHasDadosBancariosHome.persist}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasDadosBancarios.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasDadosBancariosHome.update}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasDadosBancarios.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{pessoaHasDadosBancariosHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/PessoaHasDadosBancariosList.xhtml"/>
+   </navigation>
+   
+</page>
