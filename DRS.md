@@ -1,0 +1,413 @@
+## Histórico de Alterações ##
+
+| **Data**     | **Versão**   | **Descrição** |  **Último RF** | **Último RNF**  | **Autor**  |
+|:-------------|:-------------|:--------------|:---------------|:----------------|:-----------|
+| 19/10/2009   | 1.0 - D01    | Definição de requisitos | RF015          | RNF001          | Alexandre Maia |
+| 24/10/2009   | 1.0 - D02    | Alteração da estrutura do Documento, Elaboração da Introdução, Propósito, Escopo, Definições Gerais, Características do Usuário, Restrições Gerais.  |  -             |  -              | Sandro Colli |
+| 25/10/2009   | 1.0 - D03    | Revisão/Especificação de requisitos | RF025          | RNF001          | Alexandre Lucena |
+| 25/10/2009   |  1.0 - D04   | Revisão/Especificação de requisitos | RF000          | RNF000          | Alexandre Maia |
+| 27/10/2009   | 1.0 - D05    | Definição dos Requisitos Não-Funcionais | -              | RFN010          | Sandro Colli |
+
+
+---
+
+
+# Documento de Requisitos de Software (DRS) #
+
+## 1. Introdução ##
+
+Este Documento de Requisitos de Software apresenta a especificação do Sistema SeboVirtual. Sua elaboração tem o objetivo de organizar o processo de requisitos em conformidade com a IEEE Std 830-1998 e agrupar os requisitos por funcionalidade tornando o documento mais objetivo e consistente para os interessados.
+
+### 1.1. Propósito do Documento de Requisitos ###
+
+O propósito deste documento de requisitos é apresentar os requisitos funcionais do software, estabelecer os requisitos não-funcionais, apresentar o escopo do produto e estabelecer o que será e não será abordado nesta etapa do desenvolvimento.
+Este documento servirá de base para o desenvolvimento do sistema SeboVirtual durante todo o seu ciclo de vida. A partir dele a equipe de Design irá desenvolver outros artefatos como código-fonte, base de dados, diagramas, etc. Servirá também como base para especificação de casos de teste do software em desenvolvimento, além de ser uma forma de demonstrar as funcionalidades do software aos usuários e clientes.
+
+### 1.2. Escopo do Produto ###
+
+O produto desenvolvido a partir deste documento de requisitos será o software SeboVirtual. Ele será composto de um interface Web a partir da qual usuários cadastrados e autenticados poderão comprar ou ofertar livros para venda. Os livros cadastrados poderão ser comentados por outros usuários. O desenvolvimento desse software possibilitará maior intercâmbio de informações e conhecimentos a partir da venda de livros, antes esquecidos nas estantes. Também poderá servir como composição da fonte de renda dos usuários vendedores a partir de aplicação de margem de lucro sobre as vendas de livros procurados.
+
+### 1.3. Definições, Acrônimos e Abreviações ###
+
+Esta seção fornece as definições de todos os termos, acrônimos e abreviações requeridas para interpretar este documento de requisitos.
+
+| **Termo** | **Descrição**               |
+|:----------|:----------------------------|
+| RF        | Requisitos Funcionais       |
+| RNF       | Requisitos Não-Funcionais   |
+
+
+## 2. Descrição Geral ##
+
+### 2.1. Funções do Produto ###
+
+Todos os usuários cadastrados poderão efetuar vendas, compras e comentar outras obras.
+A compra se dará quando o usuário se interessar por um livro que esteja na estante de um usuário vendedor e efetuar o pagamento. Após a negociação os vendedores serão avaliados.
+Os livros poderão ser consultados através de uma busca por autor, título, editora.
+A consulta a um livro indicará os usuários que o disponibilizam para venda na estante de livros e apresentará os comentários realizados pelos usuários sobre o conteúdo.
+Os usuários podem ser procurados por nome, cidade, estado.
+Os usuários vendedores são classificados em ordem de número de vendas e avaliações positivas.
+
+### 2.2. Características de usuários ###
+
+São usuários potenciais para este software todas aquelas pessoas que possuem livros, que tem interesse de adquirir livros ou simplesmente possuem interesse por livros e gostem de comentar as obras.
+Os usuários são, na maioria, pessoas de nível educacional médio a elevado, com experiência mediana no uso de recursos técnológicos e com boa proficiência técnica.
+
+### 2.3. Restrições Gerais ###
+
+O software deverá apresentar um ambiente seguro para transações de pagamento dos livros adquiridos. O acesso às transações de compra e venda de livros deverá ser liberada apenas para os usuários cadastrados e autenticados no sistema.
+
+## 3. Requisitos ##
+
+### 3.1. Requisitos Funcionais ###
+
+Os requisitos funcionais definem as ações fundamentais que devem ter lugar no software ao aceitar e processar as entradas e ao processar e gerar as saídas.
+
+#### 3.1.1. Controle de Acesso ####
+
+Esta seção agrupa os requisitos funcionais associados ao controle de acesso dos usuários.
+
+**RF001 Solicitar cadastro no sistema**
+
+O usuário poderá solicitar seu cadastro no sistema, quando tiver interesse em realizar comentários sobre o conteúdo dos livros cadastrados, efetuar compra ou venda de livros através do sistema. O usuário deverá aceitar o termo de uso e privacidade e informar seus dados tais como Nome completo, CPF, E-mail, Senha da conta de usuário, Endereço residencial e Telefone para contato, informações sobre áreas de interesse (categorias dos livros) e uma "dica de senha".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF002 - Notificar cadastramento do usuário**
+
+O sistema deverá enviar uma mensagem de e-mail ao usuário, informando que o cadastro dos seus dados foi realizado com sucesso. Além disso, o e-mail deve apresentar um link para ativação do seu cadastro. Quando o usuário acessar o link de ativação, ele finaliza o processo de cadastramento e tem permissão de entrar no sistema.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF003 Acessar o sistema**
+
+Para acessar o sistema, o usuário deverá informar o e-mail utilizado no cadastramento e a senha corretos. O e-mail e a senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o usuário estará com status "ativo".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF004 Lembrar senha do usuário**
+
+Caso o usuário esqueça sua senha de acesso, ele poderá solicitar o envio da mesma para o seu e-mail de cadastro. Para isso, o usuário deverá responder a pergunda por ele cadastrada em sua "dica de senha" e o endereço eletrônico que foi cadastrado.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF005 Alterar dados cadastrais do usuário**
+
+O sistema permitirá a alteração dos dados cadastrais do usuário como, por exemplo, Nome, E-mail, informações de endereço residencial, telefone para contato, informações áreas de interesse (categorias dos livros). Para que o sistema confirme essa alteração, será solicitado que o usuário informe a senha cadastrada.
+
+Prioridade: (X) Essencial          ( ) Importante        ( )Desejável
+
+**RF006 Alterar senha do usuário**
+
+O sistema permitirá a alteração da senha do usuário, mediante informação de e-mail e impostação de senha atual e nova senha.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF007 Encerrar sistema**
+
+O sistema deve permitir que o usuário encerre sua sessão atual (Logoff). Dessa forma o usuário não poderá comprar e vender livros ou registrar comentários até que o mesmo efetue novo login (Acessar o Sistema – RF003). Quando o usuário desejar sair do sistema, seu status passará a ser "inativo".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF028 Cadastrar Dados para Recebimento**
+
+O usuário cadastrado deverá informar dados da conta - Banco, Agência e C/c - para recebimento dos valores de possíveis vendas realizadas, pode ser cadastrado mais de uma conta. O titular da conta deverá ser o próprio usuário, não será permitido cadastrar contas de terceiros.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+#### 3.1.2. Manutenção de Perfil de usuário ####
+
+Esta seção agrupa os requisitos relacionados à criação e atualização do perfil de usuário. As informações do perfil servirão como base para que o mecanismo de recomendação sugira livros que estejam de acordo com as categorias recentemente consultados.
+
+**RF008 Criar Perfil de usuário**
+
+O sistema criará um perfil de usuário quando o cadastro estiver concluído com sucesso. Contudo, este perfil ainda não possui as informações necessárias para o mecanismo de recomendação.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
+**RF009 Atualizar Perfil de usuário**
+
+O sistema atualizará o perfil do usuário de forma constante, baseado nas informações extraídas de características de navegação do usuário, ou seja, estantes de livros visitados, livros consultados, comentários realizados.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
+**RF010 Calcular índice de atividade do usuário**
+
+O sistema calculará o índice de atividade do usuário, baseado na frequência de acessos, no número de livros disponibilizados em estante virtual, número de interações com outros usuários, nos acessos aos comentários/avaliações (criando ou comentando),
+número de compras ou vendas efetuadas.
+
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
+
+#### 3.1.3. Painel de Administração ####
+
+Nesta seção são agrupados os requisitos funcionais relacionados às atividades sob responsabilidade dos usuários administradores.
+
+**RF011 Cadastrar administrador**
+
+O usuário administrador poderá realizar cadastramento de usuário com mesmo perfil. Para isso, deverá informar as seguintes informações: Nome, E-mail, Endereço, Telefone, Login. Ao finalizar o cadastro, um e-mail contendo uma senha temporária gerada aleatoriamente pelo sistema será enviado ao usuário cadastrado.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF012 Acessar painel de administração**
+
+Para acessar o sistema, o administrador deverá informar o login informado e a senha recebida no cadastramento. O Login e a Senha serão validados para permitir o acesso ao sistema. Após a validação pelo sistema, o administrador estará com status "ativo".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF013 Configurar sistema**
+
+O usuário administrador deverá configurar alguns itens de interface do sistema, ou seja, relacionado a exibição de informações na página principal.
+
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
+
+**RF014 Alterar dados de administrador**
+
+O sistema permitirá a alteração dos dados cadastrados para administrador como, por exemplo, Nome, E-mail, Endereço, Telefone para contato. Para que o sistema confirme essa alteração, será requerido que o solicitante da alteração informe sua senha.
+
+Prioridade: (X) Essencial          ( ) Importante        ( )Desejável
+
+**RF015 Alterar senha do administrador**
+
+O sistema permitirá a alteração da senha do administrador, mediante impostação de senha atual e nova senha.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RF016 Remover acesso do usuário**
+
+O sistema permitirá que o usuário administrador remova o de acesso de um usuário ao sistema. Com isto, o usuário perderá a permissão de efetuar acesso ao sistema.
+
+Prioridade: ( ) Essencial          (X) Importante        ( )Desejável
+
+**RF017 Cadastrar novidades**
+
+O sistema permitirá o cadastramento de novidades, ou seja, divulgação de notícias relacionadas ao software SeboVirtual. O cadastramento de novidades será permitido apenas para administradores do sistema, será registrado o nome do impostante, horário de registro e permitirá que seja efetuado comentários por todos os outros usuários.
+
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
+
+**RF018 Cadastrar anúncios**
+
+O sistema permitirá o cadastramento de anúncios, ou seja, publicidade vinculada ao software SeboVirtual. O cadastramento de anúncios será permitido apenas para administradores do sistema, será registrado o nome do importante, data de início de exibição, quantidade de exibição, data de fim de exibição.
+
+Prioridade: ( ) Essencial          ( ) Importante        (X) Desejável
+
+**RF019 Visualizar Log de Acesso**
+
+O sistema permitirá a visualização do Log de acessos por usuários e por administradores, data e horário de início de sessão e data e horário de fim de sessão.
+
+Prioridade: ( ) Essencial          (X) Importante        ( ) Desejável
+
+**RF020 Encerrar painel de administração**
+
+O sistema deverá permitir que o administrador encerre sua sessão atual. Quando o administrador sair do sistema, seu status passará a ser "inativo".
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+#### 3.1.4 Consultar Acervos ####
+
+Esta seção diz respeito ao processo de pesquisa e exibição das obras contidas na base de dados do site.
+
+**RF021 Pesquisar Obra**
+
+O sistema permitirá que o usuário efetue consultas aos acervos cadastrados no site. A pesquisa poderá ser realizada através do ISBN da obra, título da obra, autor da obra, editora, categoria, faixa de preço.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF022 Exibir Resultado da Pesquisa**
+
+O sistema deverá exibir o resultado da pesquisa dos livros disponíveis com as seguintes informações: ISBN; Título da Obra; Autor(a); Ano de publicação; Categoria; Nome, estado do livreiro que está vendendo a obra, preço em reais. O sistema  deverá permitir que o usuário escolha a forma de ordenação do resultado da pesquisa, baseando-se por uma das colunas discriminadas anteriormente.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF023 Detalhar Obra Selecionada**
+
+O sistema deverá permitir que o usuário consiga detalhar as informações da obra que selecionar acessar. O detalhamento deverá conter todas as informações referentes a obra selecionada pelo usuário, os comentários já realizados, informações sobre a qualificação do vendedor.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+#### 3.1.5 Gerenciar Cesta de Compras ####
+
+Esta seção agrupa os requisitos funcionais relacionados a escolha, seleção e compra de livros no site SeboVirtual.
+
+**RF024 Adicionar Livros a Cesta de Compras**
+
+O sistema deverá permitir que o usuário devidamente cadastrado e com o status de "ativo" possa selecionar a obra que tiver interesse e armazená-la em sua Cesta de Compras.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF025 Excluir Livros a Cesta de Compras**
+
+O sistema deverá permitir que o usuário devidamente cadastrado e com o status de "ativo" possa selecionar uma obra que esteja em sua Cesta de compras e removê-la de sua Cesta de Compras.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF026 Visualizar Cesta de Compras**
+
+O sistema deverá permitir que o usuário visualize sua cesta de compras. Uma vez dentro da área de controle da Cesta de Compras, o usuário poderá visualizar todas as obras escolhidas para compra, excluir livros da cesta de compras (RF025), ter opção de continuar comprando no site e finalizar a sua compra.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF027 Finalizar Compra**
+
+O usuário deverá finalizar a compra, decidindo pela forma de envio e pagamento para cada fornecedor do livro. O usuário deverá confirmar os dados digitados para concluir pedido.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+#### 3.1.6 Gerenciar Compras/Vendas de Livros ####
+
+Estes requisitos funcionais são referentes ao Cadastramento e a Compra/Venda de livros por parte dos usuários cadastrados. O sistema deverá fornecer mecanismos de controle para o Gerenciamento das Compras/Vendas das Obras.
+
+**RF029 Cadastrar Livro para Venda**
+
+O sistema deverá permitir o cadastramento de obras por parte dos usuários cadastrados com status "ativo". O sistema deverá receber dados referentes a obra tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo (Descrição), Categorias, Preço (R$).
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF030 Alterar dados de Livro para Venda**
+
+O sistema deverá permitir a alteração de dados de obras tais como ISBN, Título da obra, Nome do autor(a), Editora, Ano de publicação, Número de edição, Estado de conservação, Resumo (Descrição), Categorias, Preço (R$).
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF031 Excluir Livro para Venda**
+
+O sistema deverá permitir a exclusão de obras da estante do usuário
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF032 Gerenciar acervo**
+
+O usuário poderá gerenciar seu acervo, visualizando os livros cadastrados, realizando cadastro de livros (RF029), alteração de dados de livros cadastrados (RF030), exclusão de livros da estante (RF031).
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF033 Receber Notificação de Compra**
+
+O sistema enviará por e-mail uma notificação de compra para o comprador, informando os dados do pedido e as instruções de pagamento conforme a forma de pagamento selecionada. O status da compra deve ser "aguardando pagamento".
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF034 Receber Notificação de Venda**
+
+O sistema enviará por e-mail uma notificação de venda para o vendedor, informando os dados do pedido.
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF035 Registrar confirmação de pagamento**
+
+O usuário vendedor deverá realizar o registro de confirmação de pagamento do pedido até 3 (três) dias úteis. Após esse prazo, o sistema cancelará o pedido. Após confirmação, o status da compra deve ser "aguardando envio".
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF036 Cadastrar Registro de Envio**
+
+O usuário vendedor deverá cadastrar o número do registro de envio até 2 (dois) dias úteis, após a confirmação de pagamento. Ao registrar, o status da compra deve ser "envio realizado"
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF037 Verificar confirmação de entrega**
+
+O sistema verificará a entrega do produto ao comprador através do rastreamento de registro de envio. Após a entrega, o status da compra deve ser "compra finalizada".
+
+Prioridade: (X) Essencial ( ) Importante ( ) Desejável
+
+**RF038 Acompanhar compras**
+
+O sistema permitirá listar as compras concluídas e em andamento pelo usuário, indicando o status da compra.
+
+Prioridade: ( ) Essencial (X) Importante ( ) Desejável
+
+**RF039 Acompanhar vendas**
+
+O sistema permitirá listar as vendas concluídas e em andamento pelo vendedor, indicando o andamento do processo.
+
+Prioridade: ( ) Essencial (X) Importante ( ) Desejável
+
+**RF040 Avaliar vendedor**
+
+Após a finalização da compra, o sistema emitirá uma notificação para o comprador para que efetue uma avaliação do vendedor.
+
+Prioridade: ( ) Essencial (X) Importante ( ) Desejável
+
+**RF041 Comentar obra**
+
+O sistema deverá permitir que o usuário realize avaliação da obra selecionada.
+
+Prioridade: ( ) Essencial (X) Importante ( ) Desejável
+
+**RF042 Calcular frete**
+
+O sistema permitirá o cálculo do frete de acordo com cidade, estado, CEP, peso e valor declarado do produto.
+
+Prioridade: ( ) Essencial ( ) Importante (X) Desejável
+
+### 3.2 Requisitos Não-Funcionais ###
+
+Os requisitos não-funcionais ou qualidades do sistema, representam as propriedades exigidas do sistema, tais como desempenho, segurança, manutenção, etc, em outras palavras, como alguns aspectos comportamentais ou estruturais do sistema deve ser realizado.
+
+#### 3.2.1 Requisitos do Produto ####
+
+Os requisitos aqui especificados referem-se às caracteristicas internas do produto a ser desenvolvido.
+
+**RNF002 Disponibilidade**
+
+O sistema será disponibilizado durante as 24 horas do dia em todos os dias da semana.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF003 Usabilidade**
+
+A interface com o usuário deverá ser autoexplicativa, simples e de fácil operação.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF004 Confiabilidade**
+
+As informações apresentadas e armazenadas deverão ser consistentes.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF005 Segurança**
+
+O Sistema deverá utilizar protocolo seguro para as transações, com validação das informações e criptografia dos dados do usuário.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF006 Portabilidade**
+
+O Sistema deverá se independente de plataforma.
+
+Prioridade: ( ) Essencial          (x) Importante        ( ) Desejável
+
+**RNF007 Tempo de Resposta**
+
+O tempo necessário para a montagem do HTML da página contados a partir da recepção da solicitação pelo sistema não deverá ultrapassar 5 segundos. Para efeito dessa contagem são desconsiderados o tempo de tráfego pela rede e a renderização da página pelo browser que dependem de outros fatores que estão fora do escopo deste software.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF008 Escalabilidade**
+
+O sistema deverá ser escalável.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+#### 3.2.2 Requisitos do Processo ####
+
+Aqui são representados os requisitos do processo de desenvolvimento, incluindo os padrões, a modelagem e a linguagem de programação.
+
+**RNF009 Processo de Desenvolvimento de Software**
+
+Será adotada a metodologia OPENUP para o desenvolvimento do software.
+
+Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável
+
+**RNF001 Sistema Open-Source**
+
+O sistema deverá ser open-source (código aberto) e seu código fonte deverá ser disponibilizado no GoogleCode.com para que qualquer individuo possa visualizá-lo, e qualquer membro do projeto possa editá-lo, contribuindo para a melhoria do produto e artefatos.
+
+Prioridade: (X) Essencial          ( ) Importante        ( ) Desejável
+
+**RNF010 Plataforma de Desenvolvimento**
+
+Será adotada a platadorma JAVA da Sun Microsistem para desenvolvimento deste sistema com Servidor de Aplicação JBOSS AS e Banco de Dados MySQL.
+
+Prioridade: ( ) Essencial          ( ) Importante        (x) Desejável

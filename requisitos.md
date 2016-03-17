@@ -1,0 +1,131 @@
+<h2>Requisitos funcionais e não-funcionais</h2>
+
+
+<h3>Requisitos Funcionais</h3>
+
+<b>Controle de Acesso</b>
+
+  * Manter Cadastro de Usuário (Solicitação/Alteração de cadastro no sistema como leitor ou vendedor)
+  * Autenticar no sistema (Efetuar Login)
+  * Solicitar Nova Senha
+
+
+<b>Manutenção dos perfis de usuário</b>
+
+  * Manter Perfis de Usuário;
+
+<b>Manutenção de Obras (Livros)</b>
+
+  * Manter Obra (Livros);
+  * Visualizar Estante de Livros;
+  * Comprar Obra (Livros);
+  * Visualizar Cesta de Compras;
+  * Avaliar Obra (Livro);
+  * Avaliar vendedor/negociador (após venda ou troca);
+  * Cadastrar Comentário para Obra (Livro);
+  * Indicar Obra (Livro);
+  * Trocar Obra (Livro) (Enviar interesse de troca);
+
+
+<b>Consultas</b>
+  * Consultar Vendedores/Negociadores
+  * Consultar Leitores
+  * Consultar Livros
+
+
+<h3>Requisitos Não-funcionais</h3>
+
+
+<b>Usabilidade</b>
+
+Os requisitos de usabilidade podem incluir subcategorias como:
+
+  * fatores humanos (consulte Conceitos: Design Centrado no Usuário)
+  * estética
+  * consistência na interface do usuário (consulte Diretrizes: Interface do Usuário)
+  * ajuda on-line e contextual
+  * assistentes e agentes
+  * documentação do usuário
+  * materiais de treinamento
+
+
+<b>Confiabilidade</b>
+
+Os requisitos de confiabilidade a serem considerados são:
+
+  * freqüência e gravidade de falha
+  * possibilidade de recuperação
+  * possibilidade de previsão
+  * exatidão
+  * tempo médio entre falhas (MTBF)
+
+
+<b>Desempenho</b>
+
+Um requisito de desempenho impõe condições aos requisitos funcionais. Por exemplo, para uma determinada ação, ele pode especificar parâmetros de desempenho para:
+
+  * velocidade
+  * eficiência
+  * disponibilidade
+  * exatidão
+  * taxa de transferência
+  * tempo de resposta
+  * tempo de recuperação
+  * uso de recurso
+
+
+<b>Suportabilidade</b>
+
+Os requisitos de suporte podem incluir:
+
+  * possibilidade de teste
+  * extensibilidade
+  * adaptabilidade
+  * manutenibilidade
+  * compatibilidade
+  * possibilidade de configuração
+  * possibilidade de serviço
+  * possibilidade de instalação
+  * possibilidade de localização (internacionalização)
+
+<b>Requisito de Design</b>
+
+Um requisito de design, freqüentemente chamado de uma restrição de design, especifica ou restringe o design de um sistema.
+
+
+<b>Requisito de Implementação</b>
+
+Um requisito de implementação especifica ou restringe o código ou a construção de um sistema. Como exemplos, podemos citar:
+
+  * padrões obrigatórios
+  * linguagens de implementação
+  * políticas de integridade de banco de dados
+  * limites de recursos
+  * ambientes operacionais
+
+
+<b>Requisito de Interface</b>
+
+Um requisito de interface especifica:
+
+  * um item externo com o qual o sistema deve interagir
+  * restrições de formatos, tempos ou outros fatores usados por tal interação
+
+
+<b>Requisito Físico</b>
+
+Um requisito físico especifica uma característica física que um sistema deve possuir, por exemplo,
+
+  * material
+  * forma
+  * tamanho
+  * peso
+
+Esse tipo de requisito pode ser usado para representar requisitos de hardware, como as configurações físicas de rede obrigatórias.
+
+
+
+OBS: Cada um adiciona a medida que for apurando os requisitos
+
+
+Teste do RapidSVN
